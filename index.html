@@ -122,6 +122,32 @@ section{margin-top:56px}
 .ot{color:var(--alarm)}
 .best{color:var(--ok)}
 
+/* expandable day detail */
+details.dd{margin-top:10px}
+details.dd summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:4px 0;user-select:none}
+details.dd summary::-webkit-details-marker{display:none}
+details.dd summary:hover{color:var(--ink)}
+details.dd summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+details.dd summary .chev{display:inline-block;width:9px;height:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg) translate(-1px,-1px);transition:transform .15s}
+details.dd[open] summary .chev{transform:rotate(45deg) translate(-2px,-2px)}
+details.dd summary .cnt{color:var(--ink-2);letter-spacing:.04em}
+.tl{margin-top:12px;border-left:2px solid var(--rule);padding-left:0}
+.ev{display:grid;grid-template-columns:52px 30px 92px 1fr;gap:10px;align-items:baseline;padding:7px 0 7px 14px;border-bottom:1px solid var(--rule)}
+.ev:last-child{border-bottom:0}
+.ev .t{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.ev .ln{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-align:center;border-radius:2px;padding:2px 0}
+.ev .ln.ba{background:var(--ba-soft);color:var(--ba)}
+.ev .ln.pg{background:var(--pg-soft);color:var(--pg)}
+.ev .k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);text-transform:uppercase}
+.ev .k.out{color:var(--ok)}
+.ev .k.in{color:var(--ba)}
+.ev .v{font-size:13.5px;color:var(--ink-2)}
+.ev .v b{color:var(--ink);font-weight:500}
+@media(max-width:640px){.ev{grid-template-columns:52px 30px 1fr;row-gap:2px}.ev .v{grid-column:1/4}}
+.tally{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3)}
+.tally b{color:var(--ink);font-weight:500}
+.dry{margin-top:12px;font-size:13.5px;color:var(--alarm);border-left:2px solid var(--alarm);padding:6px 0 6px 14px}
+
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:34px}
 @media(max-width:760px){.cols{grid-template-columns:1fr;gap:40px}.day{grid-template-columns:1fr;gap:10px}}
 ul.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
@@ -279,7 +305,7 @@ footer b{color:var(--ink-2);font-weight:500}
   <section>
     <div class="sec-head">
       <h2>Day by day</h2>
-      <div class="note">first &rarr; last recorded activity</div>
+      <div class="note">click any day to open it</div>
     </div>
 
     <div class="day">
@@ -288,6 +314,32 @@ footer b{color:var(--ink-2);font-weight:500}
         <span class="hrs ot">13.5 h &middot; overtime</span>
         <div class="daybar"><div class="d-ba" style="width:77.8%">BA 10.5</div><div class="d-pg" style="width:22.2%">PG 3.0</div></div>
         <div class="txt">Footage library rebuilt into named story folders. <a class="t-ba t-slack" href="https://performance-golf.slack.com/archives/C06BWGU1QSG/p1787583641113019?thread_ts=1787569068.833059&amp;cid=C06BWGU1QSG">OMAD before/after photos and bloodwork PDFs recovered</a>. PG got the <a class="t-pg t-cal" href="https://www.google.com/calendar/event?eid=NjVrcWd1cWdwcjV1aGxtZ2VwZ200OGcwN2ZfMjAyNjA4MjRUMTMwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Social Alignment Meeting</a>, <a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/C0BHNDSLGE5/p1787585383283739">the IG board handed to John and Corey</a> and <a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/C0A2KQ4NDB4/p1787594306963399?thread_ts=1787329521.773769&amp;cid=C0A2KQ4NDB4">the Lil' Legends rally post</a>. Then <b>five commits building the BA Board</b> to 22:31.</div>
+
+        <details class="dd">
+          <summary><span class="chev"></span>Open Monday <span class="cnt">&mdash; 7 started, 7 finished</span></summary>
+          <div class="tl">
+            <div class="ev"><span class="t">09:04</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">Approaching PG Guy Blindfold</span></div>
+            <div class="ev"><span class="t">09:10</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>PG Guy Blindfold + CTA</b></span></div>
+            <div class="ev"><span class="t">09:43</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b><a class="t-ba" href="https://app.clickup.com/t/86bbk463c">The Grove Story</a></b></span></div>
+            <div class="ev"><span class="t">10:46</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">Hum Solo 17</span></div>
+            <div class="ev"><span class="t">10:52</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>Hum Solo 17</b></span></div>
+            <div class="ev"><span class="t">11:17</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">Grant 1MM</span></div>
+            <div class="ev"><span class="t">11:21</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>Grant 1MM</b> &mdash; the 1-million-kids reel</span></div>
+            <div class="ev"><span class="t">14:00</span><span class="ln pg">PG</span><span class="k">Meeting</span><span class="v"><a class="t-pg t-cal" href="https://www.google.com/calendar/event?eid=NjVrcWd1cWdwcjV1aGxtZ2VwZ200OGcwN2ZfMjAyNjA4MjRUMTMwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Social Alignment Meeting</a> with Corey</span></div>
+            <div class="ev"><span class="t">15:14</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">Grant 1MM redo</span></div>
+            <div class="ev"><span class="t">15:20</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>Grant 1MM refit</b></span></div>
+            <div class="ev"><span class="t">16:08</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">29MIL</span></div>
+            <div class="ev"><span class="t">16:13</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>29MIL Don't Build Your Life At Your Limit</b></span></div>
+            <div class="ev"><span class="t">16:29</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/C0BHNDSLGE5/p1787585383283739">IG board handed to John and Corey</a></span></div>
+            <div class="ev"><span class="t">17:36</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">Hollis Tension</span></div>
+            <div class="ev"><span class="t">17:44</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>Hollis Tension Push</b></span></div>
+            <div class="ev"><span class="t">18:15</span><span class="ln ba">BA</span><span class="k">Assets</span><span class="v"><a class="t-ba t-slack" href="https://performance-golf.slack.com/archives/C06BWGU1QSG/p1787583641113019?thread_ts=1787569068.833059&amp;cid=C06BWGU1QSG">OMAD before/after photos + bloodwork PDFs recovered</a></span></div>
+            <div class="ev"><span class="t">18:58</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/C0A2KQ4NDB4/p1787594306963399?thread_ts=1787329521.773769&amp;cid=C0A2KQ4NDB4">Lil' Legends rally post to the launch channel</a></span></div>
+            <div class="ev"><span class="t">21:11</span><span class="ln ba">BA</span><span class="k">Build</span><span class="v">BA Board &mdash; live pipeline tracker, first commit</span></div>
+            <div class="ev"><span class="t">22:31</span><span class="ln ba">BA</span><span class="k">Build</span><span class="v">BA Board &mdash; 3-pane layout, fifth and last commit</span></div>
+          </div>
+          <div class="tally"><span>Pieces finished: <b>7</b> &mdash; all BA</span><span>Audio sessions: <b>7</b></span><span>Meetings: <b>1</b></span><span>Span: <b>13h 33m</b></span></div>
+        </details>
       </div>
     </div>
 
@@ -297,6 +349,33 @@ footer b{color:var(--ink-2);font-weight:500}
         <span class="hrs">9.5 h</span>
         <div class="daybar"><div class="d-ba" style="width:57.9%">BA 5.5</div><div class="d-pg" style="width:42.1%">PG 4.0</div></div>
         <div class="txt">Blind Golfer recut folder opened, ACC Walk-Ups XMLs built, <a class="t-ba t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1787643335679939">asked Brixton which posts landed so you can do more of them</a>. PG: <a class="t-pg" href="https://app.clickup.com/t/86bbbgjzu">TRACERS &mdash; Fixin' Dylan Dreyer</a>, 1.7&nbsp;GB down and clip XMLs built inside seven minutes, plus the <a class="t-pg t-cal" href="https://www.google.com/calendar/event?eid=NzFxZjZiNzIzcGg2YmQwNDZjM3U1dmdvNGRfMjAyNjA4MjVUMTUwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Organic Team Weekly Sync</a>.</div>
+
+        <details class="dd">
+          <summary><span class="chev"></span>Open Tuesday <span class="cnt">&mdash; 9 started, 14 finished</span></summary>
+          <div class="tl">
+            <div class="ev"><span class="t">08:29</span><span class="ln ba">BA</span><span class="k">Footage</span><span class="v">Blind Golfer &mdash; Recut folder opened</span></div>
+            <div class="ev"><span class="t">08:35</span><span class="ln ba">BA</span><span class="k">Slack</span><span class="v"><a class="t-ba t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1787643335679939">Asked Brixton which posts landed</a></span></div>
+            <div class="ev"><span class="t">08:57</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">OMAD</span></div>
+            <div class="ev"><span class="t">09:02</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b><a class="t-ba" href="https://app.clickup.com/t/86bbk53au">OMAD</a></b></span></div>
+            <div class="ev"><span class="t">09:14</span><span class="ln pg">PG</span><span class="k in">Audio in</span><span class="v">Carousel &mdash; Lil' Legends Why intro</span></div>
+            <div class="ev"><span class="t">09:23</span><span class="ln pg">PG</span><span class="k out">Export out</span><span class="v"><b>Carousel &mdash; Lil' Legends Why</b></span></div>
+            <div class="ev"><span class="t">09:34</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>Hollis Tension Push v2</b></span></div>
+            <div class="ev"><span class="t">10:22</span><span class="ln pg">PG</span><span class="k out">Export out</span><span class="v"><b>Carousel &mdash; Lil' Legends Why v2</b></span></div>
+            <div class="ev"><span class="t">10:44</span><span class="ln ba">BA</span><span class="k">Footage</span><span class="v">ACC Walk-Ups &mdash; portrait 4K XMLs built</span></div>
+            <div class="ev"><span class="t">12:16</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">10-Year Study</span></div>
+            <div class="ev"><span class="t">12:23</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>10-Year Study</b></span></div>
+            <div class="ev"><span class="t">12:27</span><span class="ln ba">BA</span><span class="k">Footage</span><span class="v">Brixton social on-course, 21 May shoot</span></div>
+            <div class="ev"><span class="t">13:10</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">Recut Viral Hum Clip</span></div>
+            <div class="ev"><span class="t">13:14</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b><a class="t-ba" href="https://app.clickup.com/t/86bbkzrz4">Recut Viral Hum Clip</a></b></span></div>
+            <div class="ev"><span class="t">13:52</span><span class="ln pg">PG</span><span class="k">Footage</span><span class="v"><a class="t-pg" href="https://app.clickup.com/t/86bbbgjzu">Fixing Dylan Dreyer</a> &mdash; 1.7&nbsp;GB longform down</span></div>
+            <div class="ev"><span class="t">13:59</span><span class="ln pg">PG</span><span class="k">Footage</span><span class="v">Dylan Dreyer &mdash; clip XMLs built</span></div>
+            <div class="ev"><span class="t">16:00</span><span class="ln pg">PG</span><span class="k">Meeting</span><span class="v"><a class="t-pg t-cal" href="https://www.google.com/calendar/event?eid=NzFxZjZiNzIzcGg2YmQwNDZjM3U1dmdvNGRfMjAyNjA4MjVUMTUwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Organic Team Weekly Sync</a></span></div>
+            <div class="ev"><span class="t">18:26</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">ACC Remix 01&ndash;04 &mdash; Putter switch, Davante Adams, Roger Clemens, AJ Hawk</span></div>
+            <div class="ev"><span class="t">18:47</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>ACC Remix 01&ndash;04, captioned</b></span></div>
+            <div class="ev"><span class="t">18:51</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>ACC Remix 01&ndash;04, masters</b></span></div>
+          </div>
+          <div class="tally"><span>Pieces finished: <b>14</b> &mdash; 12 BA, 2 PG</span><span>Audio sessions: <b>9</b></span><span>Meetings: <b>1</b></span><span>Span: <b>9h 28m</b></span></div>
+        </details>
       </div>
     </div>
 
@@ -306,6 +385,31 @@ footer b{color:var(--ink-2);font-weight:500}
         <span class="hrs ot">12.0 h &middot; overtime</span>
         <div class="daybar"><div class="d-ba" style="width:41.7%">BA 5.0</div><div class="d-pg" style="width:58.3%">PG 7.0</div></div>
         <div class="txt"><b class="best">The first PG-majority day on record.</b> Almost the whole afternoon on access: <a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1787745795525309">routing TikTok recovery through Brandon's Ads Manager</a>, <a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BKWFVLH51/p1787745803175639">reviving the Aurora handover thread</a>, <a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BHML6529L/p1787745788294159">asking Jo for the HelpScout inbox</a>, <a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1787745477137459">proposing a social@ backup email</a>, <a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1787745315421039">and asking Keffer for YouTube</a>. Also Tommy Morrissey research and the PG design pack. Off the record, <a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BC71WMZGV/p1787730366185789">you made the case to Corey for Shawne's raise</a>.</div>
+
+        <details class="dd">
+          <summary><span class="chev"></span>Open Wednesday <span class="cnt">&mdash; 1 started, 10 finished</span></summary>
+          <div class="tl">
+            <div class="ev"><span class="t">08:26</span><span class="ln ba">BA</span><span class="k">Slack</span><span class="v">Brixton &mdash; &ldquo;adding to the queue for sure&rdquo;</span></div>
+            <div class="ev"><span class="t">08:46</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BC71WMZGV/p1787730366185789">Made the case to Corey for Shawne's raise</a></span></div>
+            <div class="ev"><span class="t">08:52</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b>ACC Remix 01, 02, 03</b> &mdash; final m4v</span></div>
+            <div class="ev"><span class="t">08:54</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b><a class="t-ba" href="https://app.clickup.com/t/86bbmdwfa">ACC Remix 04 &mdash; AJ Hawk</a></b></span></div>
+            <div class="ev"><span class="t">09:53</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/C0BHNDSLGE5/p1787734409261379">Told John and Corey the Meta login is the last blocker</a></span></div>
+            <div class="ev"><span class="t">10:16</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BGKRUD0A2/p1787735771428029">Chased Jenni for the undelivered PG products</a></span></div>
+            <div class="ev"><span class="t">11:36</span><span class="ln pg">PG</span><span class="k out">Export out</span><span class="v"><b>Dylan Dreyer cutdowns 01, 03, 05, 06</b> &mdash; cameraman, weather-app rant, last place</span></div>
+            <div class="ev"><span class="t">11:37</span><span class="ln pg">PG</span><span class="k out">Export out</span><span class="v"><b>Dylan Dreyer cutdown 10</b> &mdash; a par on the first hole</span></div>
+            <div class="ev"><span class="t">12:38</span><span class="ln ba">BA</span><span class="k in">Audio in</span><span class="v">Speech Impediment</span></div>
+            <div class="ev"><span class="t">12:48</span><span class="ln ba">BA</span><span class="k out">Export out</span><span class="v"><b><a class="t-ba" href="https://app.clickup.com/t/86bbk53cv">Speech Impediment</a></b></span></div>
+            <div class="ev"><span class="t">12:55</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1787745315421039">Asked Keffer for YouTube access to post shorts</a></span></div>
+            <div class="ev"><span class="t">12:57</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1787745477137459">Proposed a social@ backup email for all official accounts</a></span></div>
+            <div class="ev"><span class="t">13:03</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1787745795525309">Rerouted TikTok recovery through Brandon's Ads Manager</a></span></div>
+            <div class="ev"><span class="t">13:03</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BKWFVLH51/p1787745803175639">Revived the Aurora handover thread</a></span></div>
+            <div class="ev"><span class="t">13:09</span><span class="ln pg">PG</span><span class="k">Footage</span><span class="v">Tommy Morrissey Bespoke Social &mdash; research pack</span></div>
+            <div class="ev"><span class="t">18:41</span><span class="ln ba">BA</span><span class="k">Footage</span><span class="v">RS1 Instructor Review pulled</span></div>
+            <div class="ev"><span class="t">21:38</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BC71WMZGV/p1787776681587339">Asked Corey to put planned posts on the content calendar</a></span></div>
+            <div class="ev"><span class="t">22:51</span><span class="ln ba">BA</span><span class="k">Slack</span><span class="v">Brixton &mdash; &ldquo;seeing some interesting stuff here&rdquo;</span></div>
+          </div>
+          <div class="tally"><span>Pieces finished: <b>10</b> &mdash; 5 PG, 5 BA</span><span>Audio sessions: <b>1</b></span><span>Access threads opened: <b>5</b></span><span>Span: <b>14h 25m</b></span></div>
+        </details>
       </div>
     </div>
 
@@ -315,6 +419,27 @@ footer b{color:var(--ink-2);font-weight:500}
         <span class="hrs">11.0 h</span>
         <div class="daybar"><div class="d-ba" style="width:63.6%">BA 7.0</div><div class="d-pg" style="width:36.4%">PG 4.0</div></div>
         <div class="txt"><b>You hired help.</b> <a class="t-ba t-slack" href="https://performance-golf.slack.com/archives/D0BT1K6H6LD/p1787843608630629">Ricardo Diaz briefed with the Hollis Stacy edit</a> &mdash; notes, structure, Dropbox and Iconik links, all in one message. Earlier: <a class="t-ba t-cal" href="https://www.google.com/calendar/event?eid=N2gwOHZvbjczbGxzamdmY3VvaGQ5cDFobDhfMjAyNjA4MjdUMTIwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Mick / Brixton catch up</a> on recuts and the hum meter, then <a class="t-ba t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1787841457434869">you wrote the reaction-format CTA script</a> that became the week's edit spec. PG: <a class="t-pg t-cal" href="https://www.google.com/calendar/event?eid=XzZrcTQ0Y2k2NjEyamViYTE4NHA0OGI5azhncDQ2YjlwOGdwMzBiOWc4ZDEzMGNpNjYxMjNpYzFpOGs&amp;ctz=Europe/London">REPUSH giveaway</a>, Lil' Legends screengrabs, and <a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1787848045556919">Aurora replied to your email</a>.</div>
+
+        <details class="dd">
+          <summary><span class="chev"></span>Open Thursday <span class="cnt">&mdash; 0 started, 0 finished</span></summary>
+          <div class="tl">
+            <div class="ev"><span class="t">06:15</span><span class="ln ba">BA</span><span class="k">Footage</span><span class="v">Brixton Albert V2 pulled from the re-edit queue</span></div>
+            <div class="ev"><span class="t">13:00</span><span class="ln ba">BA</span><span class="k">Meeting</span><span class="v"><a class="t-ba t-cal" href="https://www.google.com/calendar/event?eid=N2gwOHZvbjczbGxzamdmY3VvaGQ5cDFobDhfMjAyNjA4MjdUMTIwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Mick / Brixton catch up</a> &mdash; the board, recuts, hum meter</span></div>
+            <div class="ev"><span class="t">15:00</span><span class="ln pg">PG</span><span class="k">Meeting</span><span class="v"><a class="t-pg t-cal" href="https://www.google.com/calendar/event?eid=XzZrcTQ0Y2k2NjEyamViYTE4NHA0OGI5azhncDQ2YjlwOGdwMzBiOWc4ZDEzMGNpNjYxMjNpYzFpOGs&amp;ctz=Europe/London">REPUSH giveaway</a></span></div>
+            <div class="ev"><span class="t">15:30</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1787841021537429">Promised Keffer a flow for posting shorts to PG YouTube</a></span></div>
+            <div class="ev"><span class="t">15:34</span><span class="ln ba">BA</span><span class="k">Footage</span><span class="v">Three clips in from the phone</span></div>
+            <div class="ev"><span class="t">15:37</span><span class="ln ba">BA</span><span class="k">Script</span><span class="v"><a class="t-ba t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1787841457434869">Wrote the reaction-format CTA script</a> &mdash; became the week's edit spec</span></div>
+            <div class="ev"><span class="t">15:46</span><span class="ln pg">PG</span><span class="k">Email</span><span class="v">Emailed Aurora about the TikTok handover</span></div>
+            <div class="ev"><span class="t">15:53</span><span class="ln ba">BA</span><span class="k">Slack</span><span class="v"><a class="t-ba t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1787842439631849">&ldquo;Okay, I'll chuck him some edits&rdquo;</a> &mdash; agreeing to use Ricardo</span></div>
+            <div class="ev"><span class="t">16:09</span><span class="ln ba">BA</span><span class="k">Delegate</span><span class="v">Ricardo Diaz &mdash; &ldquo;let me get you some footage to work with&rdquo;</span></div>
+            <div class="ev"><span class="t">16:13</span><span class="ln ba">BA</span><span class="k">Delegate</span><span class="v"><a class="t-ba t-slack" href="https://performance-golf.slack.com/archives/D0BT1K6H6LD/p1787843608630629"><b>Hollis Stacy brief sent to Ricardo</b></a> &mdash; notes, structure, Dropbox + Iconik links</span></div>
+            <div class="ev"><span class="t">17:22</span><span class="ln ba">BA</span><span class="k">Slack</span><span class="v">Flagged the Good Good bandwagon risk &mdash; Internet Invitational next year</span></div>
+            <div class="ev"><span class="t">17:27</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1787848045556919">Aurora replied</a></span></div>
+            <div class="ev"><span class="t">18:20</span><span class="ln pg">PG</span><span class="k">Footage</span><span class="v">Lil' Legends screengrabs pulled</span></div>
+          </div>
+          <div class="dry">Nothing entered Audios or Exports all day. Thursday was meetings, scripting and handing work to someone else &mdash; valuable, but it produced no finished pieces.</div>
+          <div class="tally"><span>Pieces finished: <b>0</b></span><span>Audio sessions: <b>0</b></span><span>Meetings: <b>2</b></span><span>Span: <b>12h 05m</b></span></div>
+        </details>
       </div>
     </div>
 
@@ -324,6 +449,23 @@ footer b{color:var(--ink-2);font-weight:500}
         <span class="hrs">8.0 h so far</span>
         <div class="daybar"><div class="d-ba" style="width:68.8%">BA 5.5</div><div class="d-pg" style="width:31.2%">PG 2.5</div></div>
         <div class="txt">Additional Recuts and Blind Golfer Recut folders built out, Brixton audio pulled, V4 export at 15:33. PG: Tommy Morrissey research &mdash; the one-armed 11-year-old &mdash; and <a class="t-pg t-cal" href="https://www.google.com/calendar/event?eid=NGdhZ29tcnIwaDYzbzBobzZoYTY0NGM0czJfMjAyNjA4MjhUMTUwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Standing Creative</a> at 16:30. <a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1787900181031949">&ldquo;Time to start documenting the process of getting them into kids' hands.&rdquo;</a></div>
+
+        <details class="dd">
+          <summary><span class="chev"></span>Open Friday <span class="cnt">&mdash; 0 started, 0 finished so far</span></summary>
+          <div class="tl">
+            <div class="ev"><span class="t">07:56</span><span class="ln pg">PG</span><span class="k">Slack</span><span class="v"><a class="t-pg t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1787900181031949">&ldquo;Time to start documenting getting them into kids' hands&rdquo;</a> &mdash; Lil' Legends</span></div>
+            <div class="ev"><span class="t">10:44</span><span class="ln pg">PG</span><span class="k">Footage</span><span class="v">Tommy Morrissey &mdash; one-arm swing archive clip</span></div>
+            <div class="ev"><span class="t">10:59</span><span class="ln pg">PG</span><span class="k">Footage</span><span class="v">Tommy Morrissey Facebook page saved for reference</span></div>
+            <div class="ev"><span class="t">11:08</span><span class="ln ba">BA</span><span class="k">Footage</span><span class="v">Blind Golfer &mdash; Recut folder built out</span></div>
+            <div class="ev"><span class="t">11:11</span><span class="ln ba">BA</span><span class="k">Footage</span><span class="v"><a class="t-ba" href="https://app.clickup.com/t/86bbngmma">Additional Recuts</a> folder created &mdash; hum solo source cut</span></div>
+            <div class="ev"><span class="t">11:24</span><span class="ln ba">BA</span><span class="k">Footage</span><span class="v">Brixton 5 Aug audio master pulled, 200&nbsp;MB</span></div>
+            <div class="ev"><span class="t">15:21</span><span class="ln ba">BA</span><span class="k">Edit</span><span class="v">August library touched &mdash; recut timelines open</span></div>
+            <div class="ev"><span class="t">15:33</span><span class="ln ba">BA</span><span class="k">Edit</span><span class="v">Brixton V4 cut rendered out of the recut queue</span></div>
+            <div class="ev"><span class="t">16:30</span><span class="ln pg">PG</span><span class="k">Meeting</span><span class="v"><a class="t-pg t-cal" href="https://www.google.com/calendar/event?eid=NGdhZ29tcnIwaDYzbzBobzZoYTY0NGM0czJfMjAyNjA4MjhUMTUwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Standing Creative</a> with Keffer and Corey</span></div>
+          </div>
+          <div class="dry">Second day running with nothing into Audios or Exports. Plenty of prep &mdash; recut folders, sources, research &mdash; but no piece has crossed the line since Wednesday lunchtime.</div>
+          <div class="tally"><span>Pieces finished: <b>0</b> so far</span><span>Audio sessions: <b>0</b></span><span>Meetings: <b>1</b></span><span>Span so far: <b>8h 14m</b></span></div>
+        </details>
       </div>
     </div>
   </section>
@@ -351,6 +493,7 @@ footer b{color:var(--ink-2);font-weight:500}
       <div>
         <div class="label" style="margin-bottom:16px">Areas of concern</div>
         <ul class="list">
+          <li><span class="tag ba">BA</span><span><b>Nothing has been finished since Wednesday lunchtime.</b> 31 exports landed Mon&ndash;Wed, then zero on Thursday and zero on Friday. Two full days of prep, meetings and delegation with no piece crossing the line.</span></li>
           <li><span class="tag ba">BA</span><span><b>The in-progress lane ballooned, 4 &rarr; 13.</b> A lot got started this week; less got finished. That number is next week's problem if it doesn't come down.</span></li>
           <li><span class="tag ba">BA</span><span><b>Two edits are still nine days late</b> &mdash; <a class="t-ba" href="https://app.clickup.com/t/86bbgcrej">hum strangers</a> and <a class="t-ba" href="https://app.clickup.com/t/86bbezakw">Buying a Ferrari in cash</a>. Both moved to in-progress, neither is out.</span></li>
           <li><span class="tag ba">BA</span><span><b>Two days over eleven hours.</b> Monday to 22:31, Wednesday to 22:51. The rebalance was paid for with evenings.</span></li>
@@ -472,7 +615,8 @@ footer b{color:var(--ink-2);font-weight:500}
   </section>
 
   <footer>
-    <b>How this was measured.</b> No time tracking exists, so hours are estimated from first and last recorded activity each day &mdash; Slack messages sent, calendar events attended, files downloaded and edited, and local editing sessions &mdash; and are accurate to about &plusmn;1 hour per day. Automated jobs (the 15-minute footage sync, the morning board build) are excluded. Commits authored by Brixton, Morgan or Hazel are counted as inbound reading load, not as Mick's build time.<br><br>
+    <b>Output is counted, not estimated.</b> Every "audio in" is a file landing in <span class="mono">8 AUDIOS</span> &mdash; you starting a piece. Every "export out" is a file landing in <span class="mono">8 EXPORTS</span> &mdash; you finishing one. Both are real timestamps off the drive, so the per-day counts and the timeline inside each day are exact. Open any day above to see them.<br><br>
+    <b>How the hours were measured.</b> No time tracking exists, so hours are estimated from first and last recorded activity each day &mdash; Slack messages sent, calendar events attended, files downloaded and edited, and local editing sessions &mdash; and are accurate to about &plusmn;1 hour per day. Automated jobs (the 15-minute footage sync, the morning board build) are excluded. Commits authored by Brixton, Morgan or Hazel are counted as inbound reading load, not as Mick's build time.<br><br>
     <b>Links.</b> Task names go straight to the ClickUp task, meeting names to the Google Calendar event, and quoted lines to the exact Slack message. All counts pulled live from ClickUp at 16:10 on 28 Aug.<br><br>
     <b>Window:</b> Mon 24 &ndash; Fri 28 Aug 2026, the closing edition for this week. Friday is measured to 16:10. <b>Target:</b> 40% BA / 60% PG, as agreed with John on 19 Aug. <b>Private to Mick</b> unless he chooses to share it.
   </footer>
