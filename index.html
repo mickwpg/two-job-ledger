@@ -227,6 +227,31 @@ footer b{color:var(--ink-2);font-weight:500}
 </style>
 
 <div class="wrap">
+<style>
+.chart{position:relative;display:flex;gap:30px;align-items:flex-start;overflow-x:auto;padding:26px 2px 0}
+.chart .tline{position:absolute;left:0;right:0;top:95px;border-top:1px dashed var(--rule-strong);pointer-events:none;z-index:2}
+.chart .tline span{position:absolute;right:0;top:-19px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--ink-3);background:var(--paper);padding:0 0 0 8px}
+.chart .wk{display:flex;flex-direction:column;align-items:center;gap:9px;flex:0 0 auto}
+.chart .stack{height:230px;display:flex;flex-direction:column;border-radius:2px;overflow:hidden;position:relative;z-index:1}
+.chart .s-ba,.chart .s-pg{display:flex;align-items:center;justify-content:center;color:#fff;font-family:"IBM Plex Mono",monospace;font-size:12px;font-variant-numeric:tabular-nums}
+.chart .s-ba{background:var(--ba)}
+.chart .s-pg{background:var(--pg)}
+.chart .wk.now .stack{outline:2px solid var(--ink);outline-offset:3px}
+.chart .wl{text-align:center;line-height:1.35}
+.chart .wl .d{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-2)}
+.chart .wl .h{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3)}
+.chart-legend{margin-top:16px;font-size:13px;color:var(--ink-2);max-width:74ch}
+.promise{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.promise:last-child{border-bottom:0}
+.promise .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;padding:3px 0;border-radius:2px;text-align:center;height:fit-content}
+.promise q{font-size:14.5px;quotes:"\201C" "\201D"}
+.promise .meta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);margin-top:4px;letter-spacing:.03em}
+.qbox{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-top:4px}
+.qc{background:var(--surface);padding:14px 15px}
+.qc .qn{font-family:Fraunces,Georgia,serif;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.qc .ql{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;line-height:1.4}
+.qc .qd{font-family:"IBM Plex Mono",monospace;font-size:11px;margin-top:5px}
+</style>
 
   <header class="masthead">
     <div>
@@ -235,8 +260,8 @@ footer b{color:var(--ink-2);font-weight:500}
     </div>
     <div class="period">
       <div class="label">Week to date</div>
-      <div class="big">Mon 31 Aug 2026 &middot; day 1 of 5</div>
-      <div class="stamp">Rebuilt Mon 31 Aug, 18:20 &middot; refreshes every evening</div>
+      <div class="big">Mon 31 Aug &ndash; Wed 2 Sep 2026 &middot; day 3 of 5</div>
+      <div class="stamp">Rebuilt Wed 2 Sep, 12:10 &middot; refreshes every evening</div>
     </div>
   </header>
 
@@ -248,188 +273,239 @@ footer b{color:var(--ink-2);font-weight:500}
 
   <div class="privnote">Private &mdash; unlisted URL, not linked from anywhere. Share deliberately.</div>
 
-  <div class="newtarget">
-    <b class="h">The target moved today</b>
-    At 14:05 Brixton reset the split, and you agreed to it eight minutes later. <b>The bar is now 30% BA / 70% PG</b>, not 40/60 &mdash; effective this week.
-    <blockquote>Brixton: &ldquo;starting this week. I&rsquo;d really try and go towards 30% ish BA, 70% PG. Would love if you could crush some of those recuts this week.&rdquo;<br>
-    You: <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788182028710709">&ldquo;Yeah I&rsquo;m working towards that ratio for sure.&rdquo;</a></blockquote>
-    Every number on this page is now measured against 30/70. For comparison, last week&rsquo;s 62% BA scored 45 against the old bar; against the new one it would have scored <b>20</b>. The target got harder on the same day the day ran BA-heavy.
+  <div class="cleared">
+    <b>The drive is back</b>
+    Monday&rsquo;s ledger was built blind &mdash; the external drive would not mount, so the page guessed the day at 6.0 hours from ClickUp statuses alone. The drive is readable again, and it shows Monday actually put <b>eight finished pieces</b> out between 12:08 and 19:45. Monday has been re-measured on hard timestamps and is now 10.5 hours. Every export and audio bounce below is a real file with a real clock time, not an estimate.
   </div>
 
   <!-- ================= HEADLINE SPLIT ================= -->
   <section>
     <div class="sec-head">
-      <h2>Where the week has gone so far</h2>
-      <div class="note">6.0 h &middot; 10:30&ndash;17:05 &middot; &plusmn;1 h</div>
+      <h2>The split, so far this week</h2>
+      <div class="note">23.5 h measured &middot; 3 days</div>
     </div>
 
     <div class="split-figures">
       <div class="fig ba">
-        <div class="n">72<small>%</small></div>
-        <div class="cap">Brixton Albert &mdash; 4.3 h</div>
-        <div class="delta bad">&#9650; 10 pts on last week (62%)</div>
+        <div class="n">54<small>%</small></div>
+        <div class="cap">Brixton Albert &middot; 12.8 h</div>
+        <div class="delta good">&darr; 18 pts vs Monday&rsquo;s 72%</div>
       </div>
       <div class="fig pg">
-        <div class="n">28<small>%</small></div>
-        <div class="cap">Performance Golf &mdash; 1.7 h</div>
-        <div class="delta bad">&#9660; 10 pts &middot; 42 pts under the new bar</div>
+        <div class="n">46<small>%</small></div>
+        <div class="cap">Performance Golf &middot; 10.7 h</div>
+        <div class="delta good">&uarr; 18 pts vs Monday&rsquo;s 28%</div>
+      </div>
+      <div class="fig">
+        <div class="n" style="font-size:clamp(30px,5vw,42px);color:var(--ink-2)">23.5<small>h</small></div>
+        <div class="cap">Total, Mon&ndash;Wed lunchtime</div>
+        <div class="delta">&asymp; 7.8 h a day</div>
       </div>
     </div>
 
     <div class="bigbar">
-      <div class="seg ba" style="width:72%">BA &middot; 4.3 h</div>
-      <div class="seg pg" style="width:28%">PG &middot; 1.7 h</div>
+      <div class="seg ba" style="width:54.5%">BA 54%</div>
+      <div class="seg pg" style="width:45.5%">PG 46%</div>
     </div>
     <div class="targetline">
       <div class="tick" style="left:30%">
         <div class="stem"></div>
-        <div class="txt">NEW TARGET 30 / 70</div>
+        <div class="txt">30% &mdash; the agreed bar</div>
       </div>
     </div>
 
-    <p class="overshoot">The midday build had this at 80/20 off three hours. The afternoon brought it in to <b>72/28</b> &mdash; the <a class="t-cal" href="https://www.google.com/calendar/event?eid=NjVrcWd1cWdwcjV1aGxtZ2VwZ200OGcwN2ZfMjAyNjA4MzFUMTMwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Social Alignment Meeting</a> at 14:00 and 35 minutes with Brandon on the Isaac partnership were the PG hours. But the bar moved 10 points <em>down</em> on the same afternoon, so the gap to target got wider, not narrower: <b>42 points over</b>.</p>
+    <p class="overshoot">
+      Still over the line, but by the smallest margin ever recorded: <b>24 points over</b>, against 42 on Monday and 32 last week.
+      Brixton set the 30/70 bar on Monday afternoon and you
+      <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788182028710709">agreed to it eight minutes later</a>.
+      Wednesday morning is the reason the number moved &mdash; four hours of it went almost entirely to PG ingest.
+    </p>
   </section>
 
   <!-- ================= TREND ================= -->
   <section>
     <div class="sec-head">
-      <h2>Trend</h2>
-      <div class="note">share of hours &middot; target line moved to 30%</div>
+      <h2>Four measured weeks</h2>
+      <div class="note">bar width = total hours &middot; bar height = the split</div>
     </div>
 
-    <div class="trend">
-      <div class="target" style="bottom:109px"><span>NEW BAR &mdash; BA BELOW THIS LINE (30%)</span></div>
+    <div class="chart">
+      <div class="tline"><span>30% BA target</span></div>
 
       <div class="wk">
-        <div class="stack">
-          <div class="s-pg" style="height:33%">33%</div>
+        <div class="stack" style="width:81px">
           <div class="s-ba" style="height:67%">67%</div>
+          <div class="s-pg" style="height:33%">33%</div>
         </div>
-        <div class="wl"><div class="d">w/e 19 Aug</div><div class="h">65.0 h</div></div>
+        <div class="wl"><div class="d">11&ndash;19 Aug</div><div class="h">65.0 h</div></div>
       </div>
 
       <div class="wk">
-        <div class="stack">
-          <div class="s-pg" style="height:28%">28%</div>
+        <div class="stack" style="width:63px">
           <div class="s-ba" style="height:72%">72%</div>
+          <div class="s-pg" style="height:28%">28%</div>
         </div>
-        <div class="wl"><div class="d">w/e 24 Aug</div><div class="h">40.5 h</div></div>
+        <div class="wl"><div class="d">20&ndash;24 Aug</div><div class="h">40.5 h</div></div>
       </div>
 
       <div class="wk">
-        <div class="stack">
-          <div class="s-pg" style="height:38%">38%</div>
+        <div class="stack" style="width:73px">
           <div class="s-ba" style="height:62%">62%</div>
+          <div class="s-pg" style="height:38%">38%</div>
         </div>
-        <div class="wl"><div class="d">w/e 28 Aug</div><div class="h">54.0 h</div></div>
+        <div class="wl"><div class="d">24&ndash;28 Aug</div><div class="h">54.0 h</div></div>
       </div>
 
       <div class="wk now">
-        <div class="stack">
-          <div class="s-pg" style="height:28%">28%</div>
-          <div class="s-ba" style="height:72%">72%</div>
+        <div class="stack" style="width:51px">
+          <div class="s-ba" style="height:54.5%">54%</div>
+          <div class="s-pg" style="height:45.5%">46%</div>
         </div>
-        <div class="wl"><div class="d">w/e 31 Aug*</div><div class="h">6.0 h</div></div>
+        <div class="wl"><div class="d">this week</div><div class="h">23.5 h &middot; wtd</div></div>
       </div>
     </div>
 
-    <p class="trend-note">*Week-to-date, one day. Note the dashed line dropped 10 points this afternoon &mdash; no bar on this chart has ever sat below it. The best week on record, 62% BA, still cleared the new bar by 32 points. This is not a small ask.</p>
+    <p class="chart-legend">
+      Orange sits on top, so the dashed line is where the orange band <em>should</em> stop. It never has. But the band is shrinking for the first time &mdash; 72, then 62, now 54 &mdash; and the bars are getting narrower too, which means fewer total hours as well as a fairer share of them.
+    </p>
   </section>
 
   <!-- ================= DAY BY DAY ================= -->
   <section>
     <div class="sec-head">
       <h2>Day by day</h2>
-      <div class="note">expand any day for the exact timeline</div>
+      <div class="note">open a day for its exact timeline</div>
     </div>
 
+    <!-- MONDAY -->
     <div class="day">
       <div class="when">
         <div class="dn">Monday</div>
-        <div class="dt">31 AUG &middot; 10:30&ndash;17:05</div>
+        <div class="dt">31 AUG</div>
       </div>
       <div>
         <div class="daybar">
-          <div class="d-ba" style="width:72%">BA 4.3 h</div>
-          <div class="d-pg" style="width:28%">PG 1.7 h</div>
+          <div class="d-ba" style="width:66.7%">BA 7.0</div>
+          <div class="d-pg" style="width:33.3%">PG 3.5</div>
         </div>
-        <div class="txt"><span class="hrs">6.5 h span</span>
-          A recut day, and a productive one. Twelve Final Cut autosaves between 11:37 and 15:32, twelve library events opened. Out of it: <b>two BA tasks closed</b>, <b>three brand-new hum pieces created and marked publish-ready</b>, and <b>three overdue edits promoted out of in-progress</b>. PG got the 14:00 alignment meeting and a real piece of business development with Brandon &mdash; the Isaac partnership and an RS1 product send.
+        <div class="txt">
+          <span class="hrs ot">10.5 h &middot; 10:30&ndash;22:00</span>
+          The output day of the week. <b>Eight finished pieces</b> between lunch and quarter to eight &mdash; the hum recolours, Carter, the viral recut, Davante Adams, OMAD v2 and the distance challenge, plus the Lil&rsquo; Legends BTS for PG. The 30/70 bar was set and agreed at 14:13. Signed off at 22:00 chasing Donnie for selfie clips.
         </div>
-
         <details class="dd">
-          <summary><span class="chev"></span>Full timeline <span class="cnt">&mdash; 22 events</span></summary>
+          <summary><span class="chev"></span>Timeline <span class="cnt">&middot; 21 moves</span></summary>
           <div class="tl">
-            <div class="ev"><div class="t">10:48</div><div class="ln ba">BA</div><div class="k in">TOOLING</div><div class="v"><b>Iconik &rarr; ClickUp</b> run finished &mdash; playlist links turned into <a class="t-ba" href="https://app.clickup.com/9014714949/v/li/901413512686">Social Calendar</a> tasks with captions</div></div>
-            <div class="ev"><div class="t">11:28</div><div class="ln na">&mdash;</div><div class="k">ADMIN</div><div class="v">Two-Job Ledger session opened</div></div>
-            <div class="ev"><div class="t">11:37</div><div class="ln pg">PG</div><div class="k">EDIT</div><div class="v"><b>PG Golf Ball Clips</b> event opened &mdash; 4 projects live, incl. &ldquo;Cold open &mdash; the most engineered object in everyday sport&rdquo;</div></div>
-            <div class="ev"><div class="t">11:43</div><div class="ln ba">BA</div><div class="k">EDIT</div><div class="v">Scene-detect pass running on imported footage</div></div>
-            <div class="ev"><div class="t">11:51</div><div class="ln ba">BA</div><div class="k">EDIT</div><div class="v"><b>ACC walk-ups</b> &mdash; Putter switch, <a class="t-ba" href="https://app.clickup.com/t/86bbmdwd6">Davante Adams the hum</a>, Roger Clemens, AJ Hawk</div></div>
-            <div class="ev"><div class="t">11:51</div><div class="ln pg">PG</div><div class="k">EDIT</div><div class="v"><b>Lil Legends &times; Grant Horvat</b> &mdash; 4 projects touched</div></div>
-            <div class="ev"><div class="t">12:45</div><div class="ln pg">PG</div><div class="k">SLACK</div><div class="v">To Jenni Nagel: <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BGKRUD0A2/p1788176739100909">&ldquo;I&rsquo;ve got UPS to deliver to a local store &mdash; I can go and pick it up this weekend!&rdquo;</a></div></div>
-            <div class="ev"><div class="t">12:46</div><div class="ln ba">BA</div><div class="k">EDIT</div><div class="v"><b>Tommy Morrissey Bespoke</b> &mdash; &ldquo;BA 07 YOUNGEST EVER&rdquo;; <b>FinalCap Ultimate Output</b> caption library alongside</div></div>
-            <div class="ev"><div class="t">13:03</div><div class="ln ba">BA</div><div class="k">EDIT</div><div class="v"><b>Brixton Reels</b> event opened</div></div>
-            <div class="ev"><div class="t">13:32</div><div class="ln ba">BA</div><div class="k">EDIT</div><div class="v"><b>BA</b> event, then <b>Dylan Dreyer Clips</b> at 13:50</div></div>
-            <div class="ev"><div class="t">14:00</div><div class="ln pg">PG</div><div class="k">MEETING</div><div class="v"><a class="t-cal" href="https://www.google.com/calendar/event?eid=NjVrcWd1cWdwcjV1aGxtZ2VwZ200OGcwN2ZfMjAyNjA4MzFUMTMwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Social Alignment Meeting</a> with Corey Barrick &mdash; 45 min</div></div>
-            <div class="ev"><div class="t">14:13</div><div class="ln ba">BA</div><div class="k">SLACK</div><div class="v"><b>The target moved.</b> <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788182028710709">&ldquo;Yeah I&rsquo;m working towards that ratio for sure&rdquo;</a> &mdash; agreeing to 30% BA / 70% PG</div></div>
-            <div class="ev"><div class="t">14:15</div><div class="ln ba">BA</div><div class="k">SLACK</div><div class="v"><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788182128174619">&ldquo;I&rsquo;m deep in the recuts today &mdash; will endeavour to spend much more time getting PG ahead on social&rdquo;</a></div></div>
-            <div class="ev"><div class="t">14:50</div><div class="ln ba">BA</div><div class="k">EDIT</div><div class="v">Back in Final Cut &mdash; recut block, autosaves at 14:50 and 15:06</div></div>
-            <div class="ev"><div class="t">15:13</div><div class="ln ba">BA</div><div class="k">EDIT</div><div class="v"><b>ACC walk-ups</b> and <b>BA</b> events both saved</div></div>
-            <div class="ev"><div class="t">15:32</div><div class="ln ba">BA</div><div class="k out">OUTPUT</div><div class="v"><b>FinalCap Ultimate Output</b> &mdash; last save of the edit block. Three new hum pieces exist in ClickUp by tonight</div></div>
-            <div class="ev"><div class="t">15:42</div><div class="ln ba">BA</div><div class="k">SLACK</div><div class="v"><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788187368481599">&ldquo;Got clips for the entire week &mdash; I DO still need to do the weekend. Every day at least 1&times; hum clip.&rdquo;</a></div></div>
-            <div class="ev"><div class="t">16:32</div><div class="ln pg">PG</div><div class="k">SLACK</div><div class="v">To Brandon, on the Isaac partnership: <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1788190327341499">&ldquo;just think he&rsquo;s a good dude and would love some help promoting the game&rdquo;</a></div></div>
-            <div class="ev"><div class="t">16:32</div><div class="ln pg">PG</div><div class="k">SLACK</div><div class="v"><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1788190348515749">&ldquo;Maybe we send him some product, RS1 for sure&rdquo;</a> &mdash; Brandon picked it up and is reaching out</div></div>
-            <div class="ev"><div class="t">16:32</div><div class="ln pg">PG</div><div class="k">SLACK</div><div class="v"><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1788190363140839">&ldquo;speak about doing a kids clubs deal when the bigger age lines come out&rdquo;</a></div></div>
-            <div class="ev"><div class="t">16:38</div><div class="ln pg">PG</div><div class="k">SLACK</div><div class="v">To Corey: <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BC71WMZGV/p1788190737378029">&ldquo;Okay, gonna have to reformulate my plans&rdquo;</a></div></div>
-            <div class="ev"><div class="t">17:03</div><div class="ln pg">PG</div><div class="k">SLACK</div><div class="v">Last recorded activity &mdash; file sent to Brandon</div></div>
+            <div class="ev"><div class="t">10:30</div><div class="ln na">&mdash;</div><div class="k">start</div><div class="v">First activity of the day</div></div>
+            <div class="ev"><div class="t">12:08</div><div class="ln ba">BA</div><div class="k out">out</div><div class="v"><b>RECOLOUR 17HCP+HUMAPP.m4v</b> exported</div></div>
+            <div class="ev"><div class="t">12:45</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BGKRUD0A2/p1788176739100909">&ldquo;I&rsquo;ve got UPS to deliver to a local store&rdquo;</a> &mdash; product sample rescued</div></div>
+            <div class="ev"><div class="t">12:48</div><div class="ln ba">BA</div><div class="k out">out</div><div class="v"><b>RECOLOUR 17HCP +NEWCTA+HUMAPP.m4v</b> &mdash; second CTA version</div></div>
+            <div class="ev"><div class="t">13:35</div><div class="ln ba">BA</div><div class="k in">audio</div><div class="v">CARTER HUM audio bounce</div></div>
+            <div class="ev"><div class="t">13:45</div><div class="ln ba">BA</div><div class="k out">out</div><div class="v"><a class="t-ba" href="https://app.clickup.com/t/86bbqgejg"><b>CARTER HUM +CTA+HUMAPP</b></a> exported</div></div>
+            <div class="ev"><div class="t">14:13</div><div class="ln ba">BA</div><div class="k">slack</div><div class="v"><a class="t-slack t-ba" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788182028710709">&ldquo;Yeah I&rsquo;m working towards that ratio for sure.&rdquo;</a> &mdash; the 30/70 bar accepted</div></div>
+            <div class="ev"><div class="t">14:15</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788182128174619">&ldquo;will endeavour to spend much more time getting PG ahead on social&rdquo;</a></div></div>
+            <div class="ev"><div class="t">14:56</div><div class="ln ba">BA</div><div class="k in">audio</div><div class="v">RECUT VIRAL HUM audio, version 3</div></div>
+            <div class="ev"><div class="t">15:00</div><div class="ln ba">BA</div><div class="k out">out</div><div class="v"><a class="t-ba" href="https://app.clickup.com/t/86bbkzrz4"><b>RECUT VIRAL HUM CLIP v3 +CTA+APP</b></a> exported</div></div>
+            <div class="ev"><div class="t">15:15</div><div class="ln ba">BA</div><div class="k out">out</div><div class="v"><a class="t-ba" href="https://app.clickup.com/t/86bbmdwd6"><b>02 &mdash; Davante Adams &mdash; the hum +CTA+APP</b></a> exported</div></div>
+            <div class="ev"><div class="t">15:34</div><div class="ln ba">BA</div><div class="k out">out</div><div class="v"><b>OMAD v2.m4v</b> exported</div></div>
+            <div class="ev"><div class="t">15:42</div><div class="ln ba">BA</div><div class="k">slack</div><div class="v"><a class="t-slack t-ba" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788187368481599">&ldquo;Got clips for the entire week&rdquo;</a> &mdash; still owes the weekend</div></div>
+            <div class="ev"><div class="t">16:00</div><div class="ln pg">PG</div><div class="k">meeting</div><div class="v"><a class="t-cal t-pg" href="https://www.google.com/calendar/event?eid=NjVrcWd1cWdwcjV1aGxtZ2VwZ200OGcwN2ZfMjAyNjA4MzFUMTMwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&ctz=Europe/London">Social Alignment Meeting</a> with Corey &middot; 30 min</div></div>
+            <div class="ev"><div class="t">16:32</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1788190348515749">&ldquo;Maybe we send him some product, RS1 for sure.&rdquo;</a> &mdash; Isaac partnership with Brandon</div></div>
+            <div class="ev"><div class="t">16:38</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BC71WMZGV/p1788190737378029">&ldquo;gonna have to reformulate my plans&rdquo;</a> &mdash; Corey, shoot logistics</div></div>
+            <div class="ev"><div class="t">18:38</div><div class="ln pg">PG</div><div class="k out">out</div><div class="v"><b>LL BTS.m4v</b> &mdash; Lil&rsquo; Legends behind-the-scenes</div></div>
+            <div class="ev"><div class="t">18:48</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/C0BQX43P6S0/p1788198517251379">&ldquo;Did we ever manage to get these together boys?&rdquo;</a></div></div>
+            <div class="ev"><div class="t">18:50</div><div class="ln ba">BA</div><div class="k">slack</div><div class="v"><a class="t-slack t-ba" href="https://performance-golf.slack.com/archives/D0BT1K6H6LD/p1788198604960249">Notes to Ricardo on the blind-golfer cut</a> &mdash; hum overlay, Blue Danube, more panning</div></div>
+            <div class="ev"><div class="t">19:45</div><div class="ln ba">BA</div><div class="k out">out</div><div class="v"><b>DISTANCE CHALLENGE.m4v</b> exported</div></div>
+            <div class="ev"><div class="t">19:46</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/C0BQX43P6S0/p1788202005630139">&ldquo;selfie style just you talking about playing golf with your kids&rdquo;</a> &mdash; brief to Donnie</div></div>
+            <div class="ev"><div class="t">22:00</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1788210021435609">&ldquo;Looks like shoots aren&rsquo;t getting cancelled after all&rdquo;</a> &mdash; last move of the day</div></div>
           </div>
           <div class="tally">
-            <span>Tasks closed: <b>2</b></span>
-            <span>New pieces created: <b>3</b></span>
-            <span>Promoted to publish-ready: <b>3</b></span>
-            <span>Final Cut autosaves: <b>12</b></span>
-            <span>Meetings: <b>1</b></span>
-            <span>Span: <b>10:30 &rarr; 17:05</b></span>
+            <span><b>8</b> pieces finished</span>
+            <span><b>2</b> audio sessions</span>
+            <span><b>1</b> meeting</span>
+            <span>span <b>11 h 30 m</b></span>
           </div>
-          <div class="dry">Still no <em>confirmed</em> export &mdash; the exports folder is unreadable (below). Today&rsquo;s output is counted from ClickUp status moves instead, which is softer evidence than a file with a timestamp.</div>
         </details>
       </div>
     </div>
-  </section>
 
-  <!-- ================= WHAT MOVED ================= -->
-  <section>
-    <div class="sec-head">
-      <h2>What actually moved today</h2>
-      <div class="note">live ClickUp diff &middot; 13:35 &rarr; 18:20</div>
+    <!-- TUESDAY -->
+    <div class="day">
+      <div class="when">
+        <div class="dn">Tuesday</div>
+        <div class="dt">1 SEP</div>
+      </div>
+      <div>
+        <div class="daybar">
+          <div class="d-ba" style="width:55.6%">BA 5.0</div>
+          <div class="d-pg" style="width:44.4%">PG 4.0</div>
+        </div>
+        <div class="txt">
+          <span class="hrs">9.0 h &middot; 07:13&ndash;20:47</span>
+          A housekeeping and politics day. One export out at 10:28, the month-turn tidy done, the board swept, and a long early-morning thread with Keffer about whether organic survives the budget conversation. Barstool travel scoped in the afternoon.
+        </div>
+        <details class="dd">
+          <summary><span class="chev"></span>Timeline <span class="cnt">&middot; 12 moves</span></summary>
+          <div class="tl">
+            <div class="ev"><div class="t">07:13</div><div class="ln ba">BA</div><div class="k">slack</div><div class="v"><a class="t-slack t-ba" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788243236363319">&ldquo;I&rsquo;ll iron out the grid over this week.&rdquo;</a></div></div>
+            <div class="ev"><div class="t">07:14</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1788243264748129">&ldquo;Does that mean we ARENT cancelling all of our good ideas?&rdquo;</a></div></div>
+            <div class="ev"><div class="t">07:23</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1788243779278269">&ldquo;John should be protecting Organic&rdquo;</a> &mdash; 16-minute thread on organic vs paid</div></div>
+            <div class="ev"><div class="t">07:26</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1788243954196019">&ldquo;we start making the talking head/storytelling things we want to make on the side&rdquo;</a></div></div>
+            <div class="ev"><div class="t">10:00</div><div class="ln ba">BA</div><div class="k">session</div><div class="v">BA Board sweep</div></div>
+            <div class="ev"><div class="t">10:18</div><div class="ln na">&mdash;</div><div class="k">session</div><div class="v">Monthly Finder cleanup &mdash; August archived, September folders created</div></div>
+            <div class="ev"><div class="t">10:25</div><div class="ln ba">BA</div><div class="k in">in</div><div class="v">Footage folder <b>18 July 2026</b> landed</div></div>
+            <div class="ev"><div class="t">10:28</div><div class="ln ba">BA</div><div class="k out">out</div><div class="v"><b>16 &mdash; I wish REDO.m4v</b> exported &mdash; the only piece finished today</div></div>
+            <div class="ev"><div class="t">12:01</div><div class="ln ba">BA</div><div class="k">session</div><div class="v">Trent / Content OS session</div></div>
+            <div class="ev"><div class="t">15:30</div><div class="ln pg">PG</div><div class="k">meeting</div><div class="v"><a class="t-cal t-pg" href="https://www.google.com/calendar/event?eid=NzFxZjZiNzIzcGg2YmQwNDZjM3U1dmdvNGRfMjAyNjA5MDFUMTUwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&ctz=Europe/London">Organic Team Weekly Sync</a> &middot; 30 min</div></div>
+            <div class="ev"><div class="t">16:22</div><div class="ln pg">PG</div><div class="k">slack</div><div class="v"><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BC71WMZGV/p1788276170499099">&ldquo;looking into flights for the Barstool shoot&rdquo;</a> &mdash; options sent to Corey for John&rsquo;s sign-off</div></div>
+            <div class="ev"><div class="t">17:13</div><div class="ln na">&mdash;</div><div class="k">kit</div><div class="v">Shure MOTIV mixer software installed</div></div>
+            <div class="ev"><div class="t">20:47</div><div class="ln ba">BA</div><div class="k in">in</div><div class="v"><b>OMAD v2</b> and <b>RECOLOUR 17HCP</b> pulled back down off the drive for posting</div></div>
+          </div>
+          <div class="tally">
+            <span><b>1</b> piece finished</span>
+            <span><b>0</b> audio sessions</span>
+            <span><b>1</b> meeting</span>
+            <span>span <b>13 h 34 m</b></span>
+          </div>
+        </details>
+      </div>
     </div>
-    <div class="shipped">
-      <div class="sh"><div class="tag ba">BA</div><div>Additional Recuts</div><div class="mv">closed &#10003;</div></div>
-      <div class="sh"><div class="tag ba">BA</div><div>RE-CUT THE BEST PERFORMERS</div><div class="mv">closed &#10003;</div></div>
-      <div class="sh"><div class="tag ba">BA</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbqgejg">CARTER HUM +CTA+HUMAPP</a></div><div class="mv">new &rarr; publish-ready</div></div>
-      <div class="sh"><div class="tag ba">BA</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbqgefc">RECOLOUR 17HCP+HUMAPP</a></div><div class="mv">new &rarr; publish-ready</div></div>
-      <div class="sh"><div class="tag ba">BA</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbqgebt">RECOLOUR 17HCP +NEWCTA+HUMAPP</a></div><div class="mv">new &rarr; publish-ready</div></div>
-      <div class="sh"><div class="tag ba">BA</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbk53au">OMAD</a></div><div class="mv">in progress &rarr; publish-ready</div></div>
-      <div class="sh"><div class="tag ba">BA</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbkzrz4">RECUT VIRAL HUM CLIP</a></div><div class="mv">in progress &rarr; publish-ready</div></div>
-      <div class="sh"><div class="tag ba">BA</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbmdwd6">ACC Remix 02 &mdash; Davante Adams</a></div><div class="mv">in progress &rarr; publish-ready</div></div>
-    </div>
-    <p class="trend-note">Eight movements in one afternoon, all BA. Two went the other way: <a class="t-ba" href="https://app.clickup.com/t/86bbk463c">THE GROVE STORY</a> and <a class="t-ba" href="https://app.clickup.com/t/86bbg5pze">Grove 23 in 90 seconds</a> both dropped from publish-ready back to in progress &mdash; worth knowing why before they stall.</p>
-  </section>
 
-  <!-- ================= THE DATA GAP ================= -->
-  <section>
-    <div class="sec-head">
-      <h2>The output ledger is still blind</h2>
-      <div class="note">unchanged since this morning &middot; 60 seconds to fix</div>
-    </div>
-
-    <div class="gap">
-      <b>Drive mounted, folder unreadable &mdash; now 20 hours stale</b>
-      <span class="mono">/Volumes/mickw</span> is mounted, but every read returns <span class="mono">Operation not permitted</span> &mdash; macOS&rsquo;s <b>Files &amp; Folders &rarr; Removable Volumes</b> permission. The BA Board collector says the same thing at 18:12: <em>&ldquo;drive scan blocked (macOS Removable Volumes permission) &mdash; showing the last good scan, 20h old.&rdquo;</em>
-      <br><br>
-      So <b>8 AUDIOS</b> (a piece started) and <b>8 EXPORTS</b> (a piece finished) are frozen, newest export <b>Wed 26 Aug 12:48</b>. Today clearly produced work &mdash; three new pieces exist that did not exist at lunchtime &mdash; but this page is inferring it from ClickUp statuses instead of counting files. That is a downgrade in evidence quality on the one section that was supposed to be beyond argument.
-      <br><br>
-      <b>Fix:</b> System Settings &rarr; Privacy &amp; Security &rarr; Files and Folders &rarr; grant Removable Volumes to Terminal / Claude.
+    <!-- WEDNESDAY -->
+    <div class="day">
+      <div class="when">
+        <div class="dn">Wednesday</div>
+        <div class="dt">2 SEP &middot; TODAY</div>
+      </div>
+      <div>
+        <div class="daybar">
+          <div class="d-ba" style="width:20%">BA 0.8</div>
+          <div class="d-pg" style="width:80%">PG 3.2</div>
+        </div>
+        <div class="txt">
+          <span class="hrs">4.0 h so far &middot; from 07:16</span>
+          <b>The most PG-weighted morning ever measured &mdash; 80/20.</b> Nearly 50 GB of PG footage ingested: the Navy Seal nine-hole match and Shawne&rsquo;s whole iPhone card. Two PG meetings still to come this afternoon.
+        </div>
+        <details class="dd">
+          <summary><span class="chev"></span>Timeline <span class="cnt">&middot; 8 moves</span></summary>
+          <div class="tl">
+            <div class="ev"><div class="t">07:16</div><div class="ln ba">BA</div><div class="k">slack</div><div class="v"><a class="t-slack t-ba" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788329815652699">&ldquo;I&rsquo;ll toggle thr FB button. But HUGE audience there for sure.&rdquo;</a></div></div>
+            <div class="ev"><div class="t">09:22</div><div class="ln na">&mdash;</div><div class="k">kit</div><div class="v">podsync-app pulled down</div></div>
+            <div class="ev"><div class="t">09:54</div><div class="ln pg">PG</div><div class="k in">in</div><div class="v">IMG_1435 / 1436 / 1437 ingested &mdash; <b>9.7 GB</b></div></div>
+            <div class="ev"><div class="t">10:21</div><div class="ln na">&mdash;</div><div class="k">library</div><div class="v">JULY.fcpbundle library synced</div></div>
+            <div class="ev"><div class="t">10:48</div><div class="ln pg">PG</div><div class="k in">in</div><div class="v">Shawne&rsquo;s iPhone card &mdash; <b>20 clips, 6.0 GB</b></div></div>
+            <div class="ev"><div class="t">11:19</div><div class="ln pg">PG</div><div class="k in">in</div><div class="v"><a class="t-pg" href="https://app.clickup.com/t/86bb6vazy"><b>Navy Seal vs Brixton &mdash; 9 Hole Match</b></a> ingested &mdash; <b>33.5 GB</b></div></div>
+            <div class="ev"><div class="t">15:00</div><div class="ln pg">PG</div><div class="k">meeting</div><div class="v"><a class="t-cal t-pg" href="https://www.google.com/calendar/event?eid=XzYxMmo4ZWExNzRvamViOWs2MTE0NGI5azZjcDNhYmExNzBvamdiOWs4Z3FqMGU5cDY4cWoyaDluNzQgbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ&ctz=Europe/London">REPUSH GIVEAWAY</a> &mdash; ACC contest &middot; still to come</div></div>
+            <div class="ev"><div class="t">16:00</div><div class="ln pg">PG</div><div class="k">meeting</div><div class="v"><a class="t-cal t-pg" href="https://www.google.com/calendar/event?eid=Nzg2ZXNkOHFpbzc2MzBjMW4ycTN2c2kyYmYgbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ&ctz=Europe/London">The PG Content Engine Brainstorm</a> &mdash; John, Keffer, Christopher, Corey &middot; still to come</div></div>
+          </div>
+          <div class="tally">
+            <span><b>0</b> pieces finished</span>
+            <span><b>0</b> audio sessions</span>
+            <span><b>2</b> meetings booked</span>
+            <span>span so far <b>4 h 39 m</b></span>
+          </div>
+          <div class="dry">Zero exports today. The September export folder is still empty. That is fine for an ingest morning &mdash; but two pieces are due to publish tomorrow morning and neither has moved.</div>
+        </details>
+      </div>
     </div>
   </section>
 
@@ -437,108 +513,111 @@ footer b{color:var(--ink-2);font-weight:500}
   <section>
     <div class="sec-head">
       <h2>Past due right now</h2>
-      <div class="note">live pull 18:20 &middot; worst first</div>
+      <div class="note">11 live &middot; worst first &middot; 40 blocked items excluded</div>
     </div>
 
     <div class="cleared">
-      <b>Down from 15 overdue at lunchtime to 11</b>
-      Four came off the list this afternoon: <b>RE-CUT THE BEST PERFORMERS</b> closed, and <a class="t-ba" href="https://app.clickup.com/t/86bbk53au">OMAD</a>, <a class="t-ba" href="https://app.clickup.com/t/86bbkzrz4">RECUT VIRAL HUM CLIP</a> and <a class="t-ba" href="https://app.clickup.com/t/86bbmdwd6">Davante Adams</a> were finished and re-dated forward. PG is still clean: <b>zero overdue</b>, fourth measurement running.
+      <b>Performance Golf: nothing overdue</b>
+      Twenty open PG tasks and not one past its date. Fifth clean measurement in a row.
     </div>
 
     <div class="overdue">
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bb5859h">&#128204; Brixton&rsquo;s Key Content Rules &mdash; START HERE</a><span class="st">future content ideas &middot; due 28 Jul</span></div><div class="age">34 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bb7qbwx">BLIND STRIPE (3)</a><span class="st">blocked &middot; due 10 Aug</span></div><div class="age">21 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbb8eaa">8.8 | STACK THE HABIT</a><span class="st">blocked &middot; due 11 Aug</span></div><div class="age">20 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbcupv6">how short can you hit the ball</a><span class="st">blocked &middot; due 12 Aug</span></div><div class="age">19 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbcyp7p">Content Ideas</a><span class="st">future content ideas &middot; due 17 Aug</span></div><div class="age">14 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bb1zjcv">Blind Golfer Content Clips</a><span class="st">future content ideas &middot; due 17 Aug</span></div><div class="age">14 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbgcrej">hum strangers</a><span class="st">in progress &middot; due 19 Aug &middot; Brixton asked for the recuts today</span></div><div class="age">12 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbezakw">Buying a FERRARI in cash story</a><span class="st">in progress &middot; due 19 Aug</span></div><div class="age">12 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbf1t0c">Can my exec assistant beat me hole out</a><span class="st">blocked &middot; due 26 Aug &mdash; not on you</span></div><div class="age">5 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbjp1v1">World&rsquo;s best blind golfer</a><span class="st">in progress &middot; due 28 Aug</span></div><div class="age">3 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbjwedx">Hollis Stacy 2</a><span class="st">in progress &middot; due 28 Aug &middot; Ricardo was briefed on this</span></div><div class="age">3 days</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbk53cv">SPEECH IMPEDIMENT</a><span class="st">approved to publish &middot; due today</span></div><div class="age today">due today</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbna1b1">Hum new golfer</a><span class="st">approved to publish &middot; due today</span></div><div class="age today">due today</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bb57te0">Find best moments with blind golfer</a><span class="st">for mick to edit &middot; due today</span></div><div class="age today">due today</div></div>
-      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbgk1n2">Blind golfer lessons the ball creates tension</a><span class="st">in progress &middot; due today</span></div><div class="age today">due today</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bb5859h">&#128204; Brixton&rsquo;s Key Content Rules &mdash; START HERE</a><span class="st">future content ideas &middot; a pinned reference card, not a job</span></div><div class="age">36 d</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbcyp7p">Content Ideas</a><span class="st">future content ideas &middot; an ideas bucket, not a job</span></div><div class="age">16 d</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bb1zjcv">Blind Golfer Content Clips</a><span class="st">future content ideas &middot; a footage bucket, not a job</span></div><div class="age">16 d</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbgcrej">hum strangers</a><span class="st">in progress &middot; late every week since 15 Aug</span></div><div class="age">14 d</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbezakw">Buying a FERRARI in cash story</a><span class="st">in progress &middot; late every week since 15 Aug</span></div><div class="age">14 d</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbjwedx">Hollis Stacy 2</a><span class="st">in progress &middot; with Ricardo</span></div><div class="age">5 d</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbjp1v1">World&rsquo;s best blind golfer</a><span class="st">in progress &middot; with Ricardo</span></div><div class="age">5 d</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbgk1n2">Blind golfer lessons &mdash; the ball creates tension</a><span class="st">in progress</span></div><div class="age">2 d</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bb57te0">Find best moments with blind golfer</a><span class="st">for mick to edit</span></div><div class="age">2 d</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbmt3hw">Blind Golf Version 2 (diff hook)</a><span class="st">approved to publish &middot; the file exists, it just needs posting</span></div><div class="age today">due today</div></div>
+      <div class="od"><div class="tag ba">BA</div><div class="nm"><a class="t-ba" href="https://app.clickup.com/t/86bbkzrz4">RECUT VIRAL HUM CLIP</a><span class="st">approved to publish &middot; exported Monday 15:00, still unposted</span></div><div class="age today">due today</div></div>
     </div>
 
-    <h3 style="font-size:16px;margin:34px 0 4px">What falls due next</h3>
+    <div class="gap">
+      <b>Read the eleven honestly</b>
+      Three of them are filing cabinets &mdash; a rules card and two idea buckets someone once gave a date to. Two more are exported files sitting one upload away from done. The real backlog is <b>six</b>: two fourteen-day-old stories and four blind-golfer pieces, half of them sitting with Ricardo.
+    </div>
+
+    <div class="sec-head" style="margin-top:40px">
+      <h2>What falls due next</h2>
+      <div class="note">all five already have a finished file</div>
+    </div>
     <div class="next">
-      <div class="nx"><div class="dd2">TUE 1 SEP</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbknqv5">$29MM v2</a> &middot; <a class="t-ba" href="https://app.clickup.com/t/86bbqgefc">RECOLOUR 17HCP+HUMAPP</a> &middot; <a class="t-ba" href="https://app.clickup.com/t/86bbe26z0">AI APP REVEAL</a></div><div class="st2">2 publish-ready &middot; 1 blocked</div></div>
-      <div class="nx"><div class="dd2">WED 2 SEP</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbmt3hw">Blind Golf Version 2</a> &middot; <a class="t-ba" href="https://app.clickup.com/t/86bbkzrz4">RECUT VIRAL HUM CLIP</a> &middot; <a class="t-ba" href="https://app.clickup.com/t/86bbj659q">GPA Story. Grant Horvat</a></div><div class="st2">2 publish-ready &middot; 1 to edit</div></div>
-      <div class="nx"><div class="dd2">THU 3 SEP</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbk53au">OMAD</a> &middot; <a class="t-ba" href="https://app.clickup.com/t/86bbqgejg">CARTER HUM +CTA+HUMAPP</a> &mdash; plus the Brixton call</div><div class="st2">publish-ready</div></div>
-      <div class="nx"><div class="dd2">FRI 4 SEP</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbmdwd6">ACC Remix 02 Davante Adams</a> &middot; <a class="t-ba" href="https://app.clickup.com/t/86bbqgebt">RECOLOUR 17HCP +NEWCTA+HUMAPP</a></div><div class="st2">publish-ready</div></div>
-      <div class="nx"><div class="dd2">THU 10 SEP</div><div><a class="t-pg" href="https://app.clickup.com/t/86bbbgjzx">SOCIAL | Cleaned Version + Production</a></div><div class="st2">PG &middot; the only dated PG job</div></div>
+      <div class="nx"><div class="dd2">THU 3</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbqgejg">CARTER HUM +CTA+HUMAPP</a></div><div class="st2">approved to publish</div></div>
+      <div class="nx"><div class="dd2">THU 3</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbknqv5">$29MM Don&rsquo;t Build your Life at your limit v2</a></div><div class="st2">approved to publish</div></div>
+      <div class="nx"><div class="dd2">FRI 4</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbqgebt">RECOLOUR 17HCP +NEWCTA+HUMAPP</a></div><div class="st2">approved to publish</div></div>
+      <div class="nx"><div class="dd2">FRI 4</div><div><a class="t-ba" href="https://app.clickup.com/t/86bbmdwd6">ACC Remix &middot; 02 &mdash; Davante Adams &mdash; the hum</a></div><div class="st2">approved to publish</div></div>
+      <div class="nx"><div class="dd2">THU 10</div><div><a class="t-pg" href="https://app.clickup.com/t/86bbbgjzx">SOCIAL | Cleaned Version + Production</a></div><div class="st2">approved to publish &middot; PG</div></div>
     </div>
-
-    <h3 style="font-size:16px;margin:34px 0 4px">Said in Slack, not yet a task</h3>
-    <ul class="list" style="margin-top:12px">
-      <li><span class="tag pg">PG</span><div><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788182128174619">&ldquo;Will take Thursday afternoon after our call to tie up loose ends&hellip; will endeavour to spend much more time getting PG ahead on social.&rdquo;</a><em>To Brixton, today 14:15 &mdash; today&rsquo;s biggest commitment, and the one this page will judge you on. No task, no calendar block.</em></div></li>
-      <li><span class="tag pg">PG</span><div><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1788190348515749">&ldquo;Maybe we send him some product, RS1 for sure&rdquo;</a><em>To Brandon, today 16:32 &mdash; the Isaac partnership. Brandon is chasing it, but nothing tracks the club send or the kids-clubs conversation.</em></div></li>
-      <li><span class="tag pg">PG</span><div><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BGKRUD0A2/p1788176739100909">&ldquo;I&rsquo;ve got UPS to deliver to a local store &mdash; I can go and pick it up this weekend!&rdquo;</a><em>To Jenni Nagel, today 12:45 &mdash; the PG product samples, blocking organic filming since 24 Aug. Five days out, untracked.</em></div></li>
-      <li><span class="tag pg">PG</span><div><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1787841021537429">&ldquo;I&rsquo;ll work out a flow for us&rdquo;</a><em>To Keffer, Thu 27 &middot; 15:30 &mdash; posting shorts to PG YouTube. Carried over, still no task.</em></div></li>
-      <li><span class="tag ba">BA</span><div><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1787842439631849">&ldquo;Okay, I&rsquo;ll chuck him some edits&rdquo;</a><em>To Brixton, Thu 27 &middot; 15:53 &mdash; more work for Ricardo. Brixton reminded you again today. One brief sent so far.</em></div></li>
-      <li><span class="tag pg">PG</span><div><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1787745477137459">The social@performancegolfzone.com backup email</a><em>Wed 26 &middot; 12:57 &mdash; your idea, agreed in principle, nobody owns it. Carried over.</em></div></li>
-      <li><span class="tag pg">PG</span><div><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BC71WMZGV/p1787776681587339">&ldquo;Can we get them in this calendar&rdquo;</a><em>To Corey, Wed 26 &middot; 21:38 &mdash; planned posts onto the content calendar. No confirmation. Carried over.</em></div></li>
-      <li><span class="tag pg">PG</span><div><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BC71WMZGV/p1787730366185789">Shawne&rsquo;s raise</a><em>To Corey, Wed 26 &middot; 08:46 &mdash; raised off the record. Nothing tracked, and Evan is already leaving. Carried over.</em></div></li>
-    </ul>
-    <p class="trend-note">Eight open promises, five of them a week old. Three were made today. None has a ticket behind it.</p>
   </section>
 
   <!-- ================= QUEUES ================= -->
   <section>
     <div class="sec-head">
-      <h2>The queues</h2>
-      <div class="note">now vs last week&rsquo;s close</div>
+      <h2>The queues, versus Monday night</h2>
+      <div class="note">pulled live, 2 Sep 11:55</div>
     </div>
-    <div class="tablewrap">
-      <table>
-        <thead><tr><th>Lane</th><th class="num wide">Now</th><th class="num wide">w/e 28 Aug</th><th>Move</th></tr></thead>
-        <tbody>
-          <tr><td><a class="t-ba" href="https://app.clickup.com/9014714949/v/li/901413512686">BA &mdash; for mick to edit</a></td><td class="num wide">9</td><td class="num wide">9</td><td><span class="pill flat">flat</span></td></tr>
-          <tr><td><a class="t-ba" href="https://app.clickup.com/9014714949/v/li/901413512686">BA &mdash; approved to publish</a></td><td class="num wide">10</td><td class="num wide">9</td><td><span class="pill good">+1 &middot; 6 landed today</span></td></tr>
-          <tr><td><a class="t-ba" href="https://app.clickup.com/9014714949/v/li/901413512686">BA &mdash; in progress</a></td><td class="num wide">8</td><td class="num wide">13</td><td><span class="pill good">&minus;5 &middot; best drop yet</span></td></tr>
-          <tr><td><a class="t-ba" href="https://app.clickup.com/9014714949/v/li/901413512686">BA &mdash; blocked</a></td><td class="num wide">40</td><td class="num wide">39</td><td><span class="pill warn">+1 &middot; still untouched</span></td></tr>
-          <tr><td><a class="t-ba" href="https://app.clickup.com/9014714949/v/li/901413512686">BA &mdash; future content ideas</a></td><td class="num wide">10</td><td class="num wide">10</td><td><span class="pill flat">flat</span></td></tr>
-          <tr><td><a class="t-ba" href="https://app.clickup.com/9014714949/v/li/901413512686">BA &mdash; overdue</a></td><td class="num wide">11</td><td class="num wide">15</td><td><span class="pill good">&minus;4 today</span></td></tr>
-          <tr><td>PG open tasks assigned to Mick</td><td class="num wide">20</td><td class="num wide">27</td><td><span class="pill good">&minus;7</span></td></tr>
-          <tr><td>PG overdue</td><td class="num wide">0</td><td class="num wide">0</td><td><span class="pill good">clean &times;4</span></td></tr>
-        </tbody>
-      </table>
+    <div class="qbox">
+      <div class="qc"><div class="qn" style="color:var(--ba)">6</div><div class="ql">BA ready to publish</div><div class="qd good">&darr; 4 from 10</div></div>
+      <div class="qc"><div class="qn" style="color:var(--ba)">10</div><div class="ql">BA for Mick to edit</div><div class="qd bad">&uarr; 1 from 9</div></div>
+      <div class="qc"><div class="qn" style="color:var(--ba)">8</div><div class="ql">BA in progress</div><div class="qd" style="color:var(--ink-3)">flat</div></div>
+      <div class="qc"><div class="qn" style="color:var(--ba)">40</div><div class="ql">BA blocked</div><div class="qd" style="color:var(--ink-3)">flat, 4th week</div></div>
+      <div class="qc"><div class="qn" style="color:var(--ba)">11</div><div class="ql">BA future ideas</div><div class="qd" style="color:var(--ink-3)">&uarr; 1 from 10</div></div>
+      <div class="qc"><div class="qn" style="color:var(--pg)">20</div><div class="ql">PG open</div><div class="qd" style="color:var(--ink-3)">flat</div></div>
+      <div class="qc"><div class="qn" style="color:var(--ok)">0</div><div class="ql">PG overdue</div><div class="qd good">still clean</div></div>
     </div>
-    <p class="trend-note">In-progress 13 &rarr; 8 is the number to keep. Last week&rsquo;s worry was that the lane had ballooned with things started and not finished; today it drained by five in an afternoon, and the publish lane absorbed them. The blocked lane is the one that never moves &mdash; 40 items, nothing out of it in three weeks.</p>
   </section>
 
   <!-- ================= WINS / CONCERNS ================= -->
   <section>
     <div class="sec-head">
-      <h2>Wins &amp; concerns</h2>
-      <div class="note">week to date</div>
+      <h2>This week so far</h2>
     </div>
     <div class="cols">
       <div>
-        <h3 style="font-size:16px;margin-bottom:14px">This week&rsquo;s wins</h3>
+        <h3 style="font-size:17px;margin-bottom:16px">Wins</h3>
         <ul class="list">
-          <li><span class="tag ba">BA</span><div>Eight pieces moved forward in one afternoon<em>Two closed, three created publish-ready, three promoted out of in-progress &mdash; between 14:45 and 15:32</em></div></li>
-          <li><span class="tag ba">BA</span><div>In-progress lane 13 &rarr; 8<em>Last week&rsquo;s top concern, fixed in a day. The publish queue absorbed the work instead of the floor swallowing it</em></div></li>
-          <li><span class="tag ba">BA</span><div>Overdue 15 &rarr; 11<em>The 28 Aug batch is nearly cleared &mdash; only Hollis Stacy 2 and World&rsquo;s best blind golfer still late</em></div></li>
-          <li><span class="tag pg">PG</span><div>PG open tasks 27 &rarr; 20, overdue still zero<em>Fourth clean measurement running</em></div></li>
-          <li><span class="tag pg">PG</span><div>Real PG business development with <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1788190327341499">Brandon on the Isaac partnership</a><em>You proposed it, Brandon picked it up and is reaching out &mdash; product send plus a kids-clubs conversation for the wider age lines</em></div></li>
-          <li><span class="tag pg">PG</span><div>The split conversation happened out loud<em>Brixton set 30/70 and you took it. Better to be measured against a number both of you named than one nobody says</em></div></li>
+          <li><span class="tag ba">BA</span><div>Nine finished pieces in two days &mdash; eight of them on Monday, the biggest output day since this page started.<em>31 Aug 12:08&ndash;19:45 &middot; 1 Sep 10:28</em></div></li>
+          <li><span class="tag ba">BA</span><div>Publish queue cut from ten to six.<em>four pieces posted and closed since Monday night</em></div></li>
+          <li><span class="tag ba">BA</span><div>Best balance ever measured &mdash; 54% BA, down from 72% on Monday and 62% last week.<em>balance score 0 &rarr; 40</em></div></li>
+          <li><span class="tag pg">PG</span><div>PG overdue still zero, five measurements running.<em>20 open tasks, none late</em></div></li>
+          <li><span class="tag pg">PG</span><div>Nearly 50 GB of PG footage ingested this morning &mdash; the <a class="t-pg" href="https://app.clickup.com/t/86bb6vazy">Navy Seal nine-hole match</a> and Shawne&rsquo;s full card.<em>2 Sep 09:54&ndash;11:19</em></div></li>
+          <li><span class="tag ba">BA</span><div>Ricardo&rsquo;s blind-golfer cut reviewed with specific, usable notes rather than a thumbs-up.<em><a class="t-slack t-ba" href="https://performance-golf.slack.com/archives/D0BT1K6H6LD/p1788198604960249">31 Aug 18:50</a></em></div></li>
+          <li><span class="tag pg">PG</span><div>Barstool shoot travel scoped and put in front of Corey for John&rsquo;s approval, with Keffer signed up for an extra Chicago day.<em><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BC71WMZGV/p1788276245942809">1 Sep 16:24</a></em></div></li>
+          <li><span class="tag pg">PG</span><div>The drive mounted again, so the output ledger is back on hard timestamps after a week of guesswork.<em>Monday re-measured 6.0 h &rarr; 10.5 h</em></div></li>
         </ul>
       </div>
       <div>
-        <h3 style="font-size:16px;margin-bottom:14px">Areas of concern</h3>
+        <h3 style="font-size:17px;margin-bottom:16px">Areas of concern</h3>
         <ul class="list">
-          <li><span class="tag pg">PG</span><div>The bar moved to 30% BA and today ran 72%<em>42 points over. No week ever measured has come close to the new line &mdash; the best was 62%</em></div></li>
-          <li><span class="tag ba">BA</span><div>The output ledger still cannot be read<em>20 hours stale. Today&rsquo;s work is inferred from ClickUp statuses, not counted off the drive. One minute of Mick&rsquo;s time fixes it</em></div></li>
-          <li><span class="tag ba">BA</span><div>Two pieces went backwards<em><a class="t-ba" href="https://app.clickup.com/t/86bbk463c">THE GROVE STORY</a> and <a class="t-ba" href="https://app.clickup.com/t/86bbg5pze">Grove 23 in 90 seconds</a> dropped from publish-ready to in progress. Find out why before they stall</em></div></li>
-          <li><span class="tag ba">BA</span><div>Blocked lane hit 40, up again<em>Nothing out of it in three weeks. A third of it predates August</em></div></li>
-          <li><span class="tag pg">PG</span><div>Eight untracked promises, three made today<em>Including the Thursday-afternoon PG commitment &mdash; the single thing that decides whether this week hits the new target</em></div></li>
-          <li><span class="tag ba">BA</span><div>Brixton asked twice about Ricardo<em>&ldquo;u can test that Ricardo guy on some clips&rdquo; &mdash; one brief sent on 27 Aug, nothing since, and a second editor is now being lined up alongside him</em></div></li>
+          <li><span class="tag ba">BA</span><div>Zero exports today, and two pieces are due to publish tomorrow morning.<em>September export folder still empty</em></div></li>
+          <li><span class="tag ba">BA</span><div>Still 24 points over the 30% bar. No measured window has ever cleared it.<em>54% against a 30% target</em></div></li>
+          <li><span class="tag pg">PG</span><div>The Thursday-afternoon PG commitment is tomorrow and nothing is booked against it.<em><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788182128174619">promised to Brixton 31 Aug 14:15</a></em></div></li>
+          <li><span class="tag ba">BA</span><div>Blocked lane frozen at 40 for a fourth straight week. Nothing has come out of it since 10 August.<em>more than half the whole board</em></div></li>
+          <li><span class="tag ba">BA</span><div>Edit queue crept up 9 &rarr; 10 despite the output.<em>work is arriving faster than it clears</em></div></li>
+          <li><span class="tag pg">PG</span><div>Two nights running signed off after 20:00; no day this week closed before 19:00.<em>22:00 Monday, 20:47 Tuesday</em></div></li>
+          <li><span class="tag pg">PG</span><div>Six things promised in Slack this week with no task behind any of them.<em>listed below</em></div></li>
+          <li><span class="tag ba">BA</span><div>The weekend&rsquo;s content is still not covered &mdash; flagged on Monday, untouched since.<em><a class="t-slack t-ba" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788187368481599">&ldquo;I DO still need to do the weekend&rdquo;</a></em></div></li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <!-- ================= PROMISES ================= -->
+  <section>
+    <div class="sec-head">
+      <h2>Said in Slack, never became a task</h2>
+      <div class="note">6 this week</div>
+    </div>
+    <div>
+      <div class="promise"><span class="tag pg">PG</span><div><q><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788182128174619">will take thursday afternoon after our call to tie up any loose ends&hellip; will endeavour to spend much more time getting PG ahead on social</a></q><div class="meta">To Brixton &middot; Mon 31 Aug 14:15 &middot; that is tomorrow</div></div></div>
+      <div class="promise"><span class="tag pg">PG</span><div><q><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/C0BQX43P6S0/p1788202033986149">But I&rsquo;ll put these together tomorrow too</a></q><div class="meta">To Donnie &amp; John &middot; Mon 31 Aug 19:47 &middot; two days ago now</div></div></div>
+      <div class="promise"><span class="tag pg">PG</span><div><q><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1788190348515749">Maybe we send him some product, RS1 for sure</a></q><div class="meta">To Brandon &middot; Mon 31 Aug 16:32 &middot; Isaac partnership</div></div></div>
+      <div class="promise"><span class="tag pg">PG</span><div><q><a class="t-slack t-pg" href="https://performance-golf.slack.com/archives/D0BGKRUD0A2/p1788176739100909">I&rsquo;ve got UPS to deliver to a local store &mdash; I can go and pick it up this weekend</a></q><div class="meta">To Jenni &middot; Mon 31 Aug 12:45 &middot; the product sample that blocks organic filming</div></div></div>
+      <div class="promise"><span class="tag ba">BA</span><div><q><a class="t-slack t-ba" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788243236363319">I&rsquo;ll iron out the grid over this week</a></q><div class="meta">To Brixton &middot; Tue 1 Sep 07:13</div></div></div>
+      <div class="promise"><span class="tag ba">BA</span><div><q><a class="t-slack t-ba" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1788329815652699">okay for sure I&rsquo;ll toggle thr FB button</a></q><div class="meta">To Brixton &middot; Wed 2 Sep 07:16 &middot; this morning</div></div></div>
     </div>
   </section>
 
@@ -546,49 +625,56 @@ footer b{color:var(--ink-2);font-weight:500}
   <section>
     <div class="sec-head">
       <h2>The scoreboard</h2>
-      <div class="note">100 &minus; |BA% &minus; 30| &times; 2.5 &mdash; new bar</div>
+      <div class="note">for amusement, and for John</div>
     </div>
     <div class="score-grid">
       <div class="score-box">
         <div class="label">Balance score</div>
-        <div class="score-num">0<span>/100</span></div>
-        <div class="gauge"><i style="width:0%"></i></div>
-        <div class="formula">100 &minus; |72 &minus; 30| &times; 2.5 = &minus;5, floored at 0<br><br>Re-scored against the new 30% bar:<br>w/e 19 Aug (67%) &rarr; 8<br>w/e 24 Aug (72%) &rarr; 0<br>w/e 28 Aug (62%) &rarr; 20<br>today (72%) &rarr; 0<br><br>The old 40% bar would put today at 20.</div>
+        <div class="score-num">40<span>/100</span></div>
+        <div class="gauge"><i style="width:40%"></i></div>
+        <div class="formula">
+          100 &minus; |54 &minus; 30| &times; 2.5 = <b>40</b><br>
+          Monday alone: 0 &middot; last week: 20<br>
+          Best on record. Still under half marks.
+        </div>
       </div>
+
       <div class="meters">
         <div class="meter">
-          <div class="top"><div class="k">Overtime meter &mdash; days over 11 h</div><div class="v">0 / 5</div></div>
-          <div class="pips"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="top"><div class="k">Days over 11 hours</div><div class="v">0 of 3</div></div>
+          <div class="pips"><i class="ok"></i><i class="ok"></i><i class="ok"></i></div>
         </div>
         <div class="meter">
-          <div class="top"><div class="k">Days signed off before 19:00</div><div class="v">1 / 1 so far</div></div>
-          <div class="pips"><i class="ok"></i><i></i><i></i><i></i><i></i></div>
+          <div class="top"><div class="k">Days signed off before 19:00</div><div class="v">0 of 2 complete days</div></div>
+          <div class="pips"><i class="on"></i><i class="on"></i></div>
         </div>
         <div class="meter">
-          <div class="top"><div class="k">Pieces moved forward today</div><div class="v">8</div></div>
-          <div class="pips"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i></div>
+          <div class="top"><div class="k">Weeks moving toward the target</div><div class="v">2 in a row</div></div>
+          <div class="pips"><i class="ok"></i><i class="ok"></i><i></i><i></i></div>
         </div>
         <div class="meter">
-          <div class="top"><div class="k">Weeks under the target line</div><div class="v">0 of 4</div></div>
-          <div class="pips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+          <div class="top"><div class="k">Pieces finished this week</div><div class="v">9</div></div>
+          <div class="pips"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i></div>
         </div>
+
         <div class="badges">
-          <span class="badge win">IN-PROGRESS 13&rarr;8</span>
-          <span class="badge win">8 PIECES MOVED</span>
-          <span class="badge win">OVERDUE 15&rarr;11</span>
-          <span class="badge win">PG QUEUE CLEAN &times;4</span>
-          <span class="badge win">HOME BEFORE 7</span>
-          <span class="badge flag">NEW BAR: 30% BA</span>
-          <span class="badge flag">DRIVE BLIND</span>
-          <span class="badge flag">BLOCKED LANE 40</span>
-          <span class="badge flag">8 UNTRACKED PROMISES</span>
+          <span class="badge win">Best split ever measured</span>
+          <span class="badge win">Eight-export day</span>
+          <span class="badge win">PG overdue: zero &times;5</span>
+          <span class="badge win">Drive recovered</span>
+          <span class="badge">80/20 PG morning</span>
+          <span class="badge flag">Dry Wednesday</span>
+          <span class="badge flag">Blocked 40, week 4</span>
+          <span class="badge flag">Six loose promises</span>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <b>How this is measured.</b> No time tracking exists, so hours are estimated from first and last activity per lane, &plusmn;1 h/day: Slack messages from Mick, Google Calendar events, Claude Code sessions (automated BA Footage runs excluded), Final Cut library and autosave timestamps, git commits, and the audio-in / export-out folders on the external drive. <b>This run:</b> the drive folders were unreadable, so today&rsquo;s output is counted from ClickUp status changes rather than from files with timestamps &mdash; softer evidence, flagged above. Automated 10-minute footage jobs and commits by Brixton, Morgan or Hazel are not counted as Mick&rsquo;s time. <b>Target:</b> 30% BA / 70% PG, set by Brixton and agreed by Mick on 31 Aug 2026, replacing the 40/60 agreed with John on 19 Aug. Built Mon 31 Aug 2026, 18:20 BST, covering 10:30 to 17:05. Private and unlisted.
+    <b>How this is measured.</b> There is no time tracking, so hours are estimated to the nearest half hour from first and last activity each day &mdash; Slack timestamps, calendar events, Claude sessions, downloads and file writes &mdash; and are accurate to about &plusmn;1 hour a day. Exports and audio bounces are <b>not</b> estimated: every one is a real file on the drive with a real clock time, read from <span class="mono">8 EXPORTS</span> and <span class="mono">8 AUDIOS</span>. Task counts and due dates are pulled live from ClickUp at build time. Commits by Brixton, Morgan and Hazel are not counted as Mick&rsquo;s hours; they show up only as inbound reading load.<br>
+    <b>Monday was re-measured.</b> Monday night&rsquo;s build could not read the drive and put the day at 6.0 hours. With the drive mounted it is 10.5 hours and eight finished pieces. The week total moved with it.<br>
+    <b>Target:</b> 30% BA / 70% PG, set by Brixton on 31 Aug and agreed the same afternoon. It replaced the earlier 40/60. Rebuilt every evening; this build Wed 2 Sep 2026, 12:10 BST.
   </footer>
 
 </div>
