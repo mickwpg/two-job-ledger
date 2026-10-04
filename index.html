@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏱️</text></svg>">
 <title>The Two-Job Ledger</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,16 +247,18 @@ blockquote{margin:0;font-style:italic;color:var(--ink-2)}
 footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);line-height:1.7}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
-
 </head>
 <body>
+
+
+
 <div class="wrap">
 
 <header class="masthead">
   <div class="eyebrow">Mick Warwick · Performance Golf &amp; Brixton Albert</div>
   <h1>The Two-Job Ledger</h1>
   <div class="sub">
-    <div class="stamp">Rebuilt Sat 3 Oct 2026, 21:15 BST · Mon 28 Sep – Sat 3 Oct, week to date (closes Sunday), plus last week's closing edition</div>
+    <div class="stamp">Rebuilt Sun 4 Oct 2026, 21:30 BST · Mon 28 Sep – Sun 4 Oct, closing edition, plus the week before</div>
   </div>
   <div class="key">
     <span><i style="border-bottom:1.5px solid var(--pg)">task name</i> → ClickUp</span>
@@ -267,7 +270,51 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
 <!-- ========= HEADLINE: CLOSED WEEK ========= -->
 <div class="card score">
   <div class="score-main">
-    <div class="eyebrow">Week closed · Mon 21 – Sun 27 September</div>
+    <div class="eyebrow">Week closed · Mon 28 Sep – Sun 4 Oct, measured Sun 21:30 — seven days, all seven worked</div>
+    <div class="split-figure">
+      <div class="big">30%</div>
+      <div class="vs">14.0h BA against 33.0h PG. Par is 30%.</div>
+      <div class="delta good">29.8% — on par · ▲ 12 pts on last week</div>
+    </div>
+
+    <div class="parbar">
+      <div class="track">
+        <div class="seg seg-ba" style="width:29.8%">BA 14.0h</div>
+        <div class="seg seg-pg" style="width:70.2%">PG 33.0h</div>
+        <div class="parline" style="left:30%"></div>
+      </div>
+      <div class="foot">
+        <span>47.0h · Mon 9.75 + Tue 6.75 + Wed 5.5 + Thu 10.0 + Fri 6.5 + Sat 2.5 + Sun 6.0</span>
+        <span>Balance Score 99 · was 90 last night · 69 last week</span>
+      </div>
+    </div>
+
+    <p style="margin:6px 0 0;color:var(--ink-2);font-size:15.5px;max-width:64ch">
+      The week closes on par, and Sunday is why. From about 10:00 to 16:13, and again just before 21:00, Mick spent roughly six hours
+      on PG systems: ten product carousels, the Trial Feed on his phone, the recut system rebuilt to work through Final Cut,
+      and the YouTube and TikTok uploaders. Nothing was exported and no task was closed.
+      Saturday's piece, <a class="t-task" href="https://app.clickup.com/t/86bccbmfc">POP STROKE RS1</a>, was scored a Winner at 11:02, a day after it shipped.
+      The split went 34% → 30% because the weekend was all PG. That is 8.5 weekend hours, against none the weekend before.
+    </p>
+  </div>
+
+  <div class="score-side">
+    <div class="eyebrow">The closed week</div>
+    <div class="metrics">
+      <div class="metric"><span class="lab">Balance Score</span><span class="val">99 <span style="color:var(--good);font-weight:500">▲30</span></span></div>
+      <div class="metric"><span class="lab">Exports</span><span class="val">24 <span style="color:var(--ink-3);font-weight:500">13 BA · 11 PG · 0 Sun</span></span></div>
+      <div class="metric"><span class="lab">Audio sessions</span><span class="val">11 <span style="color:var(--ink-3);font-weight:500">9 Mon · 2 Thu</span></span></div>
+      <div class="metric"><span class="lab">Tasks Mick closed</span><span class="val">4 <span style="color:var(--ink-3);font-weight:500">0 since Fri</span></span></div>
+      <div class="metric"><span class="lab">Days over 11h</span><span class="val">0 <span style="color:var(--ink-3);font-weight:500">of 7</span></span></div>
+      <div class="metric"><span class="lab">Days off</span><span class="val" style="color:var(--crit)">0 <span style="color:var(--ink-3);font-weight:500">was 2</span></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========= HEADLINE: WEEK BEFORE ========= -->
+<div class="card score">
+  <div class="score-main">
+    <div class="eyebrow">The week before · Mon 21 – Sun 27 September</div>
     <div class="split-figure">
       <div class="big">17%</div>
       <div class="vs">4.0h BA against 19.0h PG. Par is 30%.</div>
@@ -296,7 +343,7 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
   </div>
 
   <div class="score-side">
-    <div class="eyebrow">The closed week</div>
+    <div class="eyebrow">The week before</div>
     <div class="metrics">
       <div class="metric"><span class="lab">Balance Score</span><span class="val">69 <span style="color:var(--crit);font-weight:500">▼29</span></span></div>
       <div class="metric"><span class="lab">Pieces exported</span><span class="val">1 <span style="color:var(--crit);font-weight:500">▼39</span></span></div>
@@ -308,56 +355,12 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
   </div>
 </div>
 
-<!-- ========= HEADLINE: NEW WEEK ========= -->
-<div class="card score">
-  <div class="score-main">
-    <div class="eyebrow">This week · Mon 28 Sep – Sat 3 Oct, measured Sat 21:15 — five working days plus a Saturday morning</div>
-    <div class="split-figure">
-      <div class="big">34%</div>
-      <div class="vs">14.0h BA against 27.0h PG, Monday to Saturday.</div>
-      <div class="delta good">▼ 2 pts since last night — 4 pts over par</div>
-    </div>
-
-    <div class="parbar">
-      <div class="track">
-        <div class="seg seg-ba" style="width:34.1%">BA 14.0h</div>
-        <div class="seg seg-pg" style="width:65.9%">PG 27.0h</div>
-        <div class="parline" style="left:30%"></div>
-      </div>
-      <div class="foot">
-        <span>41.0h · Mon 9.75 + Tue 6.75 + Wed 5.5 + Thu 10.0 + Fri 6.5 + Sat 2.5</span>
-        <span>Balance Score 90 · was 84 last night</span>
-      </div>
-    </div>
-
-    <p style="margin:6px 0 0;color:var(--ink-2);font-size:15.5px;max-width:64ch">
-      Saturday was not a day off. From 07:39 to 10:52 Mick did about two and a half hours of PG work: Greg Norman's team contact passed to Brandon,
-      the Instagram bio link John asked for at 23:06 Friday fixed by 08:29, and the Chris McGinley footage cut into
-      <a class="t-task" href="https://app.clickup.com/t/86bccbmfc">Social | POP STROKE RS1</a>, exported at 10:39. Then nothing after 10:52.
-      Because it was all PG, it pulled the split from 36% to 34%, the closest a normal week has come to par.
-      The cost is the weekend: last week had two clean days off, and this one has already lost Saturday morning.
-      Friday also ran later than last night's build showed, with one more message to Shawne and Keffer at 21:52.
-    </p>
-  </div>
-
-  <div class="score-side">
-    <div class="eyebrow">Week to date</div>
-    <div class="metrics">
-      <div class="metric"><span class="lab">Exports</span><span class="val">24 <span style="color:var(--ink-3);font-weight:500">13 BA · 11 PG</span></span></div>
-      <div class="metric"><span class="lab">Audio sessions</span><span class="val">11 <span style="color:var(--ink-3);font-weight:500">9 Mon · 2 Thu</span></span></div>
-      <div class="metric"><span class="lab">Meetings</span><span class="val">7 <span style="color:var(--ink-3);font-weight:500">+1 declined</span></span></div>
-      <div class="metric"><span class="lab">BA edit queue</span><span class="val">26 <span style="color:var(--ink-3);font-weight:500">flat</span></span></div>
-      <div class="metric"><span class="lab">BA publish queue</span><span class="val" style="color:var(--warn)">57 <span style="color:var(--ink-3);font-weight:500">▼2</span></span></div>
-      <div class="metric"><span class="lab">Balance Score</span><span class="val">90 <span style="color:var(--good);font-weight:500">▲6</span></span></div>
-    </div>
-  </div>
-</div>
 <!-- ========= TREND ========= -->
 <section>
   <h2>Eight measured windows <span class="note">share of hours, with par at 30%</span></h2>
   <div class="card">
     <div class="chart-shell">
-      <svg viewBox="0 0 900 320" width="900" style="max-width:100%;height:auto" role="img" aria-label="Stacked share chart of BA versus PG hours across eight measured windows with a 30 percent par line. BA share falls from 67 percent to 17 percent, then this week reads 34 percent after six days.">
+      <svg viewBox="0 0 900 320" width="900" style="max-width:100%;height:auto" role="img" aria-label="Stacked share chart of BA versus PG hours across eight measured windows with a 30 percent par line. BA share falls from 67 percent to 17 percent, and this week closes at 30 percent, on par.">
         <line x1="56" y1="30" x2="56" y2="250" stroke="var(--rule)" stroke-width="1"/>
         <line x1="56" y1="250" x2="876" y2="250" stroke="var(--rule)" stroke-width="1"/>
         <text x="48" y="34" text-anchor="end" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace" font-size="11">100%</text>
@@ -414,13 +417,11 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
           <text x="727" y="285" text-anchor="middle" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace" font-size="10">23.0h</text>
         </g>
         <g>
-          <rect x="798" y="30" width="70" height="145.0" fill="var(--pg)"/>
-          <rect x="798" y="175.0" width="70" height="75.0" fill="var(--ba)"/>
-          <rect x="798" y="30" width="70" height="220" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <text x="833" y="24" text-anchor="middle" fill="var(--warn)" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600">34%</text>
-          <text x="833" y="270" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600">3 Oct</text>
-          <text x="833" y="285" text-anchor="middle" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace" font-size="10">41.0h</text>
-          <text x="833" y="300" text-anchor="middle" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace" font-size="10">Mon–Sat</text>
+          <rect x="798" y="30" width="70" height="154.4" fill="var(--pg)"/>
+          <rect x="798" y="184.4" width="70" height="65.6" fill="var(--ba)"/>
+          <text x="833" y="24" text-anchor="middle" fill="var(--good)" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600">30%</text>
+          <text x="833" y="270" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600">4 Oct</text>
+          <text x="833" y="285" text-anchor="middle" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace" font-size="10">47.0h</text>
         </g>
 
         <line x1="56" y1="184" x2="884" y2="184" stroke="var(--par)" stroke-width="1.5" stroke-dasharray="6 4"/>
@@ -430,27 +431,57 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
     <div class="legend">
       <span><i class="swatch" style="background:var(--ba)"></i>Brixton Albert</span>
       <span><i class="swatch" style="background:var(--pg)"></i>Performance Golf</span>
-      <span>hours under each bar · bar height is share, not volume · the dashed bar is this week, Mon–Sat (stays open until Sunday)</span>
+      <span>hours under each bar · bar height is share, not volume · the last bar is this week, closed Sunday</span>
     </div>
   </div>
   <p style="margin:0;color:var(--ink-2);font-size:15.5px;max-width:72ch">
-    72 → 62 → 54 → 46 → 29 → 17 → 34. Last week went too far the other way: 17% was a shoot week, not a balance.
-    This week moved 69 → 45 → 36 → 42 → 36 → 34, one day at a time, and sits four points over par.
-    That is the closest a normal (non-travel) working week has come. The last two points came from Saturday PG work,
-    which is the wrong way to earn them. On weekdays the pattern is two BA days and three PG days, and Thursday's BA block has to stop at 15:00 as booked.
+    72 → 62 → 54 → 46 → 29 → 17 → 30. This is the second week to finish on par (20 Sep was the first, at 29%), and last week's 17% was a shoot week.
+    Day by day it moved 69 → 45 → 36 → 42 → 36 → 34 → 30. On Friday night the week stood at 36%. The last six points came from PG work on Saturday and Sunday,
+    so the weekdays alone were six points over. The weekday pattern held: two BA days, three PG days.
   </p>
 </section>
 
 <!-- ========= DAYS: NEW WEEK ========= -->
 <section>
-  <h2>This week <span class="note">Mon 28 Sep – Sat 3 Oct, all times BST</span></h2>
+  <h2>This week <span class="note">Mon 28 Sep – Sun 4 Oct, all times BST</span></h2>
   <div class="days">
     <details class="day" open>
+      <summary class="dayhead">
+        <div class="daylab"><span class="dow">Sunday</span><span class="dat">4 Oct · PG systems day, weekend</span></div>
+        <div class="daybar" aria-hidden="true"><div class="b pg" style="width:54.5%"></div></div>
+        <div class="dayfig"><b>6.0h</b> · BA 0 / PG 6.0 <span style="color:var(--ink-3)">· off 20:56</span></div>
+        <div class="daynote"><strong>Dry day: zero exports, zero voiceovers, zero tasks closed.</strong> Six hours of PG work, nearly all of it done by talking to Claude: carousels, the Trial Feed, the recut system, the uploaders, a new series idea. It stopped at 16:13 when the Claude usage limit ran out, and came back for two notes at 20:52. Yesterday's two missed PG slots went out today; today's own slot did not.</div>
+      </summary>
+      <div class="timeline">
+        <div class="dry">Nothing exported and nothing recorded. The hours here are estimated from about 35 typed prompts across ten Claude sessions, plus file times. Time spent waiting on Claude is included, so treat 6.0h as ±1h.</div>
+        <div class="ev"><span class="tm">07:05</span><span class="chip ops">AUTO</span><span><a class="t-slack" href="https://performance-golf.slack.com/archives/D0B8Y0BRMUM/p1791093952263019">Review Status watcher</a>: <a class="t-task" href="https://app.clickup.com/t/86bccbmfc">POP STROKE RS1</a> → Retry (converts, under 3k views); <a class="t-task" href="https://app.clickup.com/t/86bc9bxap">HANK BOTH WAYS</a> → Normal. Automated, not counted.</span></div>
+        <div class="ev"><span class="tm">09:18</span><span class="chip pg">PG</span><span>To Brandon, on Greg Norman: <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1791101880173399">“Yep. Looks like it.”</a> Answers Saturday's “Bro is that real?”</span></div>
+        <div class="ev"><span class="tm">10:04</span><span class="chip pg">PG</span><span><span class="mono">PG Science Carousels</span>: ten product carousels with captions (RS1 ×2, 357 ×2, iON+ ×3, SF2, Lil' Legends, PG1). Reworked as V2 at 11:18 and V3 at 11:28.</span></div>
+        <div class="ev"><span class="tm">11:02</span><span class="chip ops">AUTO</span><span><a class="t-slack" href="https://performance-golf.slack.com/archives/D0B8Y0BRMUM/p1791108153026009">Review Status watcher</a>: <strong><a class="t-task" href="https://app.clickup.com/t/86bccbmfc">POP STROKE RS1</a> → Winner, converter.</strong> Exported Saturday 10:39.</span></div>
+        <div class="ev"><span class="tm">11:26</span><span class="chip pg">PG</span><span>Trial Feed: got it onto his phone, loaded all of September's PG content as a test, and asked for it to pick up where he left off (to 11:47)</span></div>
+        <div class="ev"><span class="tm">11:27</span><span class="chip pg">PG</span><span>To Keffer: <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1791109672452089">“Need to get YT shorts added to the Epidemic Sound list- some of my shorts are getting flagged”</a>, then at 11:30 <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1791109813797749">“Scratch that it’s audio from IG that it doesn’t like”</a></span></div>
+        <div class="ev"><span class="tm">12:04</span><span class="chip pg">PG</span><span>Decided to hold the funnel-tracking chat with John and Keffer until after Wednesday's planning call</span></div>
+        <div class="ev"><span class="tm">12:05</span><span class="chip pg">PG</span><span>Darren Clarke using the RS1 putter on the Legends Tour this weekend. Two birdie clips (No. 6 and No. 11, Jefferson Lehigh Valley Classic) saved to the drive at 12:08–12:09.</span></div>
+        <div class="ev"><span class="tm">13:11</span><span class="chip pg">PG</span><span>Recut system handoff written up and its dashboard page published (to 13:29)</span></div>
+        <div class="ev"><span class="tm">13:19</span><span class="chip pg">PG</span><span>New series idea scoped: famous golf moments that went the other way, AI-made with real close-ups cut in. Stalled on cost at 13:49: he only pays for Claude.</span></div>
+        <div class="ev"><span class="tm">13:30</span><span class="chip pg">PG</span><span>Two blocks booked for Tuesday: <a class="t-meet" href="https://www.google.com/calendar/event?eid=OGQ0NWliMHVyY242a3RxNzJ2OGNmZmU2c2cgbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ&amp;ctz=Europe/London">Trial Feed run-through</a> 10:00 and <a class="t-meet" href="https://www.google.com/calendar/event?eid=Z2FtaWwyNTBhcm5wMGdyOWhrc3AyNHNsNm8gbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ&amp;ctz=Europe/London">Record CTA voice lines</a> 14:00</span></div>
+        <div class="ev"><span class="tm">13:50</span><span class="chip pg">PG</span><span>Rules set for the TikTok and YouTube uploader: tag people only from verified accounts, and scheduled posts can be fixed before they go live (to 14:10)</span></div>
+        <div class="ev"><span class="tm">14:02</span><span class="chip ops">AUTO</span><span><a class="t-slack" href="https://performance-golf.slack.com/archives/D0B8Y0BRMUM/p1791118945064199">Review Status watcher</a>: <a class="t-task" href="https://app.clickup.com/t/86bc0y023">HE PICKED UP A CLUB AT 14 MONTHS</a> → Normal; <a class="t-task" href="https://app.clickup.com/t/86bc0y02w">HE SHOT 63</a> → Retry; <a class="t-task" href="https://app.clickup.com/t/86bcbr7b5">ROUND PART 1 — v2</a> → Retry. Saturday's two missed slots are now live, a day late.</span></div>
+        <div class="ev"><span class="tm">14:14</span><span class="chip pg">PG</span><span>Recut system pointed at the Final Cut projects (“behave as if it is a human making an edit”). September's PG edits rerun through it at 14:37. Event promos killed at 14:28. Recut folder and dashboard set up by 15:04.</span></div>
+        <div class="ev"><span class="tm">15:14</span><span class="chip pg">PG</span><span>YouTube and TikTok: logged back in for the uploader, deleted the 1Wedge post, briefed the Creator Open piece (to 15:38)</span></div>
+        <div class="ev"><span class="tm">16:13</span><span class="chip ops">END</span><span>Claude usage limit reached; two sessions cut off. No trace from Mick until 20:52.</span></div>
+        <div class="ev"><span class="tm">17:02</span><span class="chip ops">AUTO</span><span><a class="t-slack" href="https://performance-golf.slack.com/archives/D0B8Y0BRMUM/p1791129744695059">Review Status watcher</a>: <a class="t-task" href="https://app.clickup.com/t/86bc9804k">WHAT DO YOU DO?</a> → Retry (reach without follows)</span></div>
+        <div class="ev"><span class="tm">20:52</span><span class="chip pg">PG</span><span>Two late notes: recut cards should carry Type = Recut (Auto), not a tag; Hart Common Parts 2 and 3 need trials in the feed. Eight robot recut cards landed in <span class="mono">post me</span> at 20:52–20:53. Last trace 20:56.</span></div>
+        <div class="ev"><span class="tm">—</span><span class="chip pg">PG</span><span>Today's slot, <a class="t-task" href="https://app.clickup.com/t/86bc0y01u">BORN WITHOUT AN ARM, PLAYS TO A PLUS 0.5</a>, did not post.</span></div>
+        <div class="tally"><span>Exported <b>0</b> — dry day</span><span>Audio takes <b>0</b></span><span>Meetings <b>0</b></span><span>Tasks closed <b>0</b></span><span>Span <b>09:18 → 20:56</b> (gap 16:13–20:52)</span></div>
+      </div>
+    </details>
+    <details class="day">
       <summary class="dayhead">
         <div class="daylab"><span class="dow">Saturday</span><span class="dat">3 Oct · PG morning, weekend</span></div>
         <div class="daybar" aria-hidden="true"><div class="b pg" style="width:22.7%"></div></div>
         <div class="dayfig"><b>2.5h</b> · BA 0 / PG 2.5 <span style="color:var(--ink-3)">· off 10:52</span></div>
-        <div class="daynote">A weekend morning of PG work, done by 10:52. Greg Norman's social contact sent to Brandon, John's bio-link request fixed, and the Chris McGinley footage cut into <em>POP STROKE RS1</em>, exported at 10:39. Nothing after that: no Slack, no Final Cut, no export. John's 11:38 follow-up on Greg Norman and Brandon's 15:43 question are both still unanswered.</div>
+        <div class="daynote">A weekend morning of PG work, done by 10:52. Greg Norman's social contact sent to Brandon, John's bio-link request fixed, and the Chris McGinley footage cut into <em>POP STROKE RS1</em>, exported at 10:39. Nothing after that: no Slack, no Final Cut, no export. Brandon's 15:43 question was answered Sunday 09:18; John's 11:38 follow-up on Greg Norman has no written reply.</div>
       </summary>
       <div class="timeline">
         <div class="ev"><span class="tm">07:01</span><span class="chip ops">AUTO</span><span><a class="t-slack" href="https://performance-golf.slack.com/archives/D0B8Y0BRMUM/p1791007312531919">Review Status watcher</a>: 4 moves, incl. <a class="t-task" href="https://app.clickup.com/t/86bcc5hw6">ED REED - 1,000 PER BIRDIE</a> → Retry. Automated, not counted.</span></div>
@@ -462,8 +493,8 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
         <div class="ev"><span class="tm">10:39</span><span class="chip pg">PG</span><span><strong>Export — <a class="t-task" href="https://app.clickup.com/t/86bccbmfc">PG POP STROKE RS1</a></strong>. The RS1 putter story from McGinley's footage, carded automatically and in the grid by 17:38.</span></div>
         <div class="ev"><span class="tm">10:52</span><span class="chip ops">END</span><span>Last activity on the Mac (SEPTEMBER library save). No trace from Mick after this.</span></div>
         <div class="ev"><span class="tm">11:38</span><span class="chip pg">PG</span><span>John, inbound: <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BEQA3N2PN/p1791023891882349">“if this him then he cool to get one in his hands to try”</a>. Unanswered.</span></div>
-        <div class="ev"><span class="tm">13:17</span><span class="chip ops">AUTO</span><span><a class="t-task" href="https://app.clickup.com/t/86bc9804g">ROUND PART 3</a> went live and moved to trialed, a day after its slot. Today's two PG slots, <a class="t-task" href="https://app.clickup.com/t/86bc0y02w">HE SHOT 63</a> and <a class="t-task" href="https://app.clickup.com/t/86bc0y023">HE PICKED UP A CLUB AT 14 MONTHS</a>, did not post.</span></div>
-        <div class="ev"><span class="tm">15:43</span><span class="chip pg">PG</span><span>Brandon, inbound: <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1791038605408249">“Bro is that real?”</a> Unanswered.</span></div>
+        <div class="ev"><span class="tm">13:17</span><span class="chip ops">AUTO</span><span><a class="t-task" href="https://app.clickup.com/t/86bc9804g">ROUND PART 3</a> went live and moved to trialed, a day after its slot. Today's two PG slots, <a class="t-task" href="https://app.clickup.com/t/86bc0y02w">HE SHOT 63</a> and <a class="t-task" href="https://app.clickup.com/t/86bc0y023">HE PICKED UP A CLUB AT 14 MONTHS</a>, did not post. Both went out Sunday.</span></div>
+        <div class="ev"><span class="tm">15:43</span><span class="chip pg">PG</span><span>Brandon, inbound: <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1791038605408249">“Bro is that real?”</a> Answered Sunday 09:18.</span></div>
         <div class="ev"><span class="tm">17:47</span><span class="chip ops">AUTO</span><span>Robot recuts written to <span class="mono">10 TRIALS</span> for Joe Mayo Biggest Short Game Lie and ROUND Part 1 v2. Automated, not counted.</span></div>
         <div class="tally"><span>Exported <b>1</b> PG</span><span>Audio takes <b>0</b></span><span>Meetings <b>0</b></span><span>Tasks closed <b>0</b></span><span>Span <b>07:39 → 10:52</b></span></div>
       </div>
@@ -769,68 +800,73 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
 
 <!-- ========= PAST DUE ========= -->
 <section>
-  <h2>Past due right now <span class="note">live lanes only, worst first, as of Sat 21:15. Posted work parked in the grid is left out.</span></h2>
+  <h2>Past due right now <span class="note">live lanes only, worst first, as of Sun 21:10. Posted work parked in the grid is left out.</span></h2>
 
-  <div class="od-band"><span class="eyebrow">Performance Golf</span><span class="cnt">9 in live lanes, up from 8. ROUND PART 3 went out a day late; today's two slots didn't.</span></div>
+  <div class="od-band"><span class="eyebrow">Performance Golf</span><span class="cnt">9 in live lanes, same as last night. Saturday's two went out; today's slot and one robot recut replaced them.</span></div>
   <div class="od">
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbba1dp">Social (Dr. TVB) | TRUE, FALSE, NOT SURE</a><div class="sub">one of five Dr. TVB clips filmed and never cut · no owner · untouched since 17 Sep</div></div><div class="st">filmed</div><div class="late sev1">50 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbba1cz">Social (Dr. TVB) | WHAT HURTS THE PROS</a></div><div class="st">filmed</div><div class="late sev1">50 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbba1bh">Social (Dr. TVB) | 15 MINUTES TO TEE TIME</a></div><div class="st">filmed</div><div class="late sev1">50 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbba1ax">Social (Dr. TVB) | THREE THINGS EVERY DAY</a></div><div class="st">filmed</div><div class="late sev1">50 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbba179">Social (Dr. TVB) | DONNY'S LITTLE SECRETS</a></div><div class="st">filmed</div><div class="late sev1">50 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbzwwuh">MONDAY TO DO</a><div class="sub">no owner · untouched since 13 Sep</div></div><div class="st">idea</div><div class="late sev2">20 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbbg1e9">Organic | Social Brief</a><div class="sub">Mick · Production Calendar · was due Wed 10:00</div></div><div class="st">Open</div><div class="late sev3">3.5 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc0y02w">Social | HE SHOT 63, NINE UNDER, FOR THE COURSE RECORD - AT 13</a><div class="sub">Mick · today's slot, did not post</div></div><div class="st">post me</div><div class="late sev3">17 hrs</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc0y023">Social | HE PICKED UP A CLUB AT 14 MONTHS AND CRIED WHEN HIS PARENTS PUT ON CARTOONS</a><div class="sub">Mick · today's slot, did not post</div></div><div class="st">post me</div><div class="late sev3">17 hrs</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbba1dp">Social (Dr. TVB) | TRUE, FALSE, NOT SURE</a><div class="sub">one of five Dr. TVB clips filmed and never cut · no owner · untouched since 17 Sep</div></div><div class="st">filmed</div><div class="late sev1">51 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbba1cz">Social (Dr. TVB) | WHAT HURTS THE PROS</a></div><div class="st">filmed</div><div class="late sev1">51 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbba1bh">Social (Dr. TVB) | 15 MINUTES TO TEE TIME</a></div><div class="st">filmed</div><div class="late sev1">51 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbba1ax">Social (Dr. TVB) | THREE THINGS EVERY DAY</a></div><div class="st">filmed</div><div class="late sev1">51 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbba179">Social (Dr. TVB) | DONNY'S LITTLE SECRETS</a></div><div class="st">filmed</div><div class="late sev1">51 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbzwwuh">MONDAY TO DO</a><div class="sub">no owner · untouched since 13 Sep</div></div><div class="st">idea</div><div class="late sev2">21 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbbg1e9">Organic | Social Brief</a><div class="sub">Mick · Production Calendar · was due Wed 10:00</div></div><div class="st">Open</div><div class="late sev3">4.5 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc0y01u">Social | BORN WITHOUT AN ARM, PLAYS TO A PLUS 0.5 - THE YOUNGEST EVER US ADAPTIVE QUALIFIER</a><div class="sub">Mick · today's slot, did not post</div></div><div class="st">post me</div><div class="late sev3">17 hrs</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bccpf54">Social | ROUND PART 1 — v2 — Recut (Auto) · shots only lofi</a><div class="sub">Mick · robot recut, carded today with a 04:00 date already behind it</div></div><div class="st">post me</div><div class="late sev3">17 hrs</div></div>
   </div>
 
-  <div class="od-band"><span class="eyebrow">Brixton Albert</span><span class="cnt">10 in live lanes, down from 14. Louis posted two overnight and four more were re-dated forward.</span></div>
+  <div class="od-band"><span class="eyebrow">Brixton Albert</span><span class="cnt">15 in live lanes, up from 10. Nothing was posted from the BA board this weekend, so five more slots slid past. Four of the 15 are Mick's.</span></div>
   <div class="od">
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbjp1v1">World's best blind golfer</a><div class="sub">no owner · started, then stopped</div></div><div class="st">in progress</div><div class="late sev1">36 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbqzj8t">Brixton looking at phone intros</a><div class="sub">Mick · the only overdue BA edit that's Mick's</div></div><div class="st">in progress</div><div class="late sev1">25 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbjwedx">Hollis Stacy Long Recut + CTA</a><div class="sub">no owner · high priority</div></div><div class="st">in progress</div><div class="late sev2">15 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbvzawz">Blind Golfer V2</a><div class="sub">no owner</div></div><div class="st">in progress</div><div class="late sev2">8 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bca5ex7">1 CLUB MATCH VIDEO 1</a><div class="sub">Mick · edit done Thu 11:48; waiting to post</div></div><div class="st">approved to publish</div><div class="late sev3">1.7 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbze95f">What building a $100MM biz looks like</a><div class="sub">Mick · done, waiting to post</div></div><div class="st">approved to publish</div><div class="late sev3">1.5 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc8hv86">HumApproachPompano_V2_DiffHook</a><div class="sub">Louis</div></div><div class="st">approved to publish</div><div class="late sev3">1.1 days</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc36w81">Can i make birdie with one club (4 iron) (par 3)</a><div class="sub">Louis</div></div><div class="st">approved to publish</div><div class="late sev3">17 hrs</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc03pgq">HumTipBeginnerGolfer_V3_NewHook</a><div class="sub">Louis</div></div><div class="st">approved to publish</div><div class="late sev3">10 hrs</div></div>
-    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc7autk">HOUSETALK_TheFlops</a><div class="sub">Mick · v3 confirmed Fri; waiting to post</div></div><div class="st">approved to publish</div><div class="late sev3">7 hrs</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbjp1v1">World's best blind golfer</a><div class="sub">no owner · started, then stopped</div></div><div class="st">in progress</div><div class="late sev1">37 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbqzj8t">Brixton looking at phone intros</a><div class="sub">Mick · the only overdue BA edit that's Mick's</div></div><div class="st">in progress</div><div class="late sev1">26 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbjwedx">Hollis Stacy Long Recut + CTA</a><div class="sub">no owner · high priority</div></div><div class="st">in progress</div><div class="late sev2">16 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbvzawz">Blind Golfer V2</a><div class="sub">no owner</div></div><div class="st">in progress</div><div class="late sev2">9 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bca5ex7">1 CLUB MATCH VIDEO 1</a><div class="sub">Mick · edit done Thu 11:48; waiting to post</div></div><div class="st">approved to publish</div><div class="late sev3">2.7 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbze95f">What building a $100MM biz looks like</a><div class="sub">Mick · done, waiting to post</div></div><div class="st">approved to publish</div><div class="late sev3">2.5 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc8hv86">HumApproachPompano_V2_DiffHook</a><div class="sub">Louis</div></div><div class="st">approved to publish</div><div class="late sev3">2.1 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc36w81">Can i make birdie with one club (4 iron) (par 3)</a><div class="sub">Louis</div></div><div class="st">approved to publish</div><div class="late sev3">1.7 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc03pgq">HumTipBeginnerGolfer_V3_NewHook</a><div class="sub">Louis</div></div><div class="st">approved to publish</div><div class="late sev3">1.4 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc7autk">HOUSETALK_TheFlops</a><div class="sub">Mick · v3 confirmed Fri; waiting to post</div></div><div class="st">approved to publish</div><div class="late sev3">1.3 days</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc41mcn">100MFounderPodcast_V2_FirstPhysicalProduct4M</a><div class="sub">Louis</div></div><div class="st">in progress</div><div class="late sev3">23 hrs</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc41m8r">100MFounderPodcast_V1_Sold4MOnLaunchDay</a><div class="sub">Louis</div></div><div class="st">in progress</div><div class="late sev3">23 hrs</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bc41mgq">100MFounderPodcast_V2_CrazyPhilosophy</a><div class="sub">Louis</div></div><div class="st">approved to publish</div><div class="late sev3">9 hrs</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbvzaxc">How Short Can We Hit the Golf Ball V2</a><div class="sub">no owner</div></div><div class="st">approved to publish</div><div class="late sev3">3 hrs</div></div>
+    <div class="od-row"><div class="od-name"><a class="t-task" href="https://app.clickup.com/t/86bbz477d">JoeMayo1hrAWeek_V1_ShorterEditCTA</a><div class="sub">Louis</div></div><div class="st">approved to publish</div><div class="late sev3">2 hrs</div></div>
   </div>
 
   <div class="od-band"><span class="eyebrow">Also waiting</span><span class="cnt">posted, past their date, no Winner/Kill call</span></div>
   <p style="margin:0;color:var(--ink-2);font-size:15.5px;max-width:70ch">
-    Eighteen PG reels are at <span class="mono">trialed</span> past their date, the same as last night (ROUND PART 3 joined). Eleven have waited more than a week. The oldest are
-    <a class="t-task" href="https://app.clickup.com/t/86bc06bd2">21 YEARS A SEAL — v2</a> (19 days),
-    <a class="t-task" href="https://app.clickup.com/t/86bc06bh2">WHAT ACTUALLY BREAKS PEOPLE AT BUD-S — v2</a> (18) and
-    <a class="t-task" href="https://app.clickup.com/t/86bc0f3xx">DAY 1 — PROFESSIONAL ATHLETE FOR TWO DAYS</a> (17).
-    The Review Status watcher keeps re-scoring them (seven moves today), but nobody has made the call on the tasks.
+    Twenty PG reels are at <span class="mono">trialed</span> past their date, up from 18 (HE SHOT 63 and HE PICKED UP A CLUB joined today). Eight have waited more than a week. The oldest are
+    <a class="t-task" href="https://app.clickup.com/t/86bc06bd2">21 YEARS A SEAL — v2</a> (20 days),
+    <a class="t-task" href="https://app.clickup.com/t/86bc06bh2">WHAT ACTUALLY BREAKS PEOPLE AT BUD-S — v2</a> (19) and
+    <a class="t-task" href="https://app.clickup.com/t/86bc0f3xx">DAY 1 — PROFESSIONAL ATHLETE FOR TWO DAYS</a> (18).
+    The Review Status watcher re-scored seven today, but nobody has made the call on the tasks.
   </p>
 
   <div class="od-band"><span class="eyebrow">Falls due next</span><span class="cnt">next 7 days</span></div>
   <p style="margin:0;color:var(--ink-2);font-size:15.5px;max-width:70ch">
-    <strong>Sun 4</strong>: PG <a class="t-task" href="https://app.clickup.com/t/86bc0y01u">BORN WITHOUT AN ARM, PLAYS TO A PLUS 0.5</a>.
-    <strong>Mon 5</strong>: PG <a class="t-task" href="https://app.clickup.com/t/86bc0y04f">YOU MEASURE HOW FAR YOU HAVE TO GO</a> and <a class="t-task" href="https://app.clickup.com/t/86bc0y03x">NOBODY EVER ASKS ME ANYTHING EXCEPT ONE-ARM QUESTIONS</a>; BA <a class="t-task" href="https://app.clickup.com/t/86bbu605v">07 YOUNGEST EVER - US ADAPTIVE OPEN</a> (in progress) and <a class="t-task" href="https://app.clickup.com/t/86bbmdwd6">ACC Remix | 02 - Davante Adams - the hum</a>. <a class="t-meet" href="https://www.google.com/calendar/event?eid=XzYwcjNpZ3BsOGdwa2NiYTI4b3I0NmI5azg1MjM2YjlwNmwxamdiOXA2aDMzMmQ5ZzY5Mms2Z3EyNmNfMjAyNjEwMDVUMTAwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">BA Content Sync</a> 11:00; Chris McGinley RS1 call.
-    <strong>Tue 6</strong>: PG <a class="t-task" href="https://app.clickup.com/t/86bc0y02b">I DIDN'T REALISE IT, BECAUSE I WAS WINNING</a> and <a class="t-task" href="https://app.clickup.com/t/86bbu64md">MEETING TIGER</a>; BA <a class="t-task" href="https://app.clickup.com/t/86bca5f2z">1 CLUB MATCH VIDEO 2</a> and <a class="t-task" href="https://app.clickup.com/t/86bc032jm">MAYO Viktor Hovland 2</a>. Brixton reviews at 8am.
+    <strong>Mon 5</strong>: PG <a class="t-task" href="https://app.clickup.com/t/86bc0y04f">YOU MEASURE HOW FAR YOU HAVE TO GO</a> and <a class="t-task" href="https://app.clickup.com/t/86bc0y03x">NOBODY EVER ASKS ME ANYTHING EXCEPT ONE-ARM QUESTIONS</a>; BA <a class="t-task" href="https://app.clickup.com/t/86bbu605v">07 YOUNGEST EVER - US ADAPTIVE OPEN</a> (Mick, still in progress), <a class="t-task" href="https://app.clickup.com/t/86bc41m8f">100MFounderPodcast_V1_ThinkingOutsideTheBox</a>, <a class="t-task" href="https://app.clickup.com/t/86bbmdwd6">ACC Remix | 02 - Davante Adams - the hum</a> and <a class="t-task" href="https://app.clickup.com/t/86bc41m91">100MFounderPodcast_V1_Sold4MOnLaunchDayAlt</a>. <a class="t-meet" href="https://www.google.com/calendar/event?eid=XzYwcjNpZ3BsOGdwa2NiYTI4b3I0NmI5azg1MjM2YjlwNmwxamdiOXA2aDMzMmQ5ZzY5Mms2Z3EyNmNfMjAyNjEwMDVUMTAwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">BA Content Sync</a> 11:00; <a class="t-meet" href="https://www.google.com/calendar/event?eid=NjVrcWd1cWdwcjV1aGxtZ2VwZ200OGcwN2ZfMjAyNjEwMDVUMTMwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Social Alignment Meeting</a> 14:00 (declined); Chris McGinley RS1 call. Monday is the BA edit day.
+    <strong>Tue 6</strong>: PG <a class="t-task" href="https://app.clickup.com/t/86bc0y02b">I DIDN'T REALISE IT, BECAUSE I WAS WINNING</a> and <a class="t-task" href="https://app.clickup.com/t/86bbu64md">MEETING TIGER</a>; BA <a class="t-task" href="https://app.clickup.com/t/86bc40whx">AngryGolferHum_V2_Voiceover</a>, <a class="t-task" href="https://app.clickup.com/t/86bca5f2z">1 CLUB MATCH VIDEO 2</a> and <a class="t-task" href="https://app.clickup.com/t/86bc032jm">MAYO Viktor Hovland 2</a>. Brixton reviews at 8am. <a class="t-meet" href="https://www.google.com/calendar/event?eid=OGQ0NWliMHVyY242a3RxNzJ2OGNmZmU2c2cgbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ&amp;ctz=Europe/London">Trial Feed run-through</a> 10:00, <a class="t-meet" href="https://www.google.com/calendar/event?eid=Z2FtaWwyNTBhcm5wMGdyOWhrc3AyNHNsNm8gbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ&amp;ctz=Europe/London">Record CTA voice lines</a> 14:00, <a class="t-meet" href="https://www.google.com/calendar/event?eid=NzFxZjZiNzIzcGg2YmQwNDZjM3U1dmdvNGRfMjAyNjEwMDZUMTUwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Organic Team Weekly Sync</a> 16:00, <a class="t-meet" href="https://www.google.com/calendar/event?eid=MDQ5ZXVsbGQ4MnVwZGVndmEzZ2dwYW12dTJfMjAyNjEwMDZUMTUzMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">STANDING CREATIVE</a> 16:30.
+    <strong>Wed 7</strong>: PG <a class="t-task" href="https://app.clickup.com/t/86bb7gjfp">RANGE TALK</a>; the 90-day planning call.
     <strong>Thu 8</strong>: PG <a class="t-task" href="https://app.clickup.com/t/86bbu61xr">ASMR RANGE — TOMMY MORRISSEY</a>.
-    Still undated: <a class="t-task" href="https://app.clickup.com/t/86bcbypyy">JOE MAYO - BIGGEST SHORT GAME LIE</a> (post me), the two Joe Mayo cutdown tasks, three <a class="t-task" href="https://app.clickup.com/t/86bcbaxvg">Tommy Morrisey clips</a> and two new <a class="t-task" href="https://app.clickup.com/t/86bcc528g">1 club match (holes 15 and 16)</a> edits Brixton filed Friday night. BFCM26 is due 24 Oct.
+    Still undated: <a class="t-task" href="https://app.clickup.com/t/86bcbypyy">JOE MAYO - BIGGEST SHORT GAME LIE</a> and seven robot recuts in post me, the two Joe Mayo cutdown tasks, three <a class="t-task" href="https://app.clickup.com/t/86bcbaxvg">Tommy Morrisey clips</a> and two <a class="t-task" href="https://app.clickup.com/t/86bcc528g">1 club match (holes 15 and 16)</a> edits. BFCM26 is due 24 Oct.
   </p>
 </section>
 
 <!-- ========= QUEUES ========= -->
 <section>
-  <h2>The queues <span class="note">Brixton Albert Social Calendar, live at Sat 21:15 · against Fri 21:15</span></h2>
+  <h2>The queues <span class="note">Brixton Albert Social Calendar, live at Sun 21:10 · against Sat 21:15</span></h2>
   <div class="queues">
-    <div class="q accent-crit"><span class="qn">57</span><span class="ql">approved to publish</span><span class="qd down">▼ 2 — two posted overnight</span></div>
-    <div class="q"><span class="qn">26</span><span class="ql">needs to be edited</span><span class="qd flat">flat — 2 new holes in, 2 out</span></div>
-    <div class="q"><span class="qn">22</span><span class="ql">in progress</span><span class="qd flat">flat</span></div>
-    <div class="q"><span class="qn">6</span><span class="ql">in review</span><span class="qd up">▲ 2 — Louis's hum approaches, Tue 8am</span></div>
+    <div class="q accent-crit"><span class="qn">57</span><span class="ql">approved to publish</span><span class="qd flat">flat — nothing posted this weekend</span></div>
+    <div class="q"><span class="qn">26</span><span class="ql">needs to be edited</span><span class="qd flat">flat · 10 are Mick's</span></div>
+    <div class="q"><span class="qn">23</span><span class="ql">in progress</span><span class="qd up">▲ 1 — HumApproach84yrOld sent back</span></div>
+    <div class="q"><span class="qn">4</span><span class="ql">in review</span><span class="qd down">▼ 2 · Brixton reviews Tue 8am</span></div>
     <div class="q"><span class="qn">43</span><span class="ql">blocked</span><span class="qd flat">twelfth week frozen</span></div>
-    <div class="q"><span class="qn">88</span><span class="ql">tasks open on Mick</span><span class="qd up">▲ 3 · 56 PG / 32 BA</span></div>
+    <div class="q"><span class="qn">96</span><span class="ql">tasks open on Mick</span><span class="qd up">▲ 8 · 64 PG / 32 BA</span></div>
   </div>
   <p style="margin:2px 0 0;color:var(--ink-2);font-size:15.5px;max-width:72ch">
-    Louis posted two overdue pieces just after midnight (the 5-iron birdie and CanadaHum), and someone pushed four due dates into next week at 18:06, which is most of why the BA overdue count fell.
-    Brixton added two 1-club-match edits for Mick at 22:26 Friday. PG <span class="mono">post me</span> holds 9, with two late. Total open on the BA board: 163.
+    All eight new tasks on Mick are robot recut cards (Bin It or Keep It ×4, Joe Mayo Biggest Short Game Lie ×2, ROUND Part 1 v2 ×2) that landed in PG <span class="mono">post me</span> at 20:52.
+    PG <span class="mono">post me</span> now holds 17, with two late. Brixton added one idea, <a class="t-task" href="https://app.clickup.com/t/86bccqxnc">Hum every shot</a>. Total open on the BA board: 163, unchanged. No task was closed by Mick today.
   </p>
 </section>
 
@@ -841,24 +877,25 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
     <div class="pane">
       <h3>Wins</h3>
       <ul class="plain win">
-        <li><strong>34%, four points off par.</strong> The best normal working week yet. Balance Score 84 → 90; last week finished at 69.</li>
-        <li><strong>POP STROKE RS1 shipped</strong> Saturday 10:39, from the McGinley footage, and is in the grid.</li>
-        <li><strong>John's bio-link ask fixed in 9 hours</strong>: asked 23:06 Friday, <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BEQA3N2PN/p1791012589167479?thread_ts=1790981165.048549&amp;cid=D0BEQA3N2PN">“Fixed”</a> at 08:29.</li>
-        <li><strong>The first Joe Mayo cutdowns exist</strong> (Friday 17:24–17:25), and the robot has already made trial recuts of them.</li>
+        <li><strong>The week closed on par: 29.8% BA.</strong> Balance Score 99, the best yet. Last week was 69.</li>
+        <li><strong>POP STROKE RS1 is a Winner.</strong> Exported Saturday 10:39, <a class="t-slack" href="https://performance-golf.slack.com/archives/D0B8Y0BRMUM/p1791108153026009">scored a converter</a> Sunday 11:02.</li>
         <li><strong>24 exports this week</strong> (13 BA, 11 PG) and 11 voiceovers. Last week had one.</li>
         <li><strong>The BA Monday and Thursday were both kept</strong>, and Brixton said <a class="t-slack" href="https://performance-golf.slack.com/archives/C0BUU6WD909/p1790862809636879">“nice job with those 14 club edits.”</a></li>
-        <li>ROUND PART 3 went live (a day late). Four old PG tasks closed this week. PG TikTok is back.</li>
+        <li><strong>Saturday's two missed PG slots went out Sunday</strong>, and Brandon's Greg Norman question got its answer at 09:18.</li>
+        <li><strong>Sunday's systems work is real groundwork</strong>: ten PG carousels drafted, the Trial Feed on his phone, the recut system working through Final Cut, Darren Clarke RS1 clips found.</li>
+        <li>John's bio-link ask fixed in 9 hours. First Joe Mayo cutdowns exist. PG TikTok is back. No day over 11 hours.</li>
       </ul>
     </div>
     <div class="pane">
       <h3>Areas of concern</h3>
       <ul class="plain risk">
-        <li><strong>Saturday was worked.</strong> 2.5h of PG, 07:39–10:52. Last week was the first clean weekend since 19 August; this one is already broken. The split improved, but for the wrong reason.</li>
-        <li><strong>Late finishes three weekdays out of five.</strong> Off at 20:40, 20:37 and 21:52 (Friday ran an hour past last night's reading).</li>
-        <li><strong>The Dr. TVB clips are 50 days late.</strong> Five filmed, none cut, no owner, no change since 17 Sep.</li>
-        <li><strong>Two PG slots missed today</strong> (HE SHOT 63, HE PICKED UP A CLUB), and 18 reels wait for a Winner/Kill call, eleven of them over a week.</li>
-        <li><strong>The BA publish lane is 57.</strong> Louis still hasn't been tagged on Thursday's changes. Blocked has sat at 43 for twelve weeks.</li>
-        <li><strong>Undated work keeps arriving.</strong> Two more 1-club-match edits Friday night, the Mayo and Tommy tasks still undated; BFCM26 due 24 Oct with no plan started.</li>
+        <li><strong>No day off this week.</strong> 2.5h Saturday and 6.0h Sunday, all PG. Last weekend was the first clean one since 19 August. Par was reached with weekend hours; Monday to Friday alone was 36%.</li>
+        <li><strong>Sunday made nothing that ships.</strong> Six hours, zero exports, zero tasks closed. The robot added eight cards to Mick's list while he closed none: 88 → 96 open.</li>
+        <li><strong>Late finishes four days out of seven.</strong> Off at 20:40, 20:37, 21:52 and 20:56.</li>
+        <li><strong>BA past-due rose 10 → 15.</strong> Nothing posted from the BA board all weekend; the publish lane is still 57 and Louis still hasn't been tagged on Thursday's changes.</li>
+        <li><strong>The Dr. TVB clips are 51 days late.</strong> Five filmed, none cut, no owner.</li>
+        <li><strong>20 PG reels wait for a Winner/Kill call</strong>, eight of them over a week, and today's slot (BORN WITHOUT AN ARM) did not post.</li>
+        <li><strong>Monday starts loaded.</strong> It's the BA edit day with 10 edits waiting, 07 YOUNGEST EVER due at 04:00 still in progress, the Louis sync at 11:00 and the McGinley call. BFCM26 is due 24 Oct with no plan started.</li>
       </ul>
     </div>
   </div>
@@ -871,9 +908,24 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
     <div class="pane">
       <h3>Open</h3>
       <div class="promise open">
+        <span class="who">Sun 11:27 → Keffer</span>
+        <span class="q"><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFN6GLB5J/p1791109672452089">“Need to get YT shorts added to the Epidemic Sound list- some of my shorts are getting flagged”</a></span>
+        <span class="verdict">Withdrawn three minutes later: the flagged audio comes from Instagram. The flagged Shorts still need fixing, and no task holds it.</span>
+      </div>
+      <div class="promise open">
+        <span class="who">Sun 13:30 → himself</span>
+        <span class="q">Go through the whole Trial Feed and record real CTA voice lines</span>
+        <span class="verdict">Booked for Tuesday: <a class="t-meet" href="https://www.google.com/calendar/event?eid=OGQ0NWliMHVyY242a3RxNzJ2OGNmZmU2c2cgbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ&amp;ctz=Europe/London">run-through 10:00</a>, <a class="t-meet" href="https://www.google.com/calendar/event?eid=Z2FtaWwyNTBhcm5wMGdyOWhrc3AyNHNsNm8gbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ&amp;ctz=Europe/London">voice lines 14:00</a>. Both land before Wednesday's planning call.</span>
+      </div>
+      <div class="promise open">
+        <span class="who">Sun 12:04 → John, Keffer</span>
+        <span class="q">A funnel-tracking chat, to be booked after Wednesday's planning call</span>
+        <span class="verdict">Held on purpose. Not booked yet, and nobody has been told.</span>
+      </div>
+      <div class="promise open">
         <span class="who">Sat 11:38 ← John</span>
         <span class="q"><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BEQA3N2PN/p1791023891882349">“if this him then he cool to get one in his hands to try”</a> — Greg Norman</span>
-        <span class="verdict">Mick passed the contact to Brandon at 07:39. John's follow-up, and Brandon's 15:43 <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1791038605408249">“Bro is that real?”</a>, are unanswered. No task.</span>
+        <span class="verdict">Mick passed the contact to Brandon Saturday 07:39 and answered Brandon on Sunday. John's line still has no written reply, and no task holds the Greg Norman lead.</span>
       </div>
       <div class="promise open">
         <span class="who">Fri 21:52 → Shawne, Keffer</span>
@@ -923,11 +975,16 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
       <div class="promise open">
         <span class="who">carried ← Brixton</span>
         <span class="q">Caption and call-out text for Xzayvier · the missing clip (“I'll sort it out this morning”, Thu 24)</span>
-        <span class="verdict">13 days and 9 days. No sign either was done.</span>
+        <span class="verdict">14 days and 10 days. No sign either was done.</span>
       </div>
     </div>
     <div class="pane">
       <h3>Kept</h3>
+      <div class="promise kept">
+        <span class="who">Sat 15:43 ← Brandon</span>
+        <span class="q"><a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1791038605408249">“Bro is that real?”</a></span>
+        <span class="verdict">Answered Sunday 09:18: <a class="t-slack" href="https://performance-golf.slack.com/archives/D0BFDHN9S06/p1791101880173399">“Yep. Looks like it.”</a></span>
+      </div>
       <div class="promise kept">
         <span class="who">Fri 23:06 ← John</span>
         <span class="q">Change the Instagram bio link to the Performance Golf homepage</span>
@@ -980,51 +1037,56 @@ footer{border-top:1px solid var(--rule);padding-top:16px;font-family:"IBM Plex M
       <h3>Meters</h3>
       <div class="meters">
         <div class="meter">
-          <div class="mtop"><span>Balance Score — this week</span><span class="mval">90 / 100 · last night 84 · last week 69</span></div>
-          <div class="mtrack"><div class="mfill" style="width:90%;background:var(--good)"></div></div>
+          <div class="mtop"><span>Balance Score — week closed</span><span class="mval">99 / 100 · last night 90 · last week 69</span></div>
+          <div class="mtrack"><div class="mfill" style="width:99%;background:var(--good)"></div></div>
         </div>
         <div class="meter">
-          <div class="mtop"><span>Distance from par</span><span class="mval">4 pts over 30%</span></div>
-          <div class="mtrack"><div class="mfill" style="width:14%;background:var(--warn)"></div></div>
+          <div class="mtop"><span>Distance from par</span><span class="mval">0.2 pts under 30%</span></div>
+          <div class="mtrack"><div class="mfill" style="width:1%;background:var(--good)"></div></div>
         </div>
         <div class="meter">
-          <div class="mtop"><span>Output — this week</span><span class="mval">24 exports · 22 distinct pieces</span></div>
+          <div class="mtop"><span>Output — this week</span><span class="mval">24 exports · 22 distinct pieces · 0 at the weekend's end</span></div>
           <div class="mtrack"><div class="mfill" style="width:100%;background:var(--good)"></div></div>
         </div>
         <div class="meter">
-          <div class="mtop"><span>Overtime meter — days over 11h</span><span class="mval">0 of 13 · longest this week 10.0h</span></div>
+          <div class="mtop"><span>Overtime meter — days over 11h</span><span class="mval">0 of 14 · longest this week 10.0h</span></div>
           <div class="mtrack"><div class="mfill" style="width:2%;background:var(--good)"></div></div>
+        </div>
+        <div class="meter">
+          <div class="mtop"><span>Days worked this week</span><span class="mval">7 of 7 · 8.5h at the weekend</span></div>
+          <div class="mtrack"><div class="mfill" style="width:100%;background:var(--crit)"></div></div>
         </div>
       </div>
     </div>
     <div class="pane">
       <h3>Streaks &amp; badges</h3>
       <div class="badges">
-        <span class="badge earned"><b>Near Par</b> · 34%, best normal week</span>
+        <span class="badge earned"><b>On Par</b> · 29.8%, score 99</span>
         <span class="badge earned"><b>Two &amp; Three</b> · BA Mon+Thu, PG Tue/Wed/Fri</span>
-        <span class="badge earned"><b>Nine-Hour Fix</b> · bio link</span>
+        <span class="badge earned"><b>Day-Old Winner</b> · POP STROKE RS1</span>
         <span class="badge earned"><b>Twenty-Four</b> · exports this week</span>
         <span class="badge earned"><b>No 11s</b> · 8 weeks</span>
-        <span class="badge missed"><b>Saturday Shift</b> · 2.5h PG</span>
-        <span class="badge missed"><b>Late Again</b> · Fri off 21:52</span>
-        <span class="badge missed"><b>Dr TVB 50</b> · days at filmed</span>
+        <span class="badge missed"><b>Seven-Day Week</b> · no day off</span>
+        <span class="badge missed"><b>Dry Sunday</b> · 6h, 0 exports</span>
+        <span class="badge missed"><b>Late Again</b> · Sun off 20:56</span>
+        <span class="badge missed"><b>Dr TVB 51</b> · days at filmed</span>
         <span class="badge missed"><b>Blocked 43</b> · twelfth week</span>
       </div>
       <p style="margin:6px 0 0;color:var(--ink-2);font-size:14.5px">
-        Days signed off before 19:00: <strong>1</strong> in a row — Saturday ended at 10:52, but Friday ran to 21:52.
-        Weeks improving toward par: <strong>1</strong> — 4 points off, against 13 last week.
-        This week: 69 → 45 → 36 → 42 → 36 → 34. A clean Sunday keeps it at 34% for the close; Monday is a BA day and starts the next one high.
+        Days signed off before 19:00: <strong>0</strong> in a row — Sunday ran to 20:56.
+        Weeks improving toward par: <strong>1</strong> — 0.2 points off, against 12.6 last week.
+        This week: 69 → 45 → 36 → 42 → 36 → 34 → 30. Next week opens Monday with a BA day, so it will start high and come down.
       </p>
     </div>
   </div>
 </section>
 
 <footer>
-  Measured from the export and audio folders on <span class="mono">/Volumes/mickw/9 SEPTEMBER</span> and <span class="mono">10 OCTOBER</span>, which were mounted and read live (Saturday: 0 audio, 1 PG export at 10:39).
-  Also from Slack (Mick sent 6 messages Saturday plus 1 late Friday, and 2 automated Review Status posts not counted), Google Calendar (no events Saturday), and ClickUp workspace 9014714949 (re-pulled live Sat 21:15 through the API, subtasks included).
-  Also from Downloads and Final Cut library timestamps, the Mac's activity log, and the repo's git log (no commits Friday night or Saturday). There is no time tracking, so hours are estimated from first and last activity each day, ±1h.
-  Saturday: 07:39–10:52 counted as 2.5h PG (the Takeout download is not counted). Friday's 21:52 message is too small to change Friday's 6.5h.
-  Brixton's and Morgan's commits count as reading, not Mick's time. Scheduled Claude Code automations (Review Status watcher, robot recuts, uploaders) don't count as Mick working.
+  Measured from the export and audio folders on <span class="mono">/Volumes/mickw/9 SEPTEMBER</span> and <span class="mono">10 OCTOBER</span>, which were mounted and read live (Sunday: 0 audio, 0 exports; two Darren Clarke clips saved 12:08–12:09).
+  Also from Slack (Mick sent 3 messages Sunday, plus 4 automated Review Status posts not counted), Google Calendar (no meetings Sunday; two blocks created for Tuesday), and ClickUp workspace 9014714949 (re-pulled live Sun 21:10 through the API, subtasks included).
+  Also from Downloads timestamps, Mick's own typed prompts in Claude Code sessions (about 35 on Sunday, 11:26–16:13 and 20:52–20:56), and the repo's git log (no commits by Mick this week). The Mac's wake log and Chrome history returned nothing this run, so they were not used.
+  There is no time tracking, so hours are estimated from first and last activity each day, ±1h. Sunday: counted as 6.0h PG; waiting time on Claude is inside that figure. Monday to Saturday are carried unchanged from last night.
+  Brixton's and Morgan's commits count as reading, not Mick's time. Scheduled Claude Code automations (Review Status watcher, robot recuts, uploaders, footage downloads) don't count as Mick working.
   Target split is 30% BA / 70% PG, set by Brixton on 31 Aug 2026 and agreed the same day. Balance Score = 100 − |BA% − 30| × 2.5.
   Private to Mick. Nothing here is posted anywhere.
 </footer>
