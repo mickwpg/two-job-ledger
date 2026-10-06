@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=IBM+Plex+Mono&family=IBM+Plex+Sans&display=swap"></head><body>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"></head><body style="margin:0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=IBM+Plex+Mono&family=IBM+Plex+Sans&display=swap">
 <title>The Two-Job Ledger</title>
 <style>
 /* Layout: a ledger sheet. Masthead, headline split, week trend, day timeline, then the books (overdue, wins, concerns). */
@@ -26,10 +26,10 @@ section{display:flex;flex-direction:column}
 .split i{display:block}.split .tgt{position:absolute;left:30%;top:-4px;bottom:-4px;width:2px;background:var(--tgt)}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;justify-content:space-between;min-width:0}
 .mute{color:var(--mute)}
-.chip{font:600 10px var(--fm);letter-spacing:.06em;padding:1px 6px;border-radius:3px;border:1px solid currentColor;display:inline-block;white-space:nowrap}
+.chip{font:600 10px var(--fm);letter-spacing:.06em;padding:1px 6px;border-radius:3px;border:1px solid currentColor;display:inline-block;white-space:nowrap;text-transform:uppercase}
 .chip.ba{color:var(--ba)}.chip.pg{color:var(--pg)}
 ul.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-ul.tl li{display:grid;grid-template-columns:48px 62px 1fr;gap:8px;align-items:baseline;min-width:0}
+ul.tl li{display:grid;grid-template-columns:48px 78px 1fr;gap:8px;align-items:baseline;min-width:0}
 ul.tl li>span:last-child{min-width:0;overflow-wrap:anywhere}
 time{font-size:12px;color:var(--mute)}
 details{border:1px solid var(--line);border-radius:6px;background:var(--panel)}
@@ -50,61 +50,54 @@ ul.plain{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
 </style>
 <div class="wrap">
 <header>
-<div class="stamp">Rebuilt Mon 5 Oct 2026, 21:20 BST</div>
+<div class="stamp">Rebuilt Tue 6 Oct 2026, 21:25 BST</div>
 <h1>The Two-Job Ledger</h1>
-<div class="mute">Mick Warwick, PG against BA. Week of 5 Oct, Monday only so far. Target 30% BA / 70% PG (set by Brixton 31 Aug).</div>
+<div class="mute">Mick Warwick, PG against BA. Week of 5 Oct, Monday and Tuesday so far. Target 30% BA / 70% PG (set by Brixton 31 Aug).</div>
 <div class="key"><span><a class="task" href="https://app.clickup.com/9014714949/v/li/901413512686">underline = ClickUp task</a></span><span><a class="meet" href="https://calendar.google.com/">dashed = calendar meeting</a></span><span><a class="slack" href="https://performance-golf.slack.com/">dotted = Slack message</a></span></div>
 </header>
-
 <section class="head">
 <div class="panel">
-<div class="row"><span class="mono mute">TODAY'S SPLIT, ~9.5h</span><span class="mono mute">target 30 / 70</span></div>
-<div class="row"><div><span class="big ba">74%</span> <span class="mono">BA · 7.0h</span></div><div><span class="big pg">26%</span> <span class="mono">PG · 2.5h</span></div></div>
-<div class="split" role="img" aria-label="74 percent BA, 26 percent PG, target line at 30 percent BA"><i style="width:73.7%;background:var(--ba)"></i><i style="width:26.3%;background:var(--pg)"></i><span class="tgt"></span></div>
-<small class="mute">Black line = 30% BA target. ±1h estimate from first and last activity.</small>
+<div class="row"><span class="mono mute">WEEK TO DATE, ~17h</span><span class="mono mute">target 30 / 70</span></div>
+<div class="row"><div><span class="big ba">50%</span> <span class="mono">BA · 8.5h</span></div><div><span class="big pg">50%</span> <span class="mono">PG · 8.5h</span></div></div>
+<div class="split" role="img" aria-label="50 percent BA, 50 percent PG, target line at 30 percent BA"><i style="width:50%;background:var(--ba)"></i><i style="width:50%;background:var(--pg)"></i><span class="tgt"></span></div>
+<small class="mute">Black line = 30% BA target. ±1h per day estimate from first and last activity. Tuesday alone: 20% BA, 80% PG.</small>
 </div>
 <div class="panel">
-<div class="row"><span class="mono mute">VS LAST WEEK (30% BA, 47h)</span></div>
-<div class="row"><div><span class="big" style="color:var(--bad)">▲44</span> <span class="mono">pts more BA</span></div></div>
-<p style="margin:8px 0 0">Monday is the ring-fenced BA day again, same shape as 28 Sep (BA 6.75h, PG 3.0h). The week will not be judged until Friday.</p>
+<div class="row"><span class="mono mute">VS YESTERDAY AND LAST WEEK</span></div>
+<div class="row"><div><span class="big" style="color:var(--ok)">▼24</span> <span class="mono">pts BA since Mon (74 to 50)</span></div></div>
+<p style="margin:8px 0 0">Monday closed 74% BA, Tuesday pulled the week to 50%. Last week finished at 30% (14h BA, 33h PG, 47h), so this week is 20 points above target with three days to go. Wed to Fri need to be roughly 85% PG to land near 30%.</p>
 </div>
 </section>
-
-<section>
-<h2>Weekly trend</h2>
-<div class="panel scroll">
-<svg viewBox="0 0 640 230" width="100%" style="min-width:520px" role="img" aria-label="BA share of hours per week with 30 percent target line">
-<g font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--mute)">
-<text x="0" y="14">100%</text><text x="0" y="114">50%</text><text x="0" y="194">0</text></g>
-<line x1="40" x2="640" y1="190" y2="190" stroke="var(--line)"/>
-<line x1="40" x2="640" y1="110" y2="110" stroke="var(--line)" stroke-dasharray="2 4"/>
-<line x1="40" x2="640" y1="130" y2="130" stroke="var(--tgt)" stroke-width="1.5"/><text x="640" y="125" text-anchor="end" font-size="10" fill="var(--tgt)" font-family="IBM Plex Mono,monospace">30% BA target</text>
-<rect x="52" y="69.4" width="40" height="120.6" fill="var(--ba)"/><rect x="52" y="10" width="40" height="59.4" fill="var(--pg)"/><text x="72" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">19 Aug</text><text x="72" y="81.4" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">67%</text><rect x="116" y="60.4" width="40" height="129.6" fill="var(--ba)"/><rect x="116" y="10" width="40" height="50.4" fill="var(--pg)"/><text x="136" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">24 Aug</text><text x="136" y="72.4" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">72%</text><rect x="180" y="78.4" width="40" height="111.6" fill="var(--ba)"/><rect x="180" y="10" width="40" height="68.4" fill="var(--pg)"/><text x="200" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">28 Aug</text><text x="200" y="90.4" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">62%</text><rect x="244" y="92.8" width="40" height="97.2" fill="var(--ba)"/><rect x="244" y="10" width="40" height="82.8" fill="var(--pg)"/><text x="264" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">2 Sep</text><text x="264" y="104.8" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">54%</text><rect x="308" y="107.2" width="40" height="82.8" fill="var(--ba)"/><rect x="308" y="10" width="40" height="97.2" fill="var(--pg)"/><text x="328" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">10 Sep</text><text x="328" y="119.2" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">46%</text><rect x="372" y="137.8" width="40" height="52.2" fill="var(--ba)"/><rect x="372" y="10" width="40" height="127.8" fill="var(--pg)"/><text x="392" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">20 Sep</text><text x="392" y="149.8" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">29%</text><rect x="436" y="159.4" width="40" height="30.6" fill="var(--ba)"/><rect x="436" y="10" width="40" height="149.4" fill="var(--pg)"/><text x="456" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">27 Sep</text><text x="456" y="171.4" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">17%</text><rect x="500" y="136.0" width="40" height="54.0" fill="var(--ba)"/><rect x="500" y="10" width="40" height="126.0" fill="var(--pg)"/><text x="520" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">4 Oct</text><text x="520" y="148.0" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">30%</text><rect x="564" y="56.8" width="40" height="133.2" fill="var(--ba)"/><rect x="564" y="10" width="40" height="46.8" fill="var(--pg)"/><text x="584" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">5 Oct*</text><text x="584" y="68.8" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">74%</text></svg>
-<small class="mute">Orange = BA, blue = PG. Bars are BA share of hours. *Week to date, Monday only.</small>
-</div>
-</section>
-
-<section>
-<h2>Day by day</h2>
-<details open><summary><strong>Mon 5 Oct</strong><span class="dbar"><i style="width:73.7%;background:var(--ba)"></i><i style="width:26.3%;background:var(--pg)"></i></span><span class="mono">BA 7.0h · PG 2.5h · 09:43–19:33</span></summary>
+<section><h2>Weekly trend</h2><div class="panel scroll"><svg viewBox="0 0 628 230" width="100%" style="min-width:548px" role="img" aria-label="BA share of hours per week with 30 percent target line">
+<g font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--mute)"><text x="0" y="14">100%</text><text x="0" y="114">50%</text><text x="0" y="194">0</text></g>
+<line x1="40" x2="628" y1="190" y2="190" stroke="var(--line)"/><line x1="40" x2="628" y1="110" y2="110" stroke="var(--line)" stroke-dasharray="2 4"/>
+<line x1="40" x2="628" y1="136.0" y2="136.0" stroke="var(--tgt)" stroke-width="1.5"/><text x="628" y="131.0" text-anchor="end" font-size="10" fill="var(--tgt)" font-family="IBM Plex Mono,monospace">30% BA target</text>
+<rect x="52" y="69.4" width="40" height="120.6" fill="var(--ba)"/><rect x="52" y="10" width="40" height="59.4" fill="var(--pg)"/><text x="72" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">19 Aug</text><text x="72" y="81.4" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">67%</text><rect x="116" y="60.4" width="40" height="129.6" fill="var(--ba)"/><rect x="116" y="10" width="40" height="50.4" fill="var(--pg)"/><text x="136" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">24 Aug</text><text x="136" y="72.4" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">72%</text><rect x="180" y="78.4" width="40" height="111.6" fill="var(--ba)"/><rect x="180" y="10" width="40" height="68.4" fill="var(--pg)"/><text x="200" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">28 Aug</text><text x="200" y="90.4" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">62%</text><rect x="244" y="92.8" width="40" height="97.2" fill="var(--ba)"/><rect x="244" y="10" width="40" height="82.8" fill="var(--pg)"/><text x="264" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">2 Sep</text><text x="264" y="104.8" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">54%</text><rect x="308" y="107.2" width="40" height="82.8" fill="var(--ba)"/><rect x="308" y="10" width="40" height="97.2" fill="var(--pg)"/><text x="328" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">10 Sep</text><text x="328" y="119.2" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">46%</text><rect x="372" y="137.8" width="40" height="52.2" fill="var(--ba)"/><rect x="372" y="10" width="40" height="127.8" fill="var(--pg)"/><text x="392" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">20 Sep</text><text x="392" y="149.8" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">29%</text><rect x="436" y="159.4" width="40" height="30.6" fill="var(--ba)"/><rect x="436" y="10" width="40" height="149.4" fill="var(--pg)"/><text x="456" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">27 Sep</text><text x="456" y="171.4" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">17%</text><rect x="500" y="136.0" width="40" height="54.0" fill="var(--ba)"/><rect x="500" y="10" width="40" height="126.0" fill="var(--pg)"/><text x="520" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">4 Oct</text><text x="520" y="148.0" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">30%</text><rect x="564" y="100.0" width="40" height="90.0" fill="var(--ba)"/><rect x="564" y="10" width="40" height="90.0" fill="var(--pg)"/><text x="584" y="204" text-anchor="middle" font-size="9" fill="var(--mute)" font-family="IBM Plex Mono,monospace">6 Oct*</text><text x="584" y="112.0" text-anchor="middle" font-size="10" fill="#fff" font-family="IBM Plex Mono,monospace">50%</text></svg><small class="mute">Orange = BA, blue = PG. Bars are BA share of hours. *Week to date, Mon and Tue.</small></div></section>
+<section><h2>Day by day</h2>
+<details open><summary><strong>Tue 6 Oct</strong><span class="dbar"><i style="width:20%;background:var(--ba)"></i><i style="width:80%;background:var(--pg)"></i></span><span class="mono">BA 1.5h · PG 6.0h · 09:32–21:11</span></summary>
+<div class="in"><p style="margin:0">Eight exports, six of them PG. The week flipped to PG after Monday's BA day, which is the plan. Zero audio sessions after 09:32.</p>
+<ul class="tl"><li><time>09:32</time><span class="chip ba">AUDIO</span><span>Look at the top players, Joe Mayo, +CTA voiceover</span></li><li><time>09:40</time><span class="chip ba">EXPORT</span><span><a class="task" href="https://app.clickup.com/t/86bcdmr5d">BA LOOK AT THE TOP PLAYERS: JOE MAYO +CTA</a>, card now approved to publish</span></li><li><time>10:00</time><span class="chip pg">MEETING</span><span><a class="meet" href="https://www.google.com/calendar/event?eid=OGQ0NWliMHVyY242a3RxNzJ2OGNmZmU2c2cgbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ&amp;ctz=Europe/London">Trial Feed run-through: approve / kill / notes</a> (blocked 10:00 to 11:30)</span></li><li><time>12:13</time><span class="chip pg">FOOTAGE</span><span>Downloaded "Stuck Joints explainer segment" (26 MB)</span></li><li><time>12:18</time><span class="chip pg">EXPORT</span><span><a class="task" href="https://app.clickup.com/t/86bcdn79y">PG 1017 Tiger had 9 degrees</a>, <a class="task" href="https://app.clickup.com/t/86bcdn7a3">PG 1018 The comeback, 14th club</a>, <a class="task" href="https://app.clickup.com/t/86bcdn7ac">PG 1019 Golf coaches do not know how the body moves</a>, <a class="task" href="https://app.clickup.com/t/86bcdn7kd">PG 1022 Low back pain, number one reason people quit</a></span></li><li><time>12:19</time><span class="chip ba">EXPORT</span><span><a class="task" href="https://app.clickup.com/t/86bcdn79j">BA 1 Club Match 3 fix</a>, card now approved to publish</span></li><li><time>14:00</time><span class="chip pg">MEETING</span><span><a class="meet" href="https://www.google.com/calendar/event?eid=Z2FtaWwyNTBhcm5wMGdyOWhrc3AyNHNsNm8gbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ&amp;ctz=Europe/London">Record CTA voice lines</a> (blocked 14:00 to 14:45). The CTA bank folder still holds only its README and TO-RECORD note, so no recordings landed.</span></li><li><time>16:00</time><span class="chip pg">MEETING</span><span><a class="meet" href="https://www.google.com/calendar/event?eid=NzFxZjZiNzIzcGg2YmQwNDZjM3U1dmdvNGRfMjAyNjEwMDZUMTUwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Organic Team Weekly Sync</a> with Keffer, Shawne, Gabriel, JV. At 16:57 Mick asked Keffer if he had missed a meeting, so attendance is unconfirmed and not counted.</span></li><li><time>19:10</time><span class="chip pg">FOOTAGE</span><span>Downloaded the PG logo suite zip</span></li><li><time>19:33</time><span class="chip pg">SLACK</span><span><a class="slack" href="https://performance-golf.slack.com/archives/C0BMV8TM5QW/p1791311604598289">Question to Shawne and Keffer</a> about Brixton's voicenote ideas, then <a class="slack" href="https://performance-golf.slack.com/archives/C0BMV8TM5QW/p1791311668491549">a Joe Mayo clinic content plan</a> (film every clinic, tip from Joe, hole out from 40 yards)</span></li><li><time>19:47</time><span class="chip pg">EXPORT</span><span><a class="task" href="https://app.clickup.com/t/86bcdz7ku">PG 17 Q Frankie: four putts, gimme or not</a> and <a class="task" href="https://app.clickup.com/t/86bcdz7m2">PG 25 Q Trent: four putts, gimme or not</a> (19:48)</span></li><li><time>21:11</time><span class="chip pg">SESSIONS</span><span>Recut handoff, Trial Feed template sync and auto-cut sessions touched until 21:11. Last Slack message 20:22.</span></li></ul>
+<div class="tally">TALLY: 8 exports (6 PG, 2 BA) · 1 audio file · 3 calendar blocks (2 held as blocks, 1 unconfirmed) · 3 Slack moves that are Mick's own work · span 11h40 with a long gap 12:20 to 19:00 · last activity 21:11, after the 19:00 sign-off line</div></div></details>
+<div style="height:12px"></div>
+<details><summary><strong>Mon 5 Oct</strong><span class="dbar"><i style="width:73.7%;background:var(--ba)"></i><i style="width:26.3%;background:var(--pg)"></i></span><span class="mono">BA 7.0h · PG 2.5h · 09:43–19:33</span></summary>
 <div class="in">
 <p style="margin:0">Eight exports, all BA, 12:19 to 18:36. Nine audio files in. Not a dry day.</p>
 <ul class="tl">
 <li><time>09:43</time><span class="chip pg">PG</span><span><a class="slack" href="https://performance-golf.slack.com/archives/C0BMV8TM5QW/p1791189829463439">TikTok link</a> sent to Shawne and Keffer</span></li>
-<li><time>11:00</time><span class="chip ba">BA</span><span><a class="meet" href="https://www.google.com/calendar/event?eid=XzYwcjNpZ3BsOGdwa2NiYTI4b3I0NmI5azg1MjM2YjlwNmwxamdiOXA2aDMzMmQ5ZzY5Mms2Z3EyNmNfMjAyNjEwMDVUMTAwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&ctz=Europe/London">BA Content Sync</a> with Louis (to 12:00)</span></li>
+<li><time>11:00</time><span class="chip ba">BA</span><span><a class="meet" href="https://www.google.com/calendar/event?eid=XzYwcjNpZ3BsOGdwa2NiYTI4b3I0NmI5azg1MjM2YjlwNmwxamdiOXA2aDMzMmQ5ZzY5Mms2Z3EyNmNfMjAyNjEwMDVUMTAwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">BA Content Sync</a> with Louis (to 12:00)</span></li>
 <li><time>12:01</time><span class="chip ba">BA</span><span><a class="slack" href="https://performance-golf.slack.com/archives/C0BUU6WD909/p1791198087779219">Meeting notes posted</a> in #brixtons-social: 9 new videos promised by EOD</span></li>
 <li><time>12:02</time><span class="chip ba">AUDIO</span><span>1 Club Match 3 and 1 Club Match 4 voiceovers</span></li>
 <li><time>12:19</time><span class="chip ba">EXPORT</span><span><a class="task" href="https://app.clickup.com/t/86bcd6w02">BA 1 Club Match 3</a></span></li>
 <li><time>13:14</time><span class="chip ba">AUDIO</span><span>Art Of Visualization</span></li>
 <li><time>13:26</time><span class="chip ba">EXPORT</span><span><a class="task" href="https://app.clickup.com/t/86bc7an37">BA Art Of Visualization</a></span></li>
 <li><time>13:42</time><span class="chip ba">AUDIO</span><span>Goal Hijacked</span></li>
-<li><time>14:00</time><span class="chip pg">PG</span><span><a class="meet" href="https://www.google.com/calendar/event?eid=NjVrcWd1cWdwcjV1aGxtZ2VwZ200OGcwN2ZfMjAyNjEwMDVUMTMwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&ctz=Europe/London">Social Alignment Meeting</a> declined</span></li>
+<li><time>14:00</time><span class="chip pg">PG</span><span><a class="meet" href="https://www.google.com/calendar/event?eid=NjVrcWd1cWdwcjV1aGxtZ2VwZ200OGcwN2ZfMjAyNjEwMDVUMTMwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t&amp;ctz=Europe/London">Social Alignment Meeting</a> declined</span></li>
 <li><time>14:02</time><span class="chip ba">EXPORT</span><span><a class="task" href="https://app.clickup.com/t/86bc7av2u">BA Goal Hijacked</a></span></li>
-<li><time>14:20</time><span class="chip pg">PG</span><span><a class="slack" href="https://performance-golf.slack.com/archives/C09KDEESRN0/p1791206429257739?thread_ts=1790902354.653369&cid=C09KDEESRN0">Reply in #product-swingsmoothpro-launch</a></span></li>
+<li><time>14:20</time><span class="chip pg">PG</span><span><a class="slack" href="https://performance-golf.slack.com/archives/C09KDEESRN0/p1791206429257739?thread_ts=1790902354.653369&amp;cid=C09KDEESRN0">Reply in #product-swingsmoothpro-launch</a></span></li>
 <li><time>14:37</time><span class="chip ba">AUDIO</span><span>5 Year Old Realization</span></li>
 <li><time>14:46</time><span class="chip ba">EXPORT</span><span><a class="task" href="https://app.clickup.com/t/86bc7aux7">BA 5-Year-Old Realization</a></span></li>
 <li><time>14:52</time><span class="chip ba">AUDIO</span><span>1 Club Match 4, second voiceover</span></li>
-<li><time>14:55</time><span class="chip pg">PG</span><span><a class="slack" href="https://performance-golf.slack.com/archives/CNC21B06R/p1791208518933839?thread_ts=1791208518.933839&cid=CNC21B06R">RS1 Champions Tour shout-out</a> to #general, 4 replies</span></li>
+<li><time>14:55</time><span class="chip pg">PG</span><span><a class="slack" href="https://performance-golf.slack.com/archives/CNC21B06R/p1791208518933839?thread_ts=1791208518.933839&amp;cid=CNC21B06R">RS1 Champions Tour shout-out</a> to #general, 4 replies</span></li>
 <li><time>15:00</time><span class="chip ba">EXPORT</span><span><a class="task" href="https://app.clickup.com/t/86bcd6w02">BA 1 Club Match 4</a></span></li>
 <li><time>15:36</time><span class="chip ba">AUDIO</span><span>20 mins per week, Joe Mayo</span></li>
 <li><time>15:50</time><span class="chip ba">EXPORT</span><span><a class="task" href="https://app.clickup.com/t/86bbw7qr8">BA 20mins PER WEEK: JOE MAYO</a></span></li>
@@ -118,79 +111,43 @@ ul.plain{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
 <div class="tally">TALLY: 8 exports (7 pieces, 1 Club Match 4 twice) · 9 audio files · 2 meetings (1 attended, 1 declined) · 6 Slack moves · span 9h50 · last activity 19:33, after the 19:00 sign-off line</div>
 </div>
 </details>
-<p class="mute" style="margin-top:10px">Tue to Fri appear here as the week fills in. Git: no commits I could verify as today's work, so nothing is counted. Background sessions (YouTube Shorts, auto-cut, Iconik drain) are automations, not Mick's hours.</p>
-</section>
 
-<section>
-<h2>Past due right now</h2>
-<p class="mute" style="margin-top:0">Worst first. 26 PG trial reels in Social Content sit past their due date waiting for a review call; the 11 oldest are shown. Open tasks assigned to Mick: 110 (107 after removing the 2 pg1 trial tasks and "BA | Ongoing Ideas").</p>
-<div class="panel scroll"><table><thead><tr><th>Task</th><th>Lane</th><th>Status</th><th class="num">Days late</th></tr></thead><tbody>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bbjp1v1">World's best blind golfer</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="num">38</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bbqzj8t">Brixton looking at phone intros</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="num">27</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bbjwedx">Hollis Stacy Long Recut + CTA</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="num">16</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bbvzawz">Blind Golfer V2</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="num">9</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bbbg1e9">Organic | Social Brief</a></td><td><span class="chip pg">PG</span></td><td>open</td><td class="num">5</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bbya8ug">21 YEARS A SEAL, NOW A 9 HOLE MATCH</a></td><td><span class="chip pg">PG</span></td><td>the grid</td><td class="num">23</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc06bd2">21 YEARS A SEAL, v2</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">20</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc0f3wu">WE MADE IT TO PORTUGAL</a></td><td><span class="chip pg">PG</span></td><td>the grid</td><td class="num">19</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc06bh2">WHAT ACTUALLY BREAKS PEOPLE AT BUD-S, v2</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">19</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc0f3xx">DAY 1: PROFESSIONAL ATHLETE FOR TWO DAYS</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">18</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc26n0b">RULE NUMBER ONE IN GOLF</a></td><td><span class="chip pg">PG</span></td><td>the grid</td><td class="num">17</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc0umua">SF2 DRIVER 1</a></td><td><span class="chip pg">PG</span></td><td>the grid</td><td class="num">17</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc0vmx0">THE357 3 DIFFERENT LIES</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">16</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc26zu9">THE MOST HUMBLING GAME</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">15</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc0y02j">PLAYING FREE</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">15</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc27072">BEING IN THE SEAL TEAMS IS WAY HARDER THAN BUD-S</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">8</td></tr>
-<tr><td><a class="task" href="https://app.clickup.com/t/86bc41m8r">100MFounderPodcast_V1_Sold4MOnLaunchDay</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="num">2</td></tr>
-</tbody></table></div>
-<p style="margin-bottom:0"><strong>Falls due next:</strong> <a class="task" href="https://app.clickup.com/t/86bc0y04f">YOU MEASURE HOW FAR YOU HAVE TO GO</a> and <a class="task" href="https://app.clickup.com/t/86bc0y03x">NOBODY EVER ASKS ME ANYTHING</a> (due today, trialed), <a class="task" href="https://app.clickup.com/t/86bc7autk">HOUSETALK_TheFlops</a> (due today, approved), then <a class="task" href="https://app.clickup.com/t/86bc7auqj">HOUSETALK_DelusionalThinking</a> and <a class="task" href="https://app.clickup.com/t/86bc36x7m">can i make birdie with one club (4 iron)</a> on 7 Oct.</p>
+<p class="mute" style="margin-top:10px">Wed to Fri appear here as the week fills in. Git: no commits today. Background sessions (YouTube Shorts, auto-cut, Iconik drain, IG Trial Links) are automations, not Mick's hours. The 07:16, 11:02 and 14:02 Review Status messages are bot posts and are not counted.</p></section>
+<section><h2>Past due right now</h2>
+<p class="mute" style="margin-top:0">Worst first. 30 PG tasks and 4 BA tasks assigned to Mick are past due (34), plus the 3 unassigned BA cards below. The 20 oldest are shown. Open tasks assigned to Mick: 152 (149 after removing the 2 pg1 trial tasks and "BA | Ongoing Ideas"). Up from 110 yesterday because about 40 Recut (Auto) "post me" cards landed on Mick overnight.</p>
+<div class="panel scroll"><table><thead><tr><th>Task</th><th>Lane</th><th>Status</th><th class="num">Days late</th></tr></thead><tbody><tr><td><a class="task" href="https://app.clickup.com/t/86bbjp1v1">World's best blind golfer</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="num">39</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bbqzj8t">Brixton looking at phone intros</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="num">28</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bbya8ug">21 YEARS A SEAL, NOW A 9 HOLE MATCH</a></td><td><span class="chip pg">PG</span></td><td>the grid</td><td class="num">24</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc06bd2">21 YEARS A SEAL, v2</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">21</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc0f3wu">WE MADE IT TO PORTUGAL</a></td><td><span class="chip pg">PG</span></td><td>the grid</td><td class="num">20</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc06bh2">WHAT ACTUALLY BREAKS PEOPLE AT BUD-S, v2</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">20</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc0f3xx">DAY 1: PROFESSIONAL ATHLETE FOR TWO DAYS</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">19</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc0f3up">NOBODY'S MAD THEIR PARENTS GOT THEM INTO GOLF, v2</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">19</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc26n0b">RULE NUMBER ONE IN GOLF</a></td><td><span class="chip pg">PG</span></td><td>the grid</td><td class="num">18</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc0umua">SF2 DRIVER 1</a></td><td><span class="chip pg">PG</span></td><td>the grid</td><td class="num">18</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc0vmx0">THE357 3 DIFFERENT LIES</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">17</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bbjwedx">Hollis Stacy Long Recut + CTA</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="num">17</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc26zu9">THE MOST HUMBLING GAME</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">16</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc0y02j">PLAYING FREE</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">16</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bbvzawz">Blind Golfer V2</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="num">10</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc27072">BEING IN THE SEAL TEAMS IS WAY HARDER THAN BUD-S</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">9</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc26zu5">BRIXTON SCANS THE SEAL'S SWING</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">8</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc0y03a">BRIXTON TRIES ONE-ARMED AND TOPS IT</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">8</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc99x8x">CHICAGO TRAVEL VLOG</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">7</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc9804k">WHAT DO YOU DO?</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">7</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bbbg1e9">Organic | Social Brief</a></td><td><span class="chip pg">PG</span></td><td>open</td><td class="num">6</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc9bxap">HANK BOTH WAYS</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">6</td></tr><tr><td><a class="task" href="https://app.clickup.com/t/86bc98044">ROUND PART 1</a></td><td><span class="chip pg">PG</span></td><td>trialed</td><td class="num">6</td></tr></tbody></table></div>
+<p style="margin-bottom:0"><strong>Due today and still open:</strong> <a class="task" href="https://app.clickup.com/t/86bccrztc">THE MOST HUMBLING GAME recut</a>, <a class="task" href="https://app.clickup.com/t/86bc0y02b">I DIDN'T REALISE IT, BECAUSE I WAS WINNING</a> and <a class="task" href="https://app.clickup.com/t/86bbu64md">MEETING TIGER</a> (all "post me"). <strong>Falls due 7 Oct:</strong> <a class="task" href="https://app.clickup.com/t/86bcct08j">MEETING TIGER recut</a>, <a class="task" href="https://app.clickup.com/t/86bcct015">NOBODY IS EVER MAD recut</a>, <a class="task" href="https://app.clickup.com/t/86bb7gjfp">RANGE TALK</a>, all "post me". Yesterday's due-today items (YOU MEASURE and NOBODY EVER ASKS) are now in the table.</p>
 </section>
-
-<section>
-<h2>BA Social Calendar queues</h2>
-<div class="panel scroll"><table><thead><tr><th>Status</th><th class="num">Tasks</th><th>Last week</th></tr></thead><tbody>
-<tr><td>needs to be edited</td><td class="num">24</td><td>26</td></tr>
-<tr><td>approved to publish</td><td class="num">70</td><td>57</td></tr>
-<tr><td>in progress</td><td class="num">20</td><td>n/a</td></tr>
-<tr><td>blocked</td><td class="num">44</td><td>43</td></tr>
-<tr><td>future content ideas</td><td class="num">10</td><td>n/a</td></tr>
-</tbody></table></div>
-<small class="mute">169 open tasks in the list. Counts are from the live list at 21:15. Publish queue grew 13 in a day: finishing is outpacing publishing.</small>
-</section>
-
+<section><h2>BA Social Calendar queues</h2>
+<div class="panel scroll"><table><thead><tr><th>Status</th><th class="num">Tasks</th><th class="num">Yesterday</th></tr></thead><tbody>
+<tr><td>needs to be edited</td><td class="num">32</td><td class="num">24</td></tr>
+<tr><td>approved to publish</td><td class="num">74</td><td class="num">70</td></tr>
+<tr><td>in progress</td><td class="num">18</td><td class="num">20</td></tr>
+<tr><td>in review</td><td class="num">5</td><td class="num">n/a</td></tr>
+<tr><td>blocked</td><td class="num">43</td><td class="num">44</td></tr>
+<tr><td>future content ideas</td><td class="num">10</td><td class="num">10</td></tr></tbody></table></div>
+<small class="mute">182 open tasks in the list, counted from the live list at 21:15. The edit queue grew by 8 and the publish queue by 4. Louis owns many of the approved cards, so the publish queue is not all Mick's.</small></section>
 <section class="cols">
 <div><h2>This week's wins</h2><ul class="plain">
-<li>8 exports in one afternoon, 12:19 to 18:36, all BA.</li>
-<li>Moved to approved to publish: <a class="task" href="https://app.clickup.com/t/86bc7av2u">goal hijacked</a>, <a class="task" href="https://app.clickup.com/t/86bc7aux7">5 year old realization</a>, <a class="task" href="https://app.clickup.com/t/86bcd6w02">1 Club Match 4</a>, <a class="task" href="https://app.clickup.com/t/86bcc52h2">1 club match (hole 16)</a>.</li>
-<li>BA Content Sync held 11:00; schedule set for the week and notes posted by 12:01.</li>
-<li><a class="slack" href="https://performance-golf.slack.com/archives/CNC21B06R/p1791208518933839?thread_ts=1791208518.933839&cid=CNC21B06R">RS1 Champions Tour news</a> shared with the whole company at 14:55.</li>
-<li>Told John the PG trial feed starts at 3 reels a day, 19:26.</li></ul></div>
+<li>Tue: 6 PG exports. Four back-pain pieces landed together at 12:18 and Q Frankie plus Q Trent at 19:47.</li>
+<li>Tue: <a class="task" href="https://app.clickup.com/t/86bcdmr5d">Look At The Top Players +CTA</a> and <a class="task" href="https://app.clickup.com/t/86bcdn79j">1 Club Match 3 fix</a> exported and approved to publish.</li>
+<li>Mon: 8 BA exports, 12:19 to 18:36, and the BA Content Sync held at 11:00.</li>
+<li>Tue 19:34: Joe Mayo clinic content plan put to Shawne and Keffer (<a class="slack" href="https://performance-golf.slack.com/archives/C0BMV8TM5QW/p1791311668491549">Slack</a>).</li>
+<li>PG share of hours moved from 26% on Monday to 80% on Tuesday.</li></ul></div>
 <div><h2>Areas of concern</h2><ul class="plain">
-<li>PG got 2.5h against a 70% target. Zero PG exports today.</li>
-<li>Meeting notes promised 9 new videos by end of day (1 Club x2, Tommy x3, Housetalk x4). Shipped: 1 Club Match 3 and 4. <a class="task" href="https://app.clickup.com/t/86bcbaxvg">Tommy Clip 1</a>, <a class="task" href="https://app.clickup.com/t/86bcbayw7">2</a> and <a class="task" href="https://app.clickup.com/t/86bcbb05d">3</a> are still "needs to be edited".</li>
-<li>26 PG trial reels past due; 11 are over a week late.</li>
-<li>Three Joe Mayo tasks still in progress after today's two exports.</li>
-<li>Work ran to 19:33, past the 19:00 sign-off line.</li>
-<li>Approved-to-publish queue is 70 and growing.</li></ul></div>
-</section>
-
-<section>
-<h2>Promises made in Slack</h2>
-<ul class="plain">
-<li>"I'll have some organic stuff coming soon too. Will be sure to tag him." <a class="slack" href="https://performance-golf.slack.com/archives/C09KDEESRN0/p1791206429257739?thread_ts=1790902354.653369&cid=C09KDEESRN0">#product-swingsmoothpro-launch, 14:20</a>. No task exists for it.</li>
-<li>A collab post going out on the PG account on Tuesday, promised to Brixton at <a class="slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1791225197922599">19:33</a>. No task exists for it. (Wording withheld here because this page is public.)</li>
-</ul>
-</section>
-
-<section>
-<h2>Score and streaks</h2>
-<div class="panel">
-<div class="row"><span>Balance Score <strong class="mono">0</strong> / 100</span><span class="mono mute">100 − |74 − 30| × 2.5, floored at 0</span></div>
-<p>Streak signed off before 19:00: <strong class="mono">0 days</strong> (best this month unknown). Weeks improving toward target: <strong class="mono">0</strong>. Overtime meter: <strong class="mono">0 days over 11h</strong> this week.</p>
-<div class="badges"><span class="badge on">Output Day: 8 exports</span><span class="badge on">Ring-fence Kept: BA Monday</span><span class="badge on">Sync Held</span><span class="badge">Early Finish</span><span class="badge">PG Hour: 3h+ of PG</span></div>
-<p class="mute" style="margin-bottom:0">A Monday score of 0 is the plan working as designed. Tuesday to Friday decide the week.</p>
+<li>Monday's meeting notes promised 9 videos by end of day. Still not exported: <a class="task" href="https://app.clickup.com/t/86bcbaxvg">Tommy Clip 1</a>, <a class="task" href="https://app.clickup.com/t/86bcbayw7">2</a>, <a class="task" href="https://app.clickup.com/t/86bcbb05d">3</a> (all "needs to be edited") and the four Housetalk pieces.</li>
+<li>30 tasks past due, 11 of them more than a week late. Up from 26 yesterday as the Sep 30 to Oct 4 trial reels aged out.</li>
+<li>Edit queue 32 (from 24). Tuesday had no BA audio after 09:32.</li>
+<li>The CTA voice-line block (14:00) produced no recordings in the CTA bank folder.</li>
+<li>Organic Team Weekly Sync at 16:00: attendance unconfirmed after a 16:57 "did I miss a meeting?" message.</li>
+<li>Work ran to 21:11, two nights running past the 19:00 sign-off line.</li></ul></div></section>
+<section><h2>Promises made in Slack</h2><ul class="plain">
+<li>Monday's promise to Brixton: a collab post going out on the PG account on Tuesday (<a class="slack" href="https://performance-golf.slack.com/archives/D0BE1AMGSL9/p1791225197922599">Slack</a>). I found no Slack message today confirming it went out. Wording withheld because this page is public.</li>
+<li>Tue 19:34: a plan to film before/after at every Joe Mayo clinic, with Shawne assigned (<a class="slack" href="https://performance-golf.slack.com/archives/C0BMV8TM5QW/p1791311668491549">Slack</a>). No ClickUp task exists for it. Same for the Monday reply in #product-swingsmoothpro-launch (<a class="slack" href="https://performance-golf.slack.com/archives/C09KDEESRN0/p1791206429257739?thread_ts=1790902354.653369&amp;cid=C09KDEESRN0">Slack</a>).</li></ul></section>
+<section><h2>Score and streaks</h2><div class="panel">
+<div class="row"><span>Balance Score <strong class="mono">50</strong> / 100</span><span class="mono mute">100 − |50 − 30| × 2.5</span></div>
+<p>Streak signed off before 19:00: <strong class="mono">0 days</strong>. Weeks improving toward target: <strong class="mono">0</strong> (last week landed on 30%, this week is 20 points away). Overtime meter: <strong class="mono">0 days over 11h</strong> this week.</p>
+<div class="badges"><span class="badge on">Output Day: 8 exports, twice</span><span class="badge on">Pivot Day: PG 80% on Tuesday</span><span class="badge on">Sync Held (Mon)</span><span class="badge">Early Finish</span><span class="badge">Inbox Zero on Promises</span></div>
+<p class="mute" style="margin-bottom:0">Monday scored 0, Tuesday would score 100 − 50×2.5, floored at 0, so the week is climbing. Wed to Fri decide it.</p></div></section>
 </div>
-</section>
-</div>
-
 </body></html>
