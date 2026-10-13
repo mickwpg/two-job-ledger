@@ -2,190 +2,308 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="color-scheme" content="light dark">
 <title>The Two-Job Ledger</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>
-:root{--bg:#EEF1EF;--surf:#F8FAF8;--ink:#13201F;--mut:#5B6A68;--rule:#C9D2CF;--pg:#0B7A75;--pg-soft:#CFE9E6;--ba:#7A3FC2;--ba-soft:#E3D6F4;--warn:#A85A00;--bad:#B3261E;--good:#2E7D4F;--tgt:#13201F;
---display:"Fraunces","Iowan Old Style","Palatino Linotype",Georgia,serif;--body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1413;--surf:#141E1D;--ink:#E4ECEA;--mut:#93A3A0;--rule:#2A3836;--pg:#3FC4BC;--pg-soft:#12403E;--ba:#B99BF0;--ba-soft:#35244F;--warn:#F0A64A;--bad:#FF8A80;--good:#6FD39A;--tgt:#E4ECEA;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0D1413;--surf:#141E1D;--ink:#E4ECEA;--mut:#93A3A0;--rule:#2A3836;--pg:#3FC4BC;--pg-soft:#12403E;--ba:#B99BF0;--ba-soft:#35244F;--warn:#F0A64A;--bad:#FF8A80;--good:#6FD39A;--tgt:#E4ECEA;color-scheme:dark}
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>
+/* Layout: one ledger page. Masthead, headline split, trend, day-by-day, past due, queues, scoreboard. Two lanes only: PG = ink blue, BA = amber. */
+:root{
+  --bg:#eef1f3; --surface:#ffffff; --ink:#16212b; --muted:#566573; --line:#d3dae0;
+  --pg:#24508a; --pg-soft:#dbe6f4; --ba:#c2650a; --ba-soft:#f8e4cc;
+  --good:#1f7a4d; --bad:#b3261e; --target:#16212b;
+  --display:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
+  --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f161c; --surface:#18222b; --ink:#e6ecf1; --muted:#9aa9b6; --line:#2b3945;
+  --pg:#6ea3e6; --pg-soft:#1d3047; --ba:#f0a04b; --ba-soft:#3d2a14;
+  --good:#58c08b; --bad:#ff7b72; --target:#e6ecf1; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f161c; --surface:#18222b; --ink:#e6ecf1; --muted:#9aa9b6; --line:#2b3945;
+  --pg:#6ea3e6; --pg-soft:#1d3047; --ba:#f0a04b; --ba-soft:#3d2a14;
+  --good:#58c08b; --bad:#ff7b72; --target:#e6ecf1; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--body);margin:0;padding-inline:16px;padding-block:20px 56px}
-main{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
-h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0;line-height:1.15}
-h1{font-size:clamp(2rem,6vw,3.2rem);letter-spacing:-.01em}
-h2{font-size:1.45rem;border-bottom:2px solid var(--ink);padding-bottom:6px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-h2 small{font:500 .72rem var(--mono);color:var(--mut);letter-spacing:.06em;text-transform:uppercase}
-p{margin:0}
-a{color:var(--ink);text-decoration-color:var(--mut);text-decoration-thickness:1.5px;text-underline-offset:3px}
-a:hover{color:var(--pg)}a:focus-visible,summary:focus-visible{outline:2px solid var(--pg);outline-offset:2px}
-a.t{text-decoration-style:solid}a.m{text-decoration-style:dotted;text-decoration-thickness:2px}a.q{text-decoration-style:wavy;text-decoration-thickness:1px}
-.mast{display:flex;flex-direction:column;gap:10px;border-top:6px double var(--ink);padding-top:14px}
-.mast .meta{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 .78rem var(--mono);color:var(--mut)}
-.mast .dek{max-width:62ch;color:var(--mut)}
-.key{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.85rem;background:var(--surf);border:1px solid var(--rule);padding:10px 14px}
-.key span{white-space:nowrap}
-.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:start}
-@media(max-width:700px){.hero{grid-template-columns:1fr}}
-.big{display:flex;flex-direction:column;gap:6px}
-.split{display:flex;height:34px;border:1px solid var(--ink);overflow:hidden}
-.split i{display:flex;align-items:center;padding-inline:8px;font:600 .8rem var(--mono);color:#fff;font-style:normal;white-space:nowrap}
-.split .b{background:var(--ba)}.split .p{background:var(--pg)}
-.split i{color:var(--bg)}
-.tgtline{position:relative;height:16px;font:500 .7rem var(--mono);color:var(--mut)}
-.tgtline b{position:absolute;left:30%;top:0;border-left:2px solid var(--tgt);height:12px;padding-left:4px;white-space:nowrap;font-weight:500}
-.nums{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 18px}
-.nums div{border-top:1px solid var(--rule);padding-top:6px}
-.nums .v{font:600 1.7rem/1.1 var(--mono);font-variant-numeric:tabular-nums}
-.nums .l{font:500 .72rem var(--mono);color:var(--mut);letter-spacing:.05em;text-transform:uppercase}
-.nums .d{font:500 .78rem var(--mono);color:var(--mut)}
-.up{color:var(--warn)}.dn{color:var(--good)}
-.ba-t{color:var(--ba)}.pg-t{color:var(--pg)}
-.chart{width:100%;height:auto;display:block}.chart .grid{stroke:var(--rule);stroke-width:1}.chart .tgt{stroke:var(--tgt);stroke-width:1.6;stroke-dasharray:5 4}.chart .tgt2{stroke:var(--bad);stroke-width:1.2;stroke-dasharray:3 3}
-.chart .ba{fill:var(--ba)}.chart .pg{fill:var(--pg)}
-.chart text{fill:var(--ink);font-family:var(--mono)}.chart .ax{font-size:11px;fill:var(--mut)}.chart .ax2{font-size:10px;fill:var(--mut)}.chart .bl{font-size:11px;fill:var(--bg);font-weight:600}.chart .bl2{font-size:11px}.chart .tl{font-size:11px}
-.legend{display:flex;gap:16px;font:500 .78rem var(--mono);color:var(--mut)}.legend i{display:inline-block;width:11px;height:11px;margin-right:5px;vertical-align:-1px}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:26px}@media(max-width:760px){.cols{grid-template-columns:1fr}}
-.cols>*{min-width:0}
-.tw{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:.88rem}
-th{font:500 .7rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--mut);text-align:left;border-bottom:1px solid var(--ink);padding:6px 8px 6px 0}
-td{padding:7px 8px 7px 0;border-bottom:1px solid var(--rule);vertical-align:top}
-td:first-child{min-width:230px}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:24px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+h1{font-size:clamp(2rem,6vw,3.2rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:1.35rem;font-weight:800;letter-spacing:-.01em}
+h3{font-size:1rem;font-weight:600}
+.mono,.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:14px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;min-width:0}
+.sub{color:var(--muted);margin:0;max-width:65ch}
+a{color:var(--ink);text-decoration-color:var(--muted);text-underline-offset:3px;text-decoration-thickness:1.5px}
+a:hover{color:var(--pg)}
+a.t{text-decoration-line:underline;text-decoration-style:solid}
+a.m{text-decoration-line:underline;text-decoration-style:dashed}
+a.q{text-decoration-line:underline;text-decoration-style:dotted;text-decoration-thickness:2px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--pg);outline-offset:2px}
+.mast{display:flex;flex-direction:column;gap:10px;border-bottom:3px solid var(--ink);padding-bottom:16px}
+.stamp{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.85rem;color:var(--muted)}
+.chip{display:inline-block;font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.06em;padding:1px 6px;border-radius:3px;vertical-align:1px}
+.chip.pg{background:var(--pg-soft);color:var(--pg)}
+.chip.ba{background:var(--ba-soft);color:var(--ba)}
+.chip.ok{background:var(--pg-soft);color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px}
+@media(max-width:700px){.hero{grid-template-columns:minmax(0,1fr)}}
+.big{font-family:var(--display);font-weight:800;font-size:clamp(3rem,9vw,4.6rem);line-height:1;letter-spacing:-.03em}
+.split{position:relative;height:34px;display:flex;border-radius:4px;overflow:hidden;margin-top:12px}
+.split>div{display:flex;align-items:center;padding-inline:10px;font-family:var(--mono);font-size:.8rem;color:#fff;white-space:nowrap}
+.split .ba{background:var(--ba)}.split .pg{background:var(--pg)}
+.tick{position:absolute;top:-6px;bottom:-6px;width:0;border-left:2px solid var(--target)}
+.ticklab{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:8px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.stat .v{font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1.1}
+.stat .l{font-size:.78rem;color:var(--muted)}
+.up{color:var(--bad)}.down{color:var(--good)}
+.legend{display:flex;gap:16px;font-size:.8rem;color:var(--muted);flex-wrap:wrap}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px}
+.scroll{overflow-x:auto}
+svg text{font-family:var(--mono);fill:var(--muted);font-size:11px}
+details.day{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+details.day>summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:5.5rem minmax(0,1fr) auto;gap:12px;align-items:center}
+details.day>summary::-webkit-details-marker{display:none}
+details.day>summary::after{content:"+";font-family:var(--mono);color:var(--muted)}
+details.day[open]>summary::after{content:"\2212"}
+@media(max-width:560px){details.day>summary{grid-template-columns:minmax(0,1fr) auto}.dbar{grid-column:1/-1;order:3}}
+.dname{font-family:var(--display);font-weight:800;font-size:1.05rem}
+.dbar{display:flex;height:16px;border-radius:3px;overflow:hidden;background:var(--line)}
+.dbar i{display:block;height:100%}.dbar .ba{background:var(--ba)}.dbar .pg{background:var(--pg)}
+.dh{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-align:right}
+.dbody{padding:4px 16px 16px;display:flex;flex-direction:column;gap:12px}
+.note{margin:0;color:var(--muted);font-size:.9rem;max-width:68ch}
+.flag{border-left:3px solid var(--bad);padding:4px 10px;background:var(--surface);color:var(--ink);font-size:.9rem}
+ol.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+ol.tl li{display:grid;grid-template-columns:3.4rem 2.6rem minmax(0,1fr);gap:10px;padding:7px 0;border-top:1px solid var(--line);align-items:baseline}
+ol.tl li .tm{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+ol.tl li .kind{font-size:.72rem;font-family:var(--mono);color:var(--muted);display:block}
+.tally{display:flex;flex-wrap:wrap;gap:6px 22px;font-family:var(--mono);font-size:.8rem;border-top:2px solid var(--ink);padding-top:10px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--ink);white-space:nowrap}
+td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
 .late{color:var(--bad);font-weight:600}
-.chip{font:600 .68rem var(--mono);letter-spacing:.04em;padding:1px 6px;border:1px solid currentColor;white-space:nowrap}
-.chip.pg{color:var(--pg)}.chip.ba{color:var(--ba)}.chip.st{color:var(--mut);font-weight:500}.chip.dry{color:var(--warn);margin-left:auto}
-.day{border-bottom:1px solid var(--rule)}
-.day summary{cursor:pointer;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;padding:10px 0;list-style:none}
-.day summary::-webkit-details-marker{display:none}
-.day summary::before{content:"\25B8";font-size:.8rem;color:var(--mut)}.day[open] summary::before{content:"\25BE"}
-.dn{font:600 1rem var(--display);min-width:5.5ch}.dh{font:500 .85rem var(--mono)}.ds{font:500 .78rem var(--mono);color:var(--mut)}
-.dnote{color:var(--mut);max-width:70ch;margin:0 0 10px 18px}
-.tl{list-style:none;margin:0 0 6px 18px;padding:0;display:flex;flex-direction:column;border-left:2px solid var(--rule)}
-.ev{display:grid;grid-template-columns:3.4rem 2.6rem 4.8rem 1fr;gap:8px;padding:4px 0 4px 10px;align-items:baseline;font-size:.88rem}
-@media(max-width:560px){.ev{grid-template-columns:3.2rem 2.4rem 1fr}.ev .kind{display:none}}
-.ev .tm{font:500 .8rem var(--mono)}.ev .kind{font:500 .68rem var(--mono);color:var(--mut);text-transform:uppercase;letter-spacing:.05em}
-.ev.out .tx{font-weight:600}.ev.sys .tx{color:var(--mut)}
-.tx{min-width:0;overflow-wrap:anywhere}
-.tally{margin:6px 0 12px 18px;font:500 .8rem var(--mono);color:var(--mut)}
-.simple{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:7px}
-.simple li::marker{color:var(--mut)}
-.win li::marker{color:var(--good)}.con li::marker{color:var(--bad)}
-.gam{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
-.gam div{border:1px solid var(--rule);background:var(--surf);padding:10px 12px}
-.gam .v{font:600 1.6rem/1.1 var(--mono)}.gam .l{font:500 .7rem var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
-.meter{height:10px;background:var(--rule);margin-top:6px;position:relative}.meter i{display:block;height:100%;background:var(--good)}
-.bdgs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.bdg{border:1px solid var(--rule);padding:6px 10px;font-size:.8rem;display:flex;flex-direction:column;min-width:0}
-.bdg b{font:600 .78rem var(--mono);letter-spacing:.03em}.bdg span{color:var(--mut)}
-.bdg.earned{border-color:var(--good)}.bdg.earned b::before{content:"\2713  ";color:var(--good)}
-.bdg.missed{opacity:.7}.bdg.missed b::before{content:"\2013  "}.bdg.flag{border-color:var(--warn)}.bdg.flag b::before{content:"!  ";color:var(--warn)}
-.q2 td:first-child{min-width:0}
-.queue{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px}
-.queue div{border-top:2px solid var(--ink);padding-top:6px}.queue .v{font:600 1.5rem/1.1 var(--mono)}.queue .l{font:500 .7rem var(--mono);color:var(--mut);text-transform:uppercase;letter-spacing:.05em}.queue .d{font:500 .75rem var(--mono);color:var(--mut)}
-.foot{font-size:.8rem;color:var(--mut);border-top:1px solid var(--rule);padding-top:12px;display:flex;flex-direction:column;gap:6px}
-.prom td:first-child{min-width:260px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media(max-width:700px){.cols{grid-template-columns:minmax(0,1fr)}}
+ul.l{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:7px}
+.lane{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media(max-width:560px){.lane{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-family:var(--mono);font-size:.76rem;border:1px solid var(--ink);border-radius:3px;padding:3px 8px}
+.badge.off{border-color:var(--line);color:var(--muted)}
+.meter{display:flex;gap:4px;margin-top:6px}.meter i{width:22px;height:10px;border-radius:2px;background:var(--line)}.meter i.on{background:var(--ba)}
+footer{font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
 </style>
 </head>
 <body>
-<main>
+
+
+
+
+<div class="wrap">
 <header class="mast">
-<div class="meta"><span>PG + BA &middot; Mick Warwick</span><span>Week of Mon 12 Oct 2026 &middot; Monday only, week to date</span><span>Rebuilt Mon 12 Oct 2026, 21:15 BST</span></div>
-<h1>The Two-Job Ledger</h1>
-<p class="dek">Where Mick's hours went between Performance Golf (PG) and Brixton Albert's brand (BA), against the 30% BA / 70% PG split Brixton set on 31 Aug. Hours are estimated from first and last activity, ±1h a day. Exports and audio files on the drive are exact. This week has one day in it, and PG was off for Indigenous Peoples' Day, so read the split as a single day, not a trend.</p>
-<div class="key" aria-label="Link key"><span><a class="t" href="https://app.clickup.com/t/86bcdn7a3">Underline</a> task, opens ClickUp</span><span><a class="m" href="https://www.google.com/calendar/event?eid=N2gwOHZvbjczbGxzamdmY3VvaGQ5cDFobDhfMjAyNjEwMDhUMTIwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t">Dotted</a> meeting, opens Google Calendar</span><span><a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD/p1791536575752239">Wavy</a> quoted message, opens Slack</span></div>
+  <span class="eyebrow">Work utilisation · Mick Warwick · week of 12 Oct 2026</span>
+  <h1>The Two-Job Ledger</h1>
+  <div class="stamp">Rebuilt Tue 13 Oct 2026, 21:30 BST · week to date, Mon 12 to Tue 13 · target 30% BA / 70% PG (Brixton, 31 Aug)</div>
+  <div class="key"><span><a class="t" href="https://app.clickup.com/9014714949/v/li/901413512686">Solid underline</a> = ClickUp task</span><span><a class="m" href="https://www.google.com/calendar/event?eid=XzYwcjNpZ3BsOGdwa2NiYTI4b3I0NmI5azg1MjM2YjlwNmwxamdiOXA2aDMzMmQ5ZzY5Mms2Z3EyNmNfMjAyNjEwMTJUMTAwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t">Dashed</a> = calendar meeting</span><span><a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD/p1791819199569849">Dotted</a> = quoted Slack line</span><span><span class="chip pg">PG</span> Performance Golf</span><span><span class="chip ba">BA</span> Brixton Albert</span></div>
 </header>
 
-<section aria-labelledby="h-split"><h2 id="h-split">The split <small>Monday, week to date</small></h2>
-<div class="hero">
-<div class="big">
-<div class="split" role="img" aria-label="BA 50 percent, PG 50 percent"><i class="b" style="width:50.00%">BA 50.0%</i><i class="p" style="width:50.00%">PG 50.0%</i></div>
-<div class="tgtline"><b>30% target</b></div>
-<p>BA <b class="ba-t">1.5h</b> &middot; PG <b class="pg-t">1.5h</b> &middot; total 3.0h. That is <b>+20.0 points</b> from target, on the BA side. Another ~3h went on a personal project and is counted in neither lane.</p>
-</div>
-<div class="nums">
-<div><div class="l">BA share</div><div class="v">50.0%</div><div class="d"><span class="up">▲ +17.4 pts</span> vs last week (32.6%)</div></div>
-<div><div class="l">Total hours</div><div class="v">3.0</div><div class="d">one day; last week 47.5h</div></div>
-<div><div class="l">BA hours</div><div class="v">1.5</div><div class="d">last week 15.5h</div></div>
-<div><div class="l">Balance score</div><div class="v">50</div><div class="d"><span class="up">▲ worse</span> vs 93 last week</div></div>
-</div></div></section>
-
-<section aria-labelledby="h-trend"><h2 id="h-trend">Week by week <small>BA share of hours</small></h2>
-<svg viewBox="0 0 640 242" role="img" aria-label="Weekly BA share of hours against the 30 percent target" class="chart"><line x1="38" x2="630" y1="204.0" y2="204.0" class="grid"/><text x="32" y="207.0" text-anchor="end" class="ax">0%</text><line x1="38" x2="630" y1="156.5" y2="156.5" class="grid"/><text x="32" y="159.5" text-anchor="end" class="ax">25%</text><line x1="38" x2="630" y1="109.0" y2="109.0" class="grid"/><text x="32" y="112.0" text-anchor="end" class="ax">50%</text><line x1="38" x2="630" y1="61.5" y2="61.5" class="grid"/><text x="32" y="64.5" text-anchor="end" class="ax">75%</text><line x1="38" x2="630" y1="14.0" y2="14.0" class="grid"/><text x="32" y="17.0" text-anchor="end" class="ax">100%</text><rect x="48.7" y="76.8" width="37.9" height="127.2" class="ba"/><rect x="48.7" y="14" width="37.9" height="62.8" class="pg"/><text x="67.6" y="89.8" text-anchor="middle" class="bl">67</text><text x="67.6" y="220" text-anchor="middle" class="ax">19 Aug</text><text x="67.6" y="234" text-anchor="middle" class="ax2">65h</text><rect x="107.9" y="68.0" width="37.9" height="136.0" class="ba"/><rect x="107.9" y="14" width="37.9" height="54.0" class="pg"/><text x="126.8" y="81.0" text-anchor="middle" class="bl">72</text><text x="126.8" y="220" text-anchor="middle" class="ax">24 Aug</text><text x="126.8" y="234" text-anchor="middle" class="ax2">40h</text><rect x="167.1" y="86.1" width="37.9" height="117.9" class="ba"/><rect x="167.1" y="14" width="37.9" height="72.1" class="pg"/><text x="186.0" y="99.1" text-anchor="middle" class="bl">62</text><text x="186.0" y="220" text-anchor="middle" class="ax">28 Aug</text><text x="186.0" y="234" text-anchor="middle" class="ax2">54h</text><rect x="226.3" y="100.5" width="37.9" height="103.5" class="ba"/><rect x="226.3" y="14" width="37.9" height="86.5" class="pg"/><text x="245.2" y="113.5" text-anchor="middle" class="bl">54</text><text x="245.2" y="220" text-anchor="middle" class="ax">2 Sep</text><text x="245.2" y="234" text-anchor="middle" class="ax2">24h</text><rect x="285.5" y="116.6" width="37.9" height="87.4" class="ba"/><rect x="285.5" y="14" width="37.9" height="102.6" class="pg"/><text x="304.4" y="129.6" text-anchor="middle" class="bl">46</text><text x="304.4" y="220" text-anchor="middle" class="ax">10 Sep</text><text x="304.4" y="234" text-anchor="middle" class="ax2">25h</text><rect x="344.7" y="148.5" width="37.9" height="55.5" class="ba"/><rect x="344.7" y="14" width="37.9" height="134.5" class="pg"/><text x="363.6" y="161.5" text-anchor="middle" class="bl">29</text><text x="363.6" y="220" text-anchor="middle" class="ax">20 Sep</text><text x="363.6" y="234" text-anchor="middle" class="ax2">44h</text><rect x="403.9" y="171.0" width="37.9" height="33.0" class="ba"/><rect x="403.9" y="14" width="37.9" height="157.0" class="pg"/><text x="422.8" y="184.0" text-anchor="middle" class="bl">17</text><text x="422.8" y="220" text-anchor="middle" class="ax">27 Sep</text><text x="422.8" y="234" text-anchor="middle" class="ax2">23h</text><rect x="463.1" y="147.4" width="37.9" height="56.6" class="ba"/><rect x="463.1" y="14" width="37.9" height="133.4" class="pg"/><text x="482.0" y="160.4" text-anchor="middle" class="bl">30</text><text x="482.0" y="220" text-anchor="middle" class="ax">4 Oct</text><text x="482.0" y="234" text-anchor="middle" class="ax2">47h</text><rect x="522.3" y="142.0" width="37.9" height="62.0" class="ba"/><rect x="522.3" y="14" width="37.9" height="128.0" class="pg"/><text x="541.2" y="155.0" text-anchor="middle" class="bl">33</text><text x="541.2" y="220" text-anchor="middle" class="ax">11 Oct</text><text x="541.2" y="234" text-anchor="middle" class="ax2">48h</text><rect x="581.5" y="109.0" width="37.9" height="95.0" class="ba"/><rect x="581.5" y="14" width="37.9" height="95.0" class="pg"/><text x="600.4" y="122.0" text-anchor="middle" class="bl">50</text><text x="600.4" y="220" text-anchor="middle" class="ax">12 Oct</text><text x="600.4" y="234" text-anchor="middle" class="ax2">3h</text><line x1="38" x2="630" y1="147.0" y2="147.0" class="tgt"/><text x="630" y="143.0" text-anchor="end" class="tl">30% target</text></svg>
-<div class="legend"><span><i style="background:var(--ba)"></i>BA</span><span><i style="background:var(--pg)"></i>PG</span><span>Number under each bar: total hours. Dashed line: 30% target. The last bar is Monday only.</span></div>
+<section>
+  <div class="hero">
+    <div class="card">
+      <div class="eyebrow">BA share of hours this week</div>
+      <div class="big">59% <span style="font-size:.4em;font-weight:600;color:var(--muted)">BA</span></div>
+      <div class="split" role="img" aria-label="BA 6.5 hours, 59 percent. PG 4.5 hours, 41 percent. Target line at 30 percent BA."><div class="ba" style="width:59.1%">BA 6.5h</div><div class="pg" style="width:40.9%">PG 4.5h</div><span class="tick" style="left:30%"></span></div>
+      <div class="ticklab">▏30% BA target · 11.0h measured across two days, ±1h per day</div>
+      <p class="sub" style="margin-top:12px">Two-day sample. Monday was the PG holiday and Tuesday was Brixton's content day, so this lean is expected and will drift back as PG days land.</p>
+    </div>
+    <div class="card stats">
+      <div class="stat"><div class="v">27<span style="font-size:.6em;color:var(--muted)">/100</span></div><div class="l">Balance score · 100 − |BA% − 30| × 2.5</div></div>
+      <div class="stat"><div class="v up">▲ 29 pts</div><div class="l">BA share vs last week (33% → 59%), away from target</div></div>
+      <div class="stat"><div class="v up">▲ 10 pts</div><div class="l">vs yesterday's published reading (50% → 59%, Monday re-measured below)</div></div>
+      <div class="stat"><div class="v down">▼ 4</div><div class="l">Mick-owned live tasks past due, 12 → 8</div></div>
+      <div class="stat"><div class="v">5</div><div class="l">Exports this week (4 distinct pieces), all BA</div></div>
+      <div class="stat"><div class="v">0</div><div class="l">Days over 11h, of 2</div></div>
+    </div>
+  </div>
 </section>
 
-<section aria-labelledby="h-days"><h2 id="h-days">Day by day <small>tap a day for the timeline</small></h2>
-<svg viewBox="0 0 560 86" role="img" aria-label="Hours today split BA and PG" class="chart"><line x1="60.0" x2="60.0" y1="6" y2="64" class="grid"/><text x="60.0" y="78" text-anchor="middle" class="ax">0h</text><line x1="185.0" x2="185.0" y1="6" y2="64" class="grid"/><text x="185.0" y="78" text-anchor="middle" class="ax">3h</text><line x1="310.0" x2="310.0" y1="6" y2="64" class="grid"/><text x="310.0" y="78" text-anchor="middle" class="ax">6h</text><line x1="435.0" x2="435.0" y1="6" y2="64" class="grid"/><text x="435.0" y="78" text-anchor="middle" class="ax">9h</text><line x1="560.0" x2="560.0" y1="6" y2="64" class="grid"/><text x="560.0" y="78" text-anchor="middle" class="ax">12h</text><line x1="518.3" x2="518.3" y1="6" y2="64" class="tgt2"/><text x="4" y="34" class="ax">Mon 12</text><rect x="60" y="14" width="62.5" height="28" class="ba"/><rect x="122.5" y="14" width="62.5" height="28" class="pg"/><text x="193.0" y="33" class="tl">3.0h</text></svg>
-<div class="legend"><span><i style="background:var(--ba)"></i>BA</span><span><i style="background:var(--pg)"></i>PG</span><span>Red line: 11h overtime mark. Tue to Sun not yet worked.</span></div>
-<div><details class="day" open><summary><span class="dn">Mon 12</span><span class="dh"><b class="ba-t">1.5</b> BA / <b class="pg-t">1.5</b> PG</span><span class="ds">11:00-21:01</span><span class="chip dry">DRY DAY</span></summary>
-<p class="dnote">DRY DAY: zero exports and zero audio on a day Mick called his own. PG was off for Indigenous Peoples' Day. The real work was one BA sync, a manual Instagram DM funnel for the Dr Troy talk, and an evening on a personal project. Tuesday is Brixton content day.</p><ol class="tl"><li class="ev sys"><span class="tm">10:58</span><span class="chip pg">PG</span><span class="kind">board</span><span class="tx">Board DM: review status moved on 2 tasks. <a class="t" href="https://app.clickup.com/t/86bcdn79y">TIGER HAD 9 DEGREES</a> to Winner (Converter), <a class="t" href="https://app.clickup.com/t/86bcec56r">ROUND PART 2 v2</a> to Kill (Reach only). Automated.</span></li><li class="ev "><span class="tm">11:00</span><span class="chip ba">BA</span><span class="kind">meeting</span><span class="tx"><a class="m" href="https://www.google.com/calendar/event?eid=XzYwcjNpZ3BsOGdwa2NiYTI4b3I0NmI5azg1MjM2YjlwNmwxamdiOXA2aDMzMmQ5ZzY5Mms2Z3EyNmNfMjAyNjEwMTJUMTAwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t">BA Content Sync</a> with Louis (11:00-12:00). The OCTOBER project on the drive was opened at 11:00.</span></li><li class="ev sys"><span class="tm">14:00</span><span class="chip pg">PG</span><span class="kind">meeting</span><span class="tx"><a class="m" href="https://www.google.com/calendar/event?eid=NjVrcWd1cWdwcjV1aGxtZ2VwZ200OGcwN2ZfMjAyNjEwMTJUMTMwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t">Social Alignment Meeting</a> with Corey. Mick declined it, so no time counted.</span></li><li class="ev sys"><span class="tm">14:37</span><span class="chip st">OTHER</span><span class="kind">file</span><span class="tx">IMG_3653.HEIC saved to Downloads. Later: a music track (15:46), IMG_3634.HEIC (16:03) and an Old Tom Morris grave image (16:08). Not classified.</span></li><li class="ev "><span class="tm">15:26</span><span class="chip pg">PG</span><span class="kind">slack</span><span class="tx"><a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD/p1791815203184039">Dude i&#x27;m waiting for access from Joanna- she has the Manychat login setup with the PG IG</a> (to Ogle, three messages to 15:27: cannot log in, so no meeting yet, DMs done by copy and paste)</span></li><li class="ev "><span class="tm">15:27</span><span class="chip pg">PG</span><span class="kind">slack</span><span class="tx"><a class="q" href="https://performance-golf.slack.com/archives/D0BHML6529L/p1791815252828099">Hey Joanna, are you logged into the Manychat account?</a> (to Joanna, three messages to 15:28 asking how the automated DMs work)</span></li><li class="ev "><span class="tm">16:32</span><span class="chip ba">BA</span><span class="kind">slack</span><span class="tx"><a class="q" href="https://performance-golf.slack.com/archives/C0BUU6WD909/p1791819139389469">Yeah for sure we could make something good</a> in #brixtons-social</span></li><li class="ev "><span class="tm">16:33</span><span class="chip pg">PG</span><span class="kind">slack</span><span class="tx"><a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD/p1791819199569849">Yeah, it’s just a trial for now- will check with John tomorrow.</a> (to Ogle)</span></li><li class="ev "><span class="tm">16:33</span><span class="chip pg">PG</span><span class="kind">slack</span><span class="tx"><a class="q" href="https://performance-golf.slack.com/archives/D0BHML6529L/p1791819231177499">Here’s the link to the 40-minute talk, and the Q&amp;A…</a> (to Joanna: the Dr Troy DM funnel link, “I have been doing many of them myself, manually”)</span></li><li class="ev "><span class="tm">16:34</span><span class="chip ba">BA</span><span class="kind">slack</span><span class="tx"><a class="q" href="https://performance-golf.slack.com/archives/D0C0FGMRAF2/p1791819255296699">PG is off today for Indigenous People’s Day so, been working on personal projects all day</a> and <a class="q" href="https://performance-golf.slack.com/archives/D0C0FGMRAF2/p1791819261310909">Brixton content day tomorrow</a> (to Louis)</span></li><li class="ev sys"><span class="tm">20:54</span><span class="chip st">OTHER</span><span class="kind">file</span><span class="tx">Tiger_Announcement.png, a St Andrews first-tee photo and Default_Image.webp saved to Downloads.</span></li><li class="ev sys"><span class="tm">20:56</span><span class="chip st">OTHER</span><span class="kind">project</span><span class="tx">As It Lies Season 1 project saved on the drive, 20:56 to 21:01. Personal project, not counted in either lane.</span></li><li class="ev sys"><span class="tm">21:02</span><span class="chip pg">PG</span><span class="kind">board</span><span class="tx">Board DM: <a class="t" href="https://app.clickup.com/t/86bc26n0b">RULE NUMBER ONE IN GOLF</a> review status Retry to Normal. Automated.</span></li></ol>
-<p class="tally"><b>0</b> pieces finished &middot; <b>0</b> audio sessions &middot; <b>2</b> meetings logged (1 attended) &middot; span 11:00-21:01</p></details></div>
+<section>
+  <h2>Ten weeks against the bar</h2>
+  <div class="card">
+    <div class="scroll">
+    <svg viewBox="0 0 640 250" width="100%" style="min-width:560px;max-width:100%" role="img" aria-label="BA share of weekly hours for ten weeks, falling from 67 percent to 17 percent then rising to 59 percent in the current partial week, against a 30 percent target line"><line x1="38" x2="634" y1="186.0" y2="186.0" stroke="var(--line)" stroke-width="1"/><text x="34" y="190.0" text-anchor="end">0%</text><line x1="38" x2="634" y1="143.5" y2="143.5" stroke="var(--line)" stroke-width="1"/><text x="34" y="147.5" text-anchor="end">25%</text><line x1="38" x2="634" y1="101.0" y2="101.0" stroke="var(--line)" stroke-width="1"/><text x="34" y="105.0" text-anchor="end">50%</text><line x1="38" x2="634" y1="58.5" y2="58.5" stroke="var(--line)" stroke-width="1"/><text x="34" y="62.5" text-anchor="end">75%</text><line x1="38" x2="634" y1="16.0" y2="16.0" stroke="var(--line)" stroke-width="1"/><text x="34" y="20.0" text-anchor="end">100%</text><rect x="53.0" y="16" width="40" height="56.099999999999994" fill="var(--pg)"/><rect x="53.0" y="72.1" width="40" height="113.9" fill="var(--ba)"/><text x="73.0" y="86.1" text-anchor="middle" style="fill:#fff">67</text><text x="73.0" y="202" text-anchor="middle">19 Aug</text><text x="73.0" y="216" text-anchor="middle">65h</text><rect x="111.0" y="16" width="40" height="47.599999999999994" fill="var(--pg)"/><rect x="111.0" y="63.599999999999994" width="40" height="122.4" fill="var(--ba)"/><text x="131.0" y="77.6" text-anchor="middle" style="fill:#fff">72</text><text x="131.0" y="202" text-anchor="middle">24 Aug</text><text x="131.0" y="216" text-anchor="middle">40.5h</text><rect x="169.0" y="16" width="40" height="64.6" fill="var(--pg)"/><rect x="169.0" y="80.6" width="40" height="105.4" fill="var(--ba)"/><text x="189.0" y="94.6" text-anchor="middle" style="fill:#fff">62</text><text x="189.0" y="202" text-anchor="middle">28 Aug</text><text x="189.0" y="216" text-anchor="middle">54h</text><rect x="227.0" y="16" width="40" height="78.2" fill="var(--pg)"/><rect x="227.0" y="94.2" width="40" height="91.8" fill="var(--ba)"/><text x="247.0" y="108.2" text-anchor="middle" style="fill:#fff">54</text><text x="247.0" y="202" text-anchor="middle">2 Sep</text><text x="247.0" y="216" text-anchor="middle">23.5h</text><rect x="285.0" y="16" width="40" height="91.8" fill="var(--pg)"/><rect x="285.0" y="107.8" width="40" height="78.2" fill="var(--ba)"/><text x="305.0" y="121.8" text-anchor="middle" style="fill:#fff">46</text><text x="305.0" y="202" text-anchor="middle">10 Sep</text><text x="305.0" y="216" text-anchor="middle">25h</text><rect x="343.0" y="16" width="40" height="120.7" fill="var(--pg)"/><rect x="343.0" y="136.7" width="40" height="49.3" fill="var(--ba)"/><text x="363.0" y="150.7" text-anchor="middle" style="fill:#fff">29</text><text x="363.0" y="202" text-anchor="middle">20 Sep</text><text x="363.0" y="216" text-anchor="middle">44.5h</text><rect x="401.0" y="16" width="40" height="141.1" fill="var(--pg)"/><rect x="401.0" y="157.1" width="40" height="28.9" fill="var(--ba)"/><text x="421.0" y="171.1" text-anchor="middle" style="fill:#fff">17</text><text x="421.0" y="202" text-anchor="middle">27 Sep</text><text x="421.0" y="216" text-anchor="middle">23h</text><rect x="459.0" y="16" width="40" height="119.0" fill="var(--pg)"/><rect x="459.0" y="135.0" width="40" height="51.0" fill="var(--ba)"/><text x="479.0" y="149.0" text-anchor="middle" style="fill:#fff">30</text><text x="479.0" y="202" text-anchor="middle">4 Oct</text><text x="479.0" y="216" text-anchor="middle">47h</text><rect x="517.0" y="16" width="40" height="113.9" fill="var(--pg)"/><rect x="517.0" y="129.9" width="40" height="56.1" fill="var(--ba)"/><text x="537.0" y="143.9" text-anchor="middle" style="fill:#fff">33</text><text x="537.0" y="202" text-anchor="middle">11 Oct</text><text x="537.0" y="216" text-anchor="middle">47.5h</text><rect x="575.0" y="16" width="40" height="69.7" fill="var(--pg)"/><rect x="575.0" y="85.7" width="40" height="100.3" fill="var(--ba)"/><text x="595.0" y="99.7" text-anchor="middle" style="fill:#fff">59</text><text x="595.0" y="202" text-anchor="middle">13 Oct*</text><text x="595.0" y="216" text-anchor="middle">11h</text><line x1="38" x2="634" y1="135.0" y2="135.0" stroke="var(--target)" stroke-width="2" stroke-dasharray="6 4"/><text x="632" y="130.0" text-anchor="end" style="fill:var(--ink)">30% target</text></svg>
+    </div>
+    <div class="legend"><span><span class="sw" style="background:var(--ba)"></span>BA share</span><span><span class="sw" style="background:var(--pg)"></span>PG share</span><span><span class="sw" style="background:var(--target)"></span>30% target</span><span>* week to date</span></div>
+    <p class="sub" style="margin-top:8px">Bars are 100% stacked. Total hours sit under each date. Weeks before 31 Aug were measured against a 40% bar.</p>
+  </div>
 </section>
 
-<section aria-labelledby="h-due"><h2 id="h-due">Past due right now <small>12 Mick-owned live tasks</small></h2>
-<div class="tw"><table><thead><tr><th>Task</th><th>Status</th><th>Was due</th><th>Late</th><th>Lane</th></tr></thead><tbody><tr><td><a class="t" href="https://app.clickup.com/t/86bbqzj8t">Brixton looking at phone intros</a></td><td><span class="chip st">in progress</span></td><td class="num">Tue 8 Sep 09:00</td><td class="num late">34d</td><td><span class="chip ba">BA</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bbbg1e9">Organic | Social Brief</a></td><td><span class="chip st">Open</span></td><td class="num">Wed 30 Sep 10:00</td><td class="num late">12d</td><td><span class="chip pg">PG</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bbu605v">07 YOUNGEST EVER - US ADAPTIVE OPEN</a></td><td><span class="chip st">in progress</span></td><td class="num">Mon 5 Oct 04:00</td><td class="num late">7d</td><td><span class="chip ba">BA</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bcdn7kd">Social | LOW BACK PAIN IS THE NUMBER ONE REASON PEOPLE QUIT GOLF</a></td><td><span class="chip st">post me</span></td><td class="num">Sun 11 Oct 04:00</td><td class="num late">1d</td><td><span class="chip pg">PG</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bcct0f6">Social | MAKE IT TO THE NEXT CHOW (Recut)</a></td><td><span class="chip st">post me</span></td><td class="num">Sun 11 Oct 04:00</td><td class="num late">1d</td><td><span class="chip pg">PG</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bcct04y">Social | COLD OPEN THE MOST ENGINEERED OBJECT (Recut)</a></td><td><span class="chip st">post me</span></td><td class="num">Sun 11 Oct 04:00</td><td class="num late">1d</td><td><span class="chip pg">PG</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bccpxpt">Social | BIN IT OR KEEP IT (Recut, light b-roll v2)</a></td><td><span class="chip st">post me</span></td><td class="num">Sun 11 Oct 04:00</td><td class="num late">1d</td><td><span class="chip pg">PG</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bcdmr5d">LOOK AT THE TOP PLAYERS- JOE MAYO +CTA</a></td><td><span class="chip st">approved to publish</span></td><td class="num">Sun 11 Oct 04:00</td><td class="num late">1d</td><td><span class="chip ba">BA</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bc7auzt">HOUSETALK_ThinkingAboutStartingABusiness</a></td><td><span class="chip st">approved to publish</span></td><td class="num">Sun 11 Oct 14:00</td><td class="num late">1d</td><td><span class="chip ba">BA</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bcdneph">Social | 5-TO-1 BET (Recut, tight bet straight in)</a></td><td><span class="chip st">post me</span></td><td class="num">Mon 12 Oct 04:00</td><td class="num late">0d</td><td><span class="chip pg">PG</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bccrzzn">Social | BRIXTON SCANS THE SEAL&#x27;S SWING (Recut, short youre athletic)</a></td><td><span class="chip st">post me</span></td><td class="num">Mon 12 Oct 04:00</td><td class="num late">0d</td><td><span class="chip pg">PG</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bcbypyy">Social | JOE MAYO - BIGGEST SHORT GAME LIE</a></td><td><span class="chip st">post me</span></td><td class="num">Mon 12 Oct 04:00</td><td class="num late">0d</td><td><span class="chip pg">PG</span></td></tr></tbody></table></div>
-<p style="margin-top:10px;color:var(--mut);font-size:.85rem">Same count as Sunday night, different cards: the Sunday weekend cards (ROUND PART 2 v3, 1 Club Match 4 and others) cleared, and seven <em>post me</em> cards plus two <em>approved to publish</em> cards are now past their Sunday or Monday 04:00 slots. The two oldest, <a class="t" href="https://app.clickup.com/t/86bbqzj8t">phone intros</a> (34 days) and the <a class="t" href="https://app.clickup.com/t/86bbbg1e9">Organic Social Brief</a> (12 days), are still open.</p>
-<h3 style="margin:18px 0 6px;font-size:1.05rem">Late on the BA list, owned by someone else or no one</h3>
-<div class="tw"><table class="q2"><thead><tr><th>Task</th><th>Status</th><th>Was due</th><th>Late</th><th>Owner</th></tr></thead><tbody><tr><td><a class="t" href="https://app.clickup.com/t/86bbjp1v1">World&#x27;s best blind golfer</a></td><td><span class="chip st">in progress</span></td><td class="num">Fri 28 Aug 09:00</td><td class="num late">45d</td><td>unassigned</td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bbjwedx">Hollis Stacy Long Recut + CTA</a></td><td><span class="chip st">in progress</span></td><td class="num">Sat 19 Sep 04:00</td><td class="num late">23d</td><td>unassigned</td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bbvzawz">Blind Golfer V2</a></td><td><span class="chip st">in progress</span></td><td class="num">Sat 26 Sep 04:00</td><td class="num late">16d</td><td>unassigned</td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bc41m8r">100MFounderPodcast_V1_Sold4MOnLaunchDay</a></td><td><span class="chip st">in progress</span></td><td class="num">Sat 3 Oct 22:00</td><td class="num late">8d</td><td>Louis</td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bc947xb">HumApproachNewbieGolfer_V1</a></td><td><span class="chip st">approved to publish</span></td><td class="num">Sat 10 Oct 04:00</td><td class="num late">2d</td><td>Louis</td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bc40whz">AngryGolferHum_V3_AltHook+Shorter</a></td><td><span class="chip st">in progress</span></td><td class="num">Sun 11 Oct 04:00</td><td class="num late">1d</td><td>unassigned</td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bc17knp">Oldest Golfer V2</a></td><td><span class="chip st">in progress</span></td><td class="num">Mon 12 Oct 04:00</td><td class="num late">0d</td><td>Louis</td></tr></tbody></table></div>
-<h3 style="margin:18px 0 6px;font-size:1.05rem">Falls due next</h3>
-<div class="tw"><table><thead><tr><th>Task</th><th>Status</th><th>Due</th><th>In</th><th>Lane</th></tr></thead><tbody><tr><td><a class="t" href="https://app.clickup.com/t/86bc032jm">MAYO Viktor Hovland 2</a></td><td><span class="chip st">approved to publish</span></td><td class="num">Tue 13 Oct 04:00</td><td class="num">in 0d</td><td><span class="chip ba">BA</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bc7autk">HOUSETALK_TheFlops</a></td><td><span class="chip st">approved to publish</span></td><td class="num">Tue 20 Oct 04:00</td><td class="num">in 7d</td><td><span class="chip ba">BA</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bbmdwd6">ACC Remix | 02 - Davante Adams - the hum</a></td><td><span class="chip st">approved to publish</span></td><td class="num">Tue 20 Oct 17:00</td><td class="num">in 7d</td><td><span class="chip ba">BA</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bcabb0f">BFCM26 | Social Media Strategy &amp; Launch Plan</a></td><td><span class="chip st">Open</span></td><td class="num">Fri 23 Oct 11:00</td><td class="num">in 10d</td><td><span class="chip pg">PG</span></td></tr><tr><td><a class="t" href="https://app.clickup.com/t/86bbhvj38">Joe Mayo | Social Media Strategy &amp; Launch Plan</a></td><td><span class="chip st">Open</span></td><td class="num">Fri 30 Oct 11:00</td><td class="num">in 17d</td><td><span class="chip pg">PG</span></td></tr></tbody></table></div>
+<section>
+  <h2>Day by day</h2>
+  <p class="sub">Open a day for the exact timeline: audio in, export out, meetings, Slack moves.</p>
+
+  <details class="day">
+    <summary><span class="dname">Mon 12</span><span class="dbar" role="img" aria-label="BA 0.5 hours, PG 1.5 hours"><i class="ba" style="width:25%"></i><i class="pg" style="width:75%"></i></span><span class="dh">BA 0.5 · PG 1.5 · 2.0h</span></summary>
+    <div class="dbody">
+      <div class="flag"><strong>Dry day.</strong> Zero exports, zero audio. PG was off for Indigenous Peoples' Day.</div>
+      <p class="note">Re-measured tonight, was 1.5h BA / 1.5h PG. The BA Content Sync did not happen Monday: the series was moved to Tuesday 11:00 (calendar updated Tue 09:46 BST) and the Manychat DM funnel for Dr Troy and Tiger is PG work on the PG Instagram, so it moved lanes.</p>
+      <ol class="tl">
+        <li><span class="tm">10:58</span><span class="chip pg">PG</span><span>Board flips <a class="t" href="https://app.clickup.com/t/86bcdn79y">TIGER HAD 9 DEGREES</a> to Winner (Converter) and <a class="t" href="https://app.clickup.com/t/86bcec56r">ROUND PART 2 v2</a> to Kill. Automatic, not Mick's hands. <a class="q" href="https://performance-golf.slack.com/archives/D0B8Y0BRMUM/p1791799129168409">Slack notice</a></span></li>
+        <li><span class="tm">15:26</span><span class="chip pg">PG</span><span>To Chris Ogle: <a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD/p1791815203184039">"waiting for access from Joanna"</a> for the Manychat login. DMs are copy and paste for now.</span></li>
+        <li><span class="tm">15:28</span><span class="chip pg">PG</span><span>To Joanna: <a class="q" href="https://performance-golf.slack.com/archives/D0BHML6529L/p1791815333529449">"how do the automated DMs/comment work?"</a></span></li>
+        <li><span class="tm">16:32</span><span class="chip ba">BA</span><span>Reply in #brixtons-social: <a class="q" href="https://performance-golf.slack.com/archives/C0BUU6WD909/p1791819139389469">"Yeah for sure we could make something good"</a></span></li>
+        <li><span class="tm">16:33</span><span class="chip pg">PG</span><span>Sent Joanna the 40-minute talk funnel link, <a class="q" href="https://performance-golf.slack.com/archives/D0BHML6529L/p1791819231177499">"I have been doing many of them myself, manually."</a></span></li>
+        <li><span class="tm">16:34</span><span class="chip ba">BA</span><span>To Louis: <a class="q" href="https://performance-golf.slack.com/archives/D0C0FGMRAF2/p1791819255296699">PG off, personal projects all day</a>, and <a class="q" href="https://performance-golf.slack.com/archives/D0C0FGMRAF2/p1791819261310909">"Brixton content day tomorrow"</a></span></li>
+        <li><span class="tm">21:02</span><span class="chip pg">PG</span><span><a class="t" href="https://app.clickup.com/t/86bc26n0b">RULE NUMBER ONE IN GOLF</a> Review Status Retry → Normal. Automatic. As It Lies saves 20:56 to 21:01 are personal and not counted.</span></li>
+      </ol>
+      <div class="tally"><span>Pieces finished: 0</span><span>Audio sessions: 0</span><span>Meetings: 0 held (<a class="m" href="https://www.google.com/calendar/event?eid=NjVrcWd1cWdwcjV1aGxtZ2VwZ200OGcwN2ZfMjAyNjEwMTJUMTMwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t">Social Alignment</a> declined)</span><span>Span: 10:58–21:02</span></div>
+    </div>
+  </details>
+
+  <details class="day" open>
+    <summary><span class="dname">Tue 13</span><span class="dbar" role="img" aria-label="BA 6.0 hours, PG 3.0 hours"><i class="ba" style="width:66.7%"></i><i class="pg" style="width:33.3%"></i></span><span class="dh">BA 6.0 · PG 3.0 · 9.0h</span></summary>
+    <div class="dbody">
+      <p class="note">Brixton content day, as booked on Monday. Five audio takes and five export files before 14:20, three finished pieces moved to approved to publish by 19:00. Span 09:07 to 19:34 with a gap after 14:17 that the files do not explain.</p>
+      <ol class="tl">
+        <li><span class="tm">09:07</span><span class="chip ba">BA</span><span>Audio in: EFOIL TIGER STORY CONTINUOUS</span></li>
+        <li><span class="tm">09:16</span><span class="chip ba">BA</span><span>Export out ×2: <a class="t" href="https://app.clickup.com/t/86bcdetu1">Efoil Tiger Woods Story</a> and the CONTINUOUS version. First export after five audio versions. Card moved to approved to publish 18:59.</span></li>
+        <li><span class="tm">10:15</span><span class="chip ba">BA</span><span>Audio in: 6 THINGS I DO</span></li>
+        <li><span class="tm">10:46</span><span class="chip ba">BA</span><span>To Louis: <a class="q" href="https://performance-golf.slack.com/archives/D0C0FGMRAF2/p1791884812209389">"11am?"</a> moving the sync into the booked slot.</span></li>
+        <li><span class="tm">10:47</span><span class="chip ba">BA</span><span>Export out: <a class="t" href="https://app.clickup.com/t/86bcddkje">6 things I do to buy time back</a>. Card still in progress at 21:00.</span></li>
+        <li><span class="tm">11:00</span><span class="chip ba">BA</span><span><a class="m" href="https://www.google.com/calendar/event?eid=XzYwcjNpZ3BsOGdwa2NiYTI4b3I0NmI5azg1MjM2YjlwNmwxamdiOXA2aDMzMmQ5ZzY5Mms2Z3EyNmNfMjAyNjEwMTJUMTAwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t">BA Content Sync</a> with Louis, 11:00 to 12:00. Two YouTube links to Louis at <a class="q" href="https://performance-golf.slack.com/archives/D0C0FGMRAF2/p1791885624138749?thread_ts=1791885454.452029&cid=D0C0FGMRAF2">11:00</a> and <a class="q" href="https://performance-golf.slack.com/archives/D0C0FGMRAF2/p1791886572387599">11:16</a>.</span></li>
+        <li><span class="tm">11:02</span><span class="chip pg">PG</span><span>Board flips <a class="t" href="https://app.clickup.com/t/86bccpxpt">BIN IT OR KEEP IT</a> to Retry and <a class="t" href="https://app.clickup.com/t/86bcdneph">5-TO-1 BET</a> to Normal. Automatic. <a class="q" href="https://performance-golf.slack.com/archives/D0B8Y0BRMUM/p1791885753948679">Notice</a></span></li>
+        <li><span class="tm">11:29</span><span class="chip ba">BA</span><span>Sent Louis <a class="q" href="https://performance-golf.slack.com/files/U0B8V0VGZDZ/F0C7MBS7HL5/brixton_e-foil_series_season_1_plan.docx">Brixton E-Foil Series Season 1 Plan.docx</a></span></li>
+        <li><span class="tm">12:28</span><span class="chip ba">BA</span><span>Audio in ×2 (12:28, 12:43): Called Every Coach Tiger Worked With, plus Clip 1</span></li>
+        <li><span class="tm">12:48</span><span class="chip ba">BA</span><span>Export out: <a class="t" href="https://app.clickup.com/t/86bcde74c">I called every coach Tiger worked with</a>. Approved to publish 18:53.</span></li>
+        <li><span class="tm">13:35</span><span class="chip pg">PG</span><span>Three RSS opt-in and YouTube videos pulled to Downloads. Attributed to PG, not confirmed.</span></li>
+        <li><span class="tm">13:54</span><span class="chip ba">BA</span><span>Audio in: 500k To 30MM</span></li>
+        <li><span class="tm">14:17</span><span class="chip ba">BA</span><span>Export out: <a class="t" href="https://app.clickup.com/t/86bcdek8h">How I went from $500k to $30MM</a>. Approved to publish 18:51.</span></li>
+        <li><span class="tm">15:43</span><span class="chip pg">PG</span><span>Research image pulls to 19:34: Roman, Song dynasty and early Chinese golf art. Reads as the alt-history golf idea. About 2h counted as PG, ±1.5h.</span></li>
+        <li><span class="tm">19:18</span><span class="chip ba">BA</span><span>ClickUp touches on <a class="t" href="https://app.clickup.com/t/86bcbayw7">Tommy Morrisey Clip 2</a>, <a class="t" href="https://app.clickup.com/t/86bcbaxvg">Clip 1</a> and <a class="t" href="https://app.clickup.com/t/86bbzdp05">Story of breaking my arm</a>. Still needs to be edited.</span></li>
+        <li><span class="tm">21:02</span><span class="chip pg">PG</span><span><a class="t" href="https://app.clickup.com/t/86bcbypyy">JOE MAYO - BIGGEST SHORT GAME LIE</a> Review Status moved to Normal. Automatic. <a class="q" href="https://performance-golf.slack.com/archives/D0B8Y0BRMUM/p1791921755484279">Notice</a></span></li>
+      </ol>
+      <div class="flag"><a class="m" href="https://www.google.com/calendar/event?eid=M20ydTdwMzVvdmEzdGNhM3RkdTAxcWs5Z28gbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ">FILMING | Organic | Gary Player</a> was booked all day. No file, message or task move points to a shoot, so no shoot hours are counted.</div>
+      <div class="tally"><span>Pieces finished: 4 distinct (5 files)</span><span>Audio sessions: 5</span><span>Meetings: 1 (<a class="m" href="https://www.google.com/calendar/event?eid=XzYwcjNpZ3BsOGdwa2NiYTI4b3I0NmI5azg1MjM2YjlwNmwxamdiOXA2aDMzMmQ5ZzY5Mms2Z3EyNmNfMjAyNjEwMTJUMTAwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t">BA Content Sync</a>)</span><span>Span: 09:07–19:34</span></div>
+    </div>
+  </details>
+  <p class="sub">Wed 14 to Sun 18 are still ahead.</p>
 </section>
 
-<section aria-labelledby="h-q"><h2 id="h-q">The queues <small>pulled live Mon 21:15</small></h2>
-<div class="queue">
-<div><div class="l">Mick open tasks</div><div class="v">160</div><div class="d">-1 vs Sun</div></div>
-<div><div class="l">Past due, live lanes</div><div class="v">12</div><div class="d">12 on Sun, different cards</div></div>
-<div><div class="l"><a class="t" href="https://app.clickup.com/9014714949/v/li/901413512686" style="text-decoration-style:solid">BA</a> edit queue</div><div class="v">27</div><div class="d">flat</div></div>
-<div><div class="l">BA publish queue</div><div class="v">68</div><div class="d">-3</div></div>
-<div><div class="l">BA in progress</div><div class="v">22</div><div class="d">flat</div></div>
-<div><div class="l">BA blocked</div><div class="v">43</div><div class="d">flat</div></div>
-<div><div class="l">BA ideas</div><div class="v">16</div><div class="d">flat</div></div>
-</div>
-<p style="margin-top:10px;color:var(--mut);font-size:.85rem">BA Social Calendar open total 177 (180 on Sun). Statuses: needs to be edited 27, approved to publish 68, in progress 22, blocked 43, future content ideas 16, in review 1. PG <em>post me</em> and <em>trialed</em> counts were not re-pulled tonight; Sunday's were 46 and 47.</p>
+<section>
+  <h2>Past due right now</h2>
+  <p class="sub">Eight live tasks assigned to Mick, worst first. Live lanes only: post me, approved to publish, in progress, Open. Trialed, the grid and the graveyard are left out.</p>
+  <div class="card scroll">
+  <table>
+    <thead><tr><th>Task</th><th>Lane</th><th>Status</th><th style="text-align:right">Late</th></tr></thead>
+    <tbody>
+      <tr><td><a class="t" href="https://app.clickup.com/t/86bbqzj8t">Brixton looking at phone intros</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="n late">35.5 d</td></tr>
+      <tr><td><a class="t" href="https://app.clickup.com/t/86bbbg1e9">Organic | Social Brief</a></td><td><span class="chip pg">PG</span></td><td>Open</td><td class="n late">13.5 d</td></tr>
+      <tr><td><a class="t" href="https://app.clickup.com/t/86bbu605v">07 YOUNGEST EVER - US ADAPTIVE OPEN</a></td><td><span class="chip ba">BA</span></td><td>in progress</td><td class="n late">8.7 d</td></tr>
+      <tr><td><a class="t" href="https://app.clickup.com/t/86bcdn7kd">Social | LOW BACK PAIN IS THE NUMBER ONE REASON PEOPLE QUIT GOLF</a></td><td><span class="chip pg">PG</span></td><td>post me</td><td class="n late">2.7 d</td></tr>
+      <tr><td><a class="t" href="https://app.clickup.com/t/86bc7auzt">HOUSETALK_ThinkingAboutStartingABusiness</a></td><td><span class="chip ba">BA</span></td><td>approved to publish</td><td class="n late">2.3 d</td></tr>
+      <tr><td><a class="t" href="https://app.clickup.com/t/86bcct0f6">Social | MAKE IT TO THE NEXT CHOW — Recut (Auto) · rehook 22nd birthday</a></td><td><span class="chip pg">PG</span></td><td>post me</td><td class="n late">17 h</td></tr>
+      <tr><td><a class="t" href="https://app.clickup.com/t/86bc7aua1">HOUSETALK_CureForCancer</a></td><td><span class="chip ba">BA</span></td><td>approved to publish</td><td class="n late">17 h</td></tr>
+      <tr><td><a class="t" href="https://app.clickup.com/t/86bc7an37">Art of visualization/story of buying house</a></td><td><span class="chip ba">BA</span></td><td>approved to publish</td><td class="n late">17 h</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="sub">Also late today but owned by others: <a class="t" href="https://app.clickup.com/t/86bc7tzzt">HumApproachPompano_V1_MasterEdit</a> (Louis) and <a class="t" href="https://app.clickup.com/t/86bbzt8r4">Swing Match Video 2</a> (Ricardo), both approved to publish and due 04:00 today.</p>
+
+  <h3>Falls due next</h3>
+  <div class="card scroll">
+  <table>
+    <thead><tr><th>Due</th><th>Task</th><th>Lane</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">Wed 14 04:00</td><td><a class="t" href="https://app.clickup.com/t/86bc7ahgc">HOUSETALK_PayTheTaxNowOrLater</a></td><td><span class="chip ba">BA</span></td></tr>
+      <tr><td class="mono">Thu 15 04:00</td><td><a class="t" href="https://app.clickup.com/t/86bc8p8ra">HOUSETALK_TheHedonicTreadmillFreetalk</a></td><td><span class="chip ba">BA</span></td></tr>
+      <tr><td class="mono">Fri 16 04:00</td><td><a class="t" href="https://app.clickup.com/t/86bc032jm">MAYO Viktor Hovland 2</a></td><td><span class="chip ba">BA</span></td></tr>
+      <tr><td class="mono">Sun 18 04:00</td><td><a class="t" href="https://app.clickup.com/t/86bc7aup3">HOUSETALK_TheHedonicTreadmill</a></td><td><span class="chip ba">BA</span></td></tr>
+      <tr><td class="mono">Tue 20 04:00</td><td><a class="t" href="https://app.clickup.com/t/86bc7autk">HOUSETALK_TheFlops</a> and <a class="t" href="https://app.clickup.com/t/86bcd3frc">LOOK AT THE TOP PLAYERS- JOE MAYO</a></td><td><span class="chip ba">BA</span></td></tr>
+      <tr><td class="mono">Fri 23 11:00</td><td><a class="t" href="https://app.clickup.com/t/86bcabb0f">BFCM26 | Social Media Strategy &amp; Launch Plan</a></td><td><span class="chip pg">PG</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="sub">Meetings ahead: <a class="m" href="https://www.google.com/calendar/event?eid=N2gwOHZvbjczbGxzamdmY3VvaGQ5cDFobDhfMjAyNjEwMTVUMTIwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t">Mick / Brixton catch up</a> Thu 15 13:00, <a class="m" href="https://www.google.com/calendar/event?eid=NnFkbHR1ZmZxa2loZ2lvdDhhbmxkaXU3dWVfMjAyNjEwMTVUMTQwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t">Mick x John 1x1 Sync</a> Thu 15 15:00, and the <a class="m" href="https://www.google.com/calendar/event?eid=dHU4Yms3bmcxcGo0ZTlqcW1ybDAwMm1pcDQgbWlja0BwZXJmb3JtYW5jZWdvbGZ6b25lLmNvbQ">World's Fastest Golfer YouTube release</a> Thu 15.</p>
+</section>
+
+<section>
+  <h2>Queues</h2>
+  <div class="card">
+    <div class="lane">
+      <div class="stat"><div class="v">27</div><div class="l">Needs to be edited (Mon 27)</div></div>
+      <div class="stat"><div class="v">67</div><div class="l">Approved to publish (Mon 68)</div></div>
+      <div class="stat"><div class="v">20</div><div class="l">In progress (Mon 22)</div></div>
+      <div class="stat"><div class="v">43</div><div class="l">Blocked, unchanged</div></div>
+      <div class="stat"><div class="v">16</div><div class="l">Future content ideas</div></div>
+      <div class="stat"><div class="v">1</div><div class="l">In review</div></div>
+    </div>
+    <p class="sub" style="margin-top:10px">Brixton's <a class="t" href="https://app.clickup.com/9014714949/v/li/901413512686">Social Calendar</a> holds 174 open tasks, down from 177. Mick's total open count was last measured at 160 on Monday and was not recounted tonight. Four finished pieces went in at the publish end and nothing came out the other end.</p>
+  </div>
 </section>
 
 <div class="cols">
-<section aria-labelledby="h-win"><h2 id="h-win">Today's wins</h2>
-<ul class="simple win">
-<li><a class="t" href="https://app.clickup.com/t/86bcdn79y">TIGER HAD 9 DEGREES</a> flipped to Winner (Converter) at 10:58, the board's call.</li>
-<li><a class="m" href="https://www.google.com/calendar/event?eid=XzYwcjNpZ3BsOGdwa2NiYTI4b3I0NmI5azg1MjM2YjlwNmwxamdiOXA2aDMzMmQ5ZzY5Mms2Z3EyNmNfMjAyNjEwMTJUMTAwMDAwWiBtaWNrQHBlcmZvcm1hbmNlZ29sZnpvbmUuY29t">BA Content Sync</a> held at 11:00. Brixton content day is set for Tuesday.</li>
-<li>The Dr Troy DM funnel is moving: the 40-minute talk link was sent to Joanna at 16:33, done by hand so far.</li>
-<li>Declined the 14:00 Social Alignment Meeting rather than sit in it on a holiday.</li>
-</ul></section>
-<section aria-labelledby="h-con"><h2 id="h-con">Areas of concern</h2>
-<ul class="simple con">
-<li>Zero exports and zero audio on a day Mick had to himself. Dry day, on a BA edit day.</li>
-<li>The PG Manychat login is blocked until Joanna grants access, so the Instagram DM funnel stays manual.</li>
-<li>12 Mick-owned live tasks past due. <a class="t" href="https://app.clickup.com/t/86bbqzj8t">Phone intros</a> is 34 days late.</li>
-<li><a class="t" href="https://app.clickup.com/t/86bcdetu1">Efoil Tiger Woods Story</a>: five audio versions last Thursday, still no export.</li>
-<li>Activity ran to 21:01 on a holiday, with no sign-off before 19:00.</li>
-<li>Four open Slack promises below have no task behind them.</li>
-</ul></section>
+<section>
+  <h2>This week's wins</h2>
+  <div class="card"><ul class="l">
+    <li>Efoil Tiger Woods Story exported Tue 09:16 after five audio versions with no export last week. Approved to publish 18:59.</li>
+    <li>Four distinct BA pieces out Tuesday between 09:16 and 14:17, all in approved to publish by 19:00.</li>
+    <li>The sync with Louis moved into the booked slot and held Tue 11:00, with the E-Foil Season 1 plan sent at 11:29.</li>
+    <li>Mick-owned live past-due tasks down from 12 to 8.</li>
+    <li>Tiger 9 Degrees reel flipped to Winner on Monday morning.</li>
+    <li>Zero days over 11h so far this week.</li>
+  </ul></div>
+</section>
+<section>
+  <h2>Areas of concern</h2>
+  <div class="card"><ul class="l">
+    <li>Two-day split reads 59% BA against a 30% bar. Monday was a PG holiday, so wait for Wed to Fri before reading much into it.</li>
+    <li>PG hours are thin: 4.5h in two days, and the Gary Player shoot booked for Tuesday left no trace.</li>
+    <li>Three of Mick's approved-to-publish cards went past 04:00 today: Cure For Cancer, Art of visualization and Thinking About Starting. Another is due 04:00 tomorrow.</li>
+    <li>6 things I do to buy time back exported at 10:47 and still sits in progress.</li>
+    <li>Two PG post-me cards are late: Low Back Pain (2.7 days) and Make It To The Next Chow (17 hours).</li>
+    <li>Signed off 19:34, after 19:00 for the second day running.</li>
+    <li>Manychat on the PG Instagram is still blocked until Joanna grants access, so Dr Troy DMs stay manual.</li>
+  </ul></div>
+</section>
 </div>
 
-<section aria-labelledby="h-prom"><h2 id="h-prom">Promises with no task <small>quoted, linked</small></h2>
-<div class="tw"><table class="prom"><thead><tr><th>What Mick said</th><th>When</th><th>What is open</th></tr></thead><tbody><tr><td><a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD/p1791815235867829">“I'll get her to give me access and then we'll reconviene”</a></td><td>Mon 12 Oct 15:27, to Ogle</td><td>Manychat login for the PG IG, held by Joanna. Meeting with Ogle waits on it. No task.</td></tr><tr><td><a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD/p1791819199569849">“it’s just a trial for now- will check with John tomorrow”</a></td><td>Mon 12 Oct 16:33, to Ogle</td><td>Check the DM funnel trial with John on Tue 13 Oct. No task.</td></tr><tr><td><a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD/p1791536575752239">“Okay- I&#x27;ll look at that today- and then can we chat it through later/monday?”</a></td><td>Fri 9 Oct 10:02, to Ogle</td><td>Dr Troy “comment TIGER” deal. Talk was due Monday. Mick said at 15:26 he cannot meet yet. No task.</td></tr><tr><td><a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD">“I&#x27;ll send it over tomorrow- got 3x done.”</a></td><td>Wed 7 Oct 20:21, to Ogle</td><td>Three trial pieces (Why do we chunk it, The biggest lie, Bin it or keep it). No task, and no Thursday send seen in Slack.</td></tr></tbody></table></div></section>
-
-<section aria-labelledby="h-gam"><h2 id="h-gam">Scoreboard <small>dry, credible</small></h2>
-<div class="gam">
-<div><div class="l">Balance score</div><div class="v">50</div><div class="l">100 - |BA% - 30| x 2.5</div></div>
-<div><div class="l">Signed off before 19:00</div><div class="v">0 days</div><div class="l">Mon 21:01. Sunday's 18:55 started a streak of 1; it ends here.</div></div>
-<div><div class="l">Weeks improving</div><div class="v">0</div><div class="l">week 1 of 1 is far from 30%</div></div>
-<div><div class="l">Overtime meter</div><div class="v">0 / 1</div><div class="meter"><i style="width:100%"></i></div><div class="l">days over 11h. Mon span 10h, mostly gaps.</div></div>
-</div>
-<ul class="bdgs" style="margin-top:14px"><li class="bdg earned"><b>Zero Overtime</b><span>0 days over 11h, seventh week running</span></li><li class="bdg missed"><b>Output Machine</b><span>0 exports</span></li><li class="bdg missed"><b>Within 5 Points</b><span>BA 50% vs 30%</span></li><li class="bdg missed"><b>Early Finish</b><span>active to 21:01</span></li><li class="bdg missed"><b>Inbox Zero</b><span>12 live tasks past due</span></li><li class="bdg flag"><b>Dry Spell</b><span>4 days without an export (Fri to Mon)</span></li><li class="bdg earned"><b>Holiday Honoured</b><span>declined the 14:00 meeting</span></li></ul>
+<section>
+  <h2>Promises with no task behind them</h2>
+  <div class="card"><ul class="l">
+    <li>Mon 16:33 to Chris Ogle on the Dr Troy trial: <a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD/p1791819199569849">"will check with John tomorrow."</a> No trace of a John message today.</li>
+    <li>Mon 15:27 to Chris Ogle: <a class="q" href="https://performance-golf.slack.com/archives/D0BJ25B26VD/p1791815235867829">"I'll get her to give me access and then we'll reconviene"</a>. Joanna has not replied in the thread.</li>
+    <li>Mon 16:32 in #brixtons-social: <a class="q" href="https://performance-golf.slack.com/archives/C0BUU6WD909/p1791819139389469">"Yeah for sure we could make something good"</a>. No task or date.</li>
+    <li>Kept: Mon 16:34 <a class="q" href="https://performance-golf.slack.com/archives/D0C0FGMRAF2/p1791819261310909">"Brixton content day tomorrow"</a> became Tuesday's five audio takes and five exports.</li>
+  </ul></div>
 </section>
 
-<footer class="foot">
-<p><b>How it is measured.</b> Hours come from first and last human activity per day (Slack, calendar, Claude Code sessions, file timestamps), ±1h. Automated jobs (board bot DMs, trial feed reloads, autocut, the hourly uploaders) are not counted. Exports and audio come from <code>/Volumes/mickw/10 OCTOBER</code> and are exact: none landed today.</p>
-<p>Monday split: BA 1.5h = Content Sync 1h plus Brixton and Louis chat. PG 1.5h = the Manychat and Dr Troy DM funnel work from about 15:26, estimated generously because much of it happens in Instagram, which leaves no trace here. As It Lies project saves (20:56 to 21:01) and the downloads are personal and excluded. On Sunday the same kind of project time was counted as PG; tonight it is not, because Mick said so in Slack. No git commits today.</p>
-<p>Past due means Mick-assigned, live status (post me, approved to publish, in progress, Open), due before Mon 21:15. Trialed, the grid and the graveyard are excluded. Not sent to Slack or ClickUp. Private to Mick unless he shares it.</p>
-</footer>
-</main>
+<section>
+  <h2>Scoreboard</h2>
+  <div class="card cols" style="gap:20px">
+    <div>
+      <div class="eyebrow">Balance score</div>
+      <div class="big">27</div>
+      <div class="ticklab">Last week 93 · best 99 (week ending 4 Oct)</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div><span class="eyebrow">Signed off before 19:00 streak</span><br><span class="num">0 days</span> <span class="ticklab">Mon 21:02 · Tue 19:34</span></div>
+      <div><span class="eyebrow">Weeks improving toward target</span><br><span class="num">0</span> <span class="ticklab">Run broke last week at 33%</span></div>
+      <div><span class="eyebrow">Overtime meter, days over 11h</span><div class="meter" aria-label="0 of 5 working days over 11 hours"><i></i><i></i><i></i><i></i><i></i></div><span class="ticklab">0 of 5</span></div>
+    </div>
+    <div style="grid-column:1/-1">
+      <div class="eyebrow" style="margin-bottom:6px">Badges</div>
+      <div class="badges"><span class="badge">EFOIL CLOSER · Tiger story finally out</span><span class="badge">CONTENT DAY KEPT · 5 exports</span><span class="badge">SYNC HELD · after one reschedule</span><span class="badge off">BEFORE SEVEN · missed again</span><span class="badge off">PG PRESENCE · 4.5h to date</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>Sources: Slack (Mick's messages 11–13 Oct), Google Calendar, external drive 10 AUDIOS and 10 EXPORTS (read live, mounted), ClickUp, Downloads timestamps. Hours are estimates, ±1h per day. Past due counts Mick-assigned tasks in post me, approved to publish, in progress and Open. Tuesday attribution of the RSS downloads and research images to PG is inferred. Brixton, Morgan and Hazel commits were not counted as Mick's time and none landed today.</footer>
+</div>
+
 </body>
 </html>
